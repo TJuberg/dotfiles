@@ -141,3 +141,5 @@ fi
 if [ -d $HOME/toolkit ]; then
     PATH="$PATH:$HOME/toolkit"
 fi
+
+PATH="$HOME/opt/bin:$PATH"
