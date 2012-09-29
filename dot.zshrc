@@ -109,6 +109,15 @@ if [[ -s /etc/zsh_command_not_found ]]; then
     . /etc/zsh_command_not_found
 fi
 
+# Check if we are on a desktop system
+if [[ -x /usr/bin/gnome-terminal ]]; then
+    if [ ! -f ~/.gnome-terminal-colors-solarized/install.sh ]; then
+        echo "gnome-terminal detected, solarizing..."
+        git clone git://github.com/sigurdga/gnome-terminal-colors-solarized.git ~/.gnome-terminal-colors-solarized &> /dev/null
+        ~/.gnome-terminal-colors-solarized/install.sh
+    fi
+fi
+
 # Download zsh-syntax-highlighting
 if [ ! -f ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
     echo "Could not find zsh-syntax-highlighting, downloading.."
