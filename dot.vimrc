@@ -1,3 +1,12 @@
+" Pathogen
+call pathogen#infect()
+
+" Solarize
+syntax enable
+set background=dark
+colorscheme solarized
+
+
 " numbered lines
 set number
 

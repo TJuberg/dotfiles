@@ -102,6 +102,18 @@ fi
 # Load aliases
 if [[ -s ~/.bash_aliases ]]; then
     . ~/.bash_aliases
+    mkdir -p ~/.vim/autoload ~/.vim/bundle
+    
+    # Install pathogen
+    if [ ! -f ~/.vim/autoload/pathogen.vim ]; then
+        curl -Sso ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+    fi
+
+    # Solarize vim
+    if [ ! -f ~/.vim/bundle/vim-colors-solarized/autoload/togglebg.vim ]; then
+        git clone git://github.com/altercation/vim-colors-solarized.git ~/.vim/bundle/vim-colors-solarized
+    fi
+
 fi
 
 # Suggest package for command not found
