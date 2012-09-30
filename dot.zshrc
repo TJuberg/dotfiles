@@ -125,8 +125,7 @@ if [[ -x /usr/bin/vim ]]; then
         ln -s $SUPDIR/vim-pathogen/autoload/pathogen.vim ~/.vim/autoload/pathogen.vim 
     fi  
 
-    # Update
-    cd $SUPDIR/vim-pathogen; git pull  &> /dev/null
+    # cd $SUPDIR/vim-pathogen; git pull  &> /dev/null
 
     # Solarize vim
     if [ ! -d $SUPDIR/vim-colors-solarized ]; then
@@ -135,7 +134,7 @@ if [[ -x /usr/bin/vim ]]; then
         ln -s $SUPDIR/vim-colors-solarized ~/.vim/bundle/vim-colors-solarized
     fi
 
-    cd $SUPDIR/vim-colors-solarized; git pull  &> /dev/null
+    # cd $SUPDIR/vim-colors-solarized; git pull  &> /dev/null
 
 fi
 
@@ -155,7 +154,7 @@ if [ ! -d $SUPDIR/zsh-syntax-highlighting ]; then
     git clone git://github.com/zsh-users/zsh-syntax-highlighting.git $SUPDIR/zsh-syntax-highlighting &> /dev/null
 fi
 
-cd $SUPDIR/zsh-syntax-highlighting; git pull &> /dev/null
+# cd $SUPDIR/zsh-syntax-highlighting; git pull &> /dev/null
 
 source $SUPDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
 
@@ -166,7 +165,7 @@ if [ ! -d $SUPDIR/dircolors-solarized ]; then
     ln -s $SUPDIR/dircolors-solarized/dircolors.256dark ~/.dir_colors
 fi
 
-cd $SUPDIR/dircolors-solarized; git pull &> /dev/null
+# cd $SUPDIR/dircolors-solarized; git pull &> /dev/null
 
 eval `dircolors  ~/.dir_colors`
 
