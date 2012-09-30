@@ -94,48 +94,82 @@ bindkey '^[[3~' delete-char
 # Allow comments interactive shell
 setopt interactivecomments
 
-# Set editor to vim
-if [[ -x /usr/bin/vim ]]; then
-    export EDITOR='vim'
-fi
-
 # Load aliases
 if [[ -s ~/.bash_aliases ]]; then
     . ~/.bash_aliases
-    mkdir -p ~/.vim/autoload ~/.vim/bundle
+fi    
     
-    # Install pathogen
-    if [ ! -f ~/.vim/autoload/pathogen.vim ]; then
-        curl -Sso ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
-    fi
-
-    # Solarize vim
-    if [ ! -f ~/.vim/bundle/vim-colors-solarized/autoload/togglebg.vim ]; then
-        git clone git://github.com/altercation/vim-colors-solarized.git ~/.vim/bundle/vim-colors-solarized
-    fi
-
-fi
-
+    
 # Suggest package for command not found
 if [[ -s /etc/zsh_command_not_found ]]; then
     . /etc/zsh_command_not_found
 fi
 
+SUPDIR=~/.dotfiles-support
+
+if [ ! -d $SUPDIR ]; then
+    echo "First time setup, this might spam a bit"
+fi
+
+mkdir -p $SUPDIR
+mkdir -p ~/.vim/autoload ~/.vim/bundle
+
+# Set editor to vim
+if [[ -x /usr/bin/vim ]]; then
+    export EDITOR='vim'
+
+    # Install pathogen
+    if [ ! -d $SUPDIR/vim-pathogen ]; then
+        echo "Could not find vim-pathogen, downloading..."
+        git clone git://github.com/tpope/vim-pathogen.git $SUPDIR/vim-pathogen  &> /dev/null
+        ln -s $SUPDIR/vim-pathogen/autoload/pathogen.vim ~/.vim/autoload/pathogen.vim 
+    fi  
+
+    # Update
+    cd $SUPDIR/vim-pathogen; git pull  &> /dev/null
+
+    # Solarize vim
+    if [ ! -d $SUPDIR/vim-colors-solarized ]; then
+        echo "Could not find vim-colors-solarized, downloading..."
+        git clone git://github.com/altercation/vim-colors-solarized.git $SUPDIR/vim-colors-solarized  &> /dev/null
+        ln -s $SUPDIR/vim-colors-solarized ~/.vim/bundle/vim-colors-solarized
+    fi
+
+    cd $SUPDIR/vim-colors-solarized; git pull  &> /dev/null
+
+fi
+
 # Check if we are on a desktop system
 if [[ -x /usr/bin/gnome-terminal ]]; then
-    if [ ! -f ~/.gnome-terminal-colors-solarized/install.sh ]; then
+    if [ ! -d $SUPDIR/gnome-terminal-colors-solarized ]; then
         echo "gnome-terminal detected, solarizing..."
-        git clone git://github.com/sigurdga/gnome-terminal-colors-solarized.git ~/.gnome-terminal-colors-solarized &> /dev/null
-        ~/.gnome-terminal-colors-solarized/install.sh
+        git clone git://github.com/sigurdga/gnome-terminal-colors-solarized.git $SUPDIR/gnome-terminal-colors-solarized &> /dev/null
+        $SUPDIR/gnome-terminal-colors-solarized/install.sh
     fi
 fi
 
+
 # Download zsh-syntax-highlighting
-if [ ! -f ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+if [ ! -d $SUPDIR/zsh-syntax-highlighting ]; then
     echo "Could not find zsh-syntax-highlighting, downloading.."
-    git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh-syntax-highlighting &> /dev/null
+    git clone git://github.com/zsh-users/zsh-syntax-highlighting.git $SUPDIR/zsh-syntax-highlighting &> /dev/null
 fi
-source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+cd $SUPDIR/zsh-syntax-highlighting; git pull &> /dev/null
+
+source $SUPDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
+
+# Dircolors
+if [ ! -d $SUPDIR/dircolors-solarized ]; then
+    echo "Downloading dircolors..."
+    git clone git://github.com/seebi/dircolors-solarized.git $SUPDIR/dircolors-solarized &> /dev/null
+    ln -s $SUPDIR/dircolors-solarized/dircolors.256dark ~/.dir_colors
+fi
+
+cd $SUPDIR/dircolors-solarized; git pull &> /dev/null
+
+eval `dircolors  ~/.dir_colors`
+
 
 # Link rest of dotfiles
 if [ ! -L $HOME/.bash_aliases ]; then
