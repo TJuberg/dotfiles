@@ -119,20 +119,20 @@ if [[ -x /usr/bin/vim ]]; then
     export EDITOR='vim'
 
     # Install pathogen
-    if [ ! -d $SUPDIR/vim-pathogen ]; then
-        echo "Could not find vim-pathogen, downloading..."
-        git clone git://github.com/tpope/vim-pathogen.git $SUPDIR/vim-pathogen  &> /dev/null
-        ln -s $SUPDIR/vim-pathogen/autoload/pathogen.vim ~/.vim/autoload/pathogen.vim 
-    fi  
+    #if [ ! -d $SUPDIR/vim-pathogen ]; then
+    #    echo "Could not find vim-pathogen, downloading..."
+    #    git clone git://github.com/tpope/vim-pathogen.git $SUPDIR/vim-pathogen  &> /dev/null
+    #    ln -s $SUPDIR/vim-pathogen/autoload/pathogen.vim ~/.vim/autoload/pathogen.vim 
+    #fi  
 
     # cd $SUPDIR/vim-pathogen; git pull  &> /dev/null
 
     # Solarize vim
-    if [ ! -d $SUPDIR/vim-colors-solarized ]; then
-        echo "Could not find vim-colors-solarized, downloading..."
-        git clone git://github.com/altercation/vim-colors-solarized.git $SUPDIR/vim-colors-solarized  &> /dev/null
-        ln -s $SUPDIR/vim-colors-solarized ~/.vim/bundle/vim-colors-solarized
-    fi
+    #if [ ! -d $SUPDIR/vim-colors-solarized ]; then
+    #    echo "Could not find vim-colors-solarized, downloading..."
+    #    git clone git://github.com/altercation/vim-colors-solarized.git $SUPDIR/vim-colors-solarized  &> /dev/null
+    #    ln -s $SUPDIR/vim-colors-solarized ~/.vim/bundle/vim-colors-solarized
+    #fi
 
     # cd $SUPDIR/vim-colors-solarized; git pull  &> /dev/null
 
@@ -174,9 +174,9 @@ eval `dircolors  ~/.dir_colors`
 if [ ! -L $HOME/.bash_aliases ]; then
     ln -s $HOME/dotfiles/dot.bash_aliases $HOME/.bash_aliases
 fi
-if [ ! -L $HOME/.vimrc ]; then
-    ln -s $HOME/dotfiles/dot.vimrc $HOME/.vimrc
-fi
+#if [ ! -L $HOME/.vimrc ]; then
+#    ln -s $HOME/dotfiles/dot.vimrc $HOME/.vimrc
+#fi
 if [ ! -L $HOME/.tmux.conf ]; then
     ln -s $HOME/dotfiles/dot.tmux.conf $HOME/.tmux.conf
 fi
