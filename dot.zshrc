@@ -165,6 +165,17 @@ if [ ! -d $SUPDIR/dircolors-solarized ]; then
     ln -s $SUPDIR/dircolors-solarized/dircolors.256dark ~/.dir_colors
 fi
 
+
+# Roxterm
+if [[ -x /usr/bin/roxterm ]]; then
+    if [ ! -d $SUPDIR/roxterm-solarized ]; then
+        echo "Downloading roxterm solarized..."
+        git clone https://gist.github.com/923039.git $SUPDIR/roxterm-solarized &> /dev/null
+        mkdir -p ~/.config/roxterm.sourceforge.net/Colours/
+        ln -s $SUPDIR/$SUPDIR/roxterm-solarized/solarized-dark ~/.config/roxterm.sourceforge.net/Colours/solarized-dark
+    fi
+fi
+
 # cd $SUPDIR/dircolors-solarized; git pull &> /dev/null
 
 eval `dircolors  ~/.dir_colors`
