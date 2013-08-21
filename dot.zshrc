@@ -213,3 +213,5 @@ fi
 
 # Set 256 colors
 export TERM="xterm-256color"
+
+. ~/.liquidprompt/liquidprompt
