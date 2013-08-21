@@ -97,9 +97,8 @@ setopt interactivecomments
 # Load aliases
 if [[ -s ~/.bash_aliases ]]; then
     . ~/.bash_aliases
-fi    
-    
-    
+fi
+
 # Suggest package for command not found
 if [[ -s /etc/zsh_command_not_found ]]; then
     . /etc/zsh_command_not_found
@@ -109,21 +108,37 @@ SUPDIR=~/.dotfiles-support
 
 if [ ! -d $SUPDIR ]; then
     echo "First time setup, this might spam a bit"
+    echo "Beware that this script will fetch numerous resources from third party git repositories."
+    echo "To remove these resources and all my dotfiles, delete the SUPDIR and dotfiles folders."
 fi
 
 mkdir -p $SUPDIR
-mkdir -p ~/.vim/autoload ~/.vim/bundle
 
 # Set editor to vim
 if [[ -x /usr/bin/vim ]]; then
     export EDITOR='vim'
 
+    mkdir -p ~/.vim/autoload ~/.vim/bundl
+
     # Install pathogen
-    if [ ! -d $SUPDIR/vim-pathogen ]; then
-        echo "Could not find vim-pathogen, downloading..."
-        git clone git://github.com/tpope/vim-pathogen.git $SUPDIR/vim-pathogen  &> /dev/null
-        ln -s $SUPDIR/vim-pathogen/autoload/pathogen.vim ~/.vim/autoload/pathogen.vim 
-    fi  
+    #if [ ! -d $SUPDIR/vim-pathogen ]; then
+    #    echo "Could not find vim-pathogen, downloading..."
+    #    git clone git://github.com/tpope/vim-pathogen.git $SUPDIR/vim-pathogen  &> /dev/null
+    #    ln -s $SUPDIR/vim-pathogen/autoload/pathogen.vim ~/.vim/autoload/pathogen.vim
+    #fi
+
+    # Uninstall pathogen
+    if [ -d $SUPDIR/vim-pathogen ]; then
+        echo "Removing vim pathogen"
+	rm -rf $SUPDIR/vim-pathogen ~/.vim/autoload/pathogen.vim
+    fi
+
+
+    # Install vundle
+    if [ ! -d ~/.vim/bundle/vundle ]; then
+        echo "Could not find vim vundle, downloading..."
+	git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    fi
 
     # cd $SUPDIR/vim-pathogen; git pull  &> /dev/null
 
@@ -156,7 +171,7 @@ fi
 
 # cd $SUPDIR/zsh-syntax-highlighting; git pull &> /dev/null
 
-source $SUPDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
+source $SUPDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Dircolors
 if [ ! -d $SUPDIR/dircolors-solarized ]; then
@@ -165,6 +180,11 @@ if [ ! -d $SUPDIR/dircolors-solarized ]; then
     ln -s $SUPDIR/dircolors-solarized/dircolors.256dark ~/.dir_colors
 fi
 
+if [ ! -d $SUPDIR/liquidprompt ]; then
+     echo "Downloading liquidprompt..."
+     git clone https://github.com/nojhan/liquidprompt.git $SUPDIR/liquidprompt &> /dev/null
+     ln -s $SUPDIR/liquidprompt ~/.liquidprompt
+fi
 
 # Roxterm
 if [[ -x /usr/bin/roxterm ]]; then
