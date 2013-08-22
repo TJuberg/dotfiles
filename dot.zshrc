@@ -191,7 +191,7 @@ if [[ -x /usr/bin/roxterm ]]; then
         echo "Downloading roxterm solarized..."
         git clone https://gist.github.com/923039.git $SUPDIR/roxterm-solarized &> /dev/null
         mkdir -p ~/.config/roxterm.sourceforge.net/Colours/
-        ln -s $SUPDIR/$SUPDIR/roxterm-solarized/solarized-dark ~/.config/roxterm.sourceforge.net/Colours/solarized-dark
+        ln -s $SUPDIR/roxterm-solarized/solarized-dark ~/.config/roxterm.sourceforge.net/Colours/solarized-dark
     fi
 fi
 
