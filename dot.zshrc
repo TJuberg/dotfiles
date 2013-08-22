@@ -128,16 +128,16 @@ if [[ -x /usr/bin/vim ]]; then
     #fi
 
     # Uninstall pathogen
-    if [ -d $SUPDIR/vim-pathogen ]; then
+    if [ -d $-f SUPDIR/vim-pathogen ]; then
         echo "Removing vim pathogen"
-    rm -rf $SUPDIR/vim-pathogen ~/.vim/autoload/pathogen.vim
+        rm -rf $SUPDIR/vim-pathogen ~/.vim/autoload/pathogen.vim
     fi
 
 
     # Install vundle
     if [ ! -d ~/.vim/bundle/vundle ]; then
         echo "Could not find vim vundle, downloading..."
-    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+        git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
     fi
 
     # cd $SUPDIR/vim-pathogen; git pull  &> /dev/null
@@ -146,6 +146,7 @@ if [[ -x /usr/bin/vim ]]; then
     if [ ! -d $SUPDIR/vim-colors-solarized ]; then
         echo "Could not find vim-colors-solarized, downloading..."
         git clone git://github.com/altercation/vim-colors-solarized.git $SUPDIR/vim-colors-solarized  &> /dev/null
+        rm -f ~/.vim/bundle/vim-colors-solarized
         ln -s $SUPDIR/vim-colors-solarized ~/.vim/bundle/vim-colors-solarized
     fi
     # cd $SUPDIR/vim-colors-solarized; git pull  &> /dev/null
@@ -176,12 +177,14 @@ source $SUPDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 if [ ! -d $SUPDIR/dircolors-solarized ]; then
     echo "Downloading dircolors..."
     git clone git://github.com/seebi/dircolors-solarized.git $SUPDIR/dircolors-solarized &> /dev/null
+    rm -f ~/.dir_colors
     ln -s $SUPDIR/dircolors-solarized/dircolors.256dark ~/.dir_colors
 fi
 
 if [ ! -d $SUPDIR/liquidprompt ]; then
      echo "Downloading liquidprompt..."
      git clone https://github.com/nojhan/liquidprompt.git $SUPDIR/liquidprompt &> /dev/null
+     rm -f ~/.liquidprompt
      ln -s $SUPDIR/liquidprompt ~/.liquidprompt
 fi
 
@@ -191,6 +194,7 @@ if [[ -x /usr/bin/roxterm ]]; then
         echo "Downloading roxterm solarized..."
         git clone https://gist.github.com/923039.git $SUPDIR/roxterm-solarized &> /dev/null
         mkdir -p ~/.config/roxterm.sourceforge.net/Colours/
+        rm -f ~/.config/roxterm.sourceforge.net/Colours/solarized-dark
         ln -s $SUPDIR/roxterm-solarized/solarized-dark ~/.config/roxterm.sourceforge.net/Colours/solarized-dark
     fi
 fi
