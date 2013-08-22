@@ -128,7 +128,7 @@ if [[ -x /usr/bin/vim ]]; then
     #fi
 
     # Uninstall pathogen
-    if [ -d $-f SUPDIR/vim-pathogen ]; then
+    if [ -d $SUPDIR/vim-pathogen ]; then
         echo "Removing vim pathogen"
         rm -rf $SUPDIR/vim-pathogen ~/.vim/autoload/pathogen.vim
     fi
