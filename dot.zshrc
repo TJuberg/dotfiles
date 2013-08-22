@@ -130,14 +130,14 @@ if [[ -x /usr/bin/vim ]]; then
     # Uninstall pathogen
     if [ -d $SUPDIR/vim-pathogen ]; then
         echo "Removing vim pathogen"
-	rm -rf $SUPDIR/vim-pathogen ~/.vim/autoload/pathogen.vim
+    rm -rf $SUPDIR/vim-pathogen ~/.vim/autoload/pathogen.vim
     fi
 
 
     # Install vundle
     if [ ! -d ~/.vim/bundle/vundle ]; then
         echo "Could not find vim vundle, downloading..."
-	git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
     fi
 
     # cd $SUPDIR/vim-pathogen; git pull  &> /dev/null
@@ -148,7 +148,6 @@ if [[ -x /usr/bin/vim ]]; then
         git clone git://github.com/altercation/vim-colors-solarized.git $SUPDIR/vim-colors-solarized  &> /dev/null
         ln -s $SUPDIR/vim-colors-solarized ~/.vim/bundle/vim-colors-solarized
     fi
-
     # cd $SUPDIR/vim-colors-solarized; git pull  &> /dev/null
 
 fi
