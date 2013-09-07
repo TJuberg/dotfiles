@@ -1,32 +1,88 @@
 " Pathogen
-call pathogen#infect()
+" call pathogen#infect()
+" call pathogen#helptags()
+
+
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+"
+" original repos on github
+Bundle 'tpope/vim-fugitive'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+" vim-scripts repos
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+
+Bundle 'file:///'.$HOME.'/.vim/bundle/vim-colors-solarized'
 
 " Solarize
 syntax enable
+set t_Co=256
 set background=dark
 colorscheme solarized
 
 
+
+" UTF8 or die.
+set encoding=utf8
+
 " numbered lines
 set number
 
-" tabs have a width of 4
-set softtabstop=4
+" Keep cursor away from edges of screen.
+set so=14
 
-" display tab characters with a width of 4
-set tabstop=4
 
-" indent lines by this width
-set shiftwidth=4
+" Highlight cursor line.
+augroup CursorLine
+    au!
+    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    au VimEnter,WinEnter,BufWinEnter * setlocal cursorcolumn
+    au WinLeave * setlocal nocursorline
+    au WinLeave * setlocal nocursorcolumn
+augroup END
 
-" insert tabs as spaces
+" Mouse usage enabled in normal mode.
+set mouse=n
+
+" Set xterm2 mouse mode to allow resizing of splits with mouse inside Tmux.
+set ttymouse=xterm2
+
+" Control character highlighting.
+set list listchars=tab:⇥⇥,eol:↵
+
+
+" Tab settings.
 set expandtab
+set shiftwidth=4
+set ts=4
+set smarttab
+set cindent
+let indent_guides_enable_on_vim_startup = 1
+
+" Make trailing whitespace annoyingly highlighted.
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+" Automatically leave insert mode after 'updatetime' (4s by default).
+au CursorHoldI * stopinsert
 
 " file type detection and smart indent
 filetype plugin indent on
-
-" enable syntax highlighting
-syntax on
 
 " always show the status line as the second last line
 set laststatus=2
@@ -57,32 +113,3 @@ augroup resCur
     autocmd BufWinEnter * call ResCur()
 augroup END
 
-" Next lines is used when writing in latex
-
-" Set line width for document writing
-" set textwidth=130
-
-" Set word spelling on
-" set spell
-
-" Language for spelling
-" setlocal spell spelllang=nb
-" setlocal spell spelllang=en_us
-
-" Latex stuff
-" These settings are needed for latex-suite
-" filetype indent on
-" filetype plugin on
-" filetype on
-" let g:tex_flavor='latex'
-" set grepprg=grep\ -nH\ $*  
-
-" I don't like folding
-" let g:Tex_Folding=0
-" set iskeyword+=:
-
-" Colors for spell correction
-" highlight SpellBad      ctermfg=Red         term=Reverse        guisp=Red       gui=undercurl   ctermbg=White 
-" highlight SpellCap      ctermfg=Green       term=Reverse        guisp=Green     gui=undercurl   ctermbg=White 
-" highlight SpellLocal    ctermfg=Cyan        term=Underline      guisp=Cyan      gui=undercurl   ctermbg=White 
-" highlight SpellRare     ctermfg=Magenta     term=Underline      guisp=Magenta   gui=undercurl   ctermbg=White
