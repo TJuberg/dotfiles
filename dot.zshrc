@@ -235,6 +235,10 @@ if [ -d $HOME/opt/bin ]; then
 fi
 
 # Set 256 colors
-export TERM="xterm-256color"
+if [ "$TMUX" = "" ]; then 
+	export TERM="xterm-256color"
+else
+	export TERM="screen-256color"
+fi
 
-. ~/.liquidprompt/liquidprompt
+#. ~/.liquidprompt/liquidprompt
