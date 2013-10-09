@@ -118,29 +118,13 @@ mkdir -p $SUPDIR
 if [[ -x /usr/bin/vim ]]; then
     export EDITOR='vim'
 
-    mkdir -p ~/.vim/autoload ~/.vim/bundl
-
-    # Install pathogen
-    #if [ ! -d $SUPDIR/vim-pathogen ]; then
-    #    echo "Could not find vim-pathogen, downloading..."
-    #    git clone git://github.com/tpope/vim-pathogen.git $SUPDIR/vim-pathogen  &> /dev/null
-    #    ln -s $SUPDIR/vim-pathogen/autoload/pathogen.vim ~/.vim/autoload/pathogen.vim
-    #fi
-
-    # Uninstall pathogen
-    if [ -d $SUPDIR/vim-pathogen ]; then
-        echo "Removing vim pathogen"
-        rm -rf $SUPDIR/vim-pathogen ~/.vim/autoload/pathogen.vim
-    fi
-
+    mkdir -p ~/.vim/autoload ~/.vim/bundle
 
     # Install vundle
     if [ ! -d ~/.vim/bundle/vundle ]; then
         echo "Could not find vim vundle, downloading..."
         git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
     fi
-
-    # cd $SUPDIR/vim-pathogen; git pull  &> /dev/null
 
     # Solarize vim
     if [ ! -d $SUPDIR/vim-colors-solarized ]; then
@@ -151,15 +135,6 @@ if [[ -x /usr/bin/vim ]]; then
     fi
     # cd $SUPDIR/vim-colors-solarized; git pull  &> /dev/null
 
-fi
-
-# Check if we are on a desktop system
-if [[ -x /usr/bin/gnome-terminal ]]; then
-    if [ ! -d $SUPDIR/gnome-terminal-colors-solarized ]; then
-        echo "gnome-terminal detected, solarizing..."
-        git clone git://github.com/sigurdga/gnome-terminal-colors-solarized.git $SUPDIR/gnome-terminal-colors-solarized &> /dev/null
-        $SUPDIR/gnome-terminal-colors-solarized/install.sh
-    fi
 fi
 
 
@@ -181,24 +156,6 @@ if [ ! -d $SUPDIR/dircolors-solarized ]; then
     ln -s $SUPDIR/dircolors-solarized/dircolors.256dark ~/.dir_colors
 fi
 
-if [ ! -d $SUPDIR/liquidprompt ]; then
-     echo "Downloading liquidprompt..."
-     git clone https://github.com/nojhan/liquidprompt.git $SUPDIR/liquidprompt &> /dev/null
-     rm -f ~/.liquidprompt
-     ln -s $SUPDIR/liquidprompt ~/.liquidprompt
-fi
-
-# Roxterm
-if [[ -x /usr/bin/roxterm ]]; then
-    if [ ! -d $SUPDIR/roxterm-solarized ]; then
-        echo "Downloading roxterm solarized..."
-        git clone https://gist.github.com/923039.git $SUPDIR/roxterm-solarized &> /dev/null
-        mkdir -p ~/.config/roxterm.sourceforge.net/Colours/
-        rm -f ~/.config/roxterm.sourceforge.net/Colours/solarized-dark
-        ln -s $SUPDIR/roxterm-solarized/solarized-dark ~/.config/roxterm.sourceforge.net/Colours/solarized-dark
-    fi
-fi
-
 # cd $SUPDIR/dircolors-solarized; git pull &> /dev/null
 
 eval `dircolors  ~/.dir_colors`
@@ -214,16 +171,6 @@ fi
 if [ ! -L $HOME/.tmux.conf ]; then
     ln -s $HOME/dotfiles/dot.tmux.conf $HOME/.tmux.conf
 fi
-
-# Download vim spell check
-#vimSpellFolder="/usr/share/vim/`ls -1 /usr/share/vim | egrep "vim[0-9]{2}"`/spell/"
-#if [[ ! -f $vimSpellFolder/nb.latin1.spl || ! -f $vimSpellFolder/nb.utf-8.spl ]]; then
-#    echo "Downloading Norwegian vim spell files"
-#    sudo wget http://ftp.vim.org/vim/runtime/spell/nb.latin1.spl -O $vimSpellFolder/nb.latin1.spl &> /dev/null
-#    sudo wget http://ftp.vim.org/vim/runtime/spell/nb.latin1.sug -O $vimSpellFolder/nb.latin1.sug &> /dev/null
-#    sudo wget http://ftp.vim.org/vim/runtime/spell/nb.utf-8.spl -O $vimSpellFolder/nb.utf-8.spl &> /dev/null
-#    sudo wget http://ftp.vim.org/vim/runtime/spell/nb.utf-8.sug -O $vimSpellFolder/nb.uft-8.sug &> /dev/null
-#fi
 
 # Add toolkit dir to path, if it exists
 if [ -d $HOME/toolkit ]; then
@@ -241,4 +188,3 @@ else
 	export TERM="screen-256color"
 fi
 
-#. ~/.liquidprompt/liquidprompt
