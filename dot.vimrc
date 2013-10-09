@@ -1,8 +1,3 @@
-" Pathogen
-" call pathogen#infect()
-" call pathogen#helptags()
-
-
 set nocompatible               " be iMproved
 filetype off                   " required!
 
@@ -31,8 +26,6 @@ set t_Co=256
 set background=dark
 colorscheme solarized
 
-
-
 " UTF8 or die.
 set encoding=utf8
 
@@ -42,15 +35,14 @@ set number
 " Keep cursor away from edges of screen.
 set so=14
 
-
 " Highlight cursor line.
-augroup CursorLine
-    au!
-    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-    au VimEnter,WinEnter,BufWinEnter * setlocal cursorcolumn
-    au WinLeave * setlocal nocursorline
-    au WinLeave * setlocal nocursorcolumn
-augroup END
+" augroup CursorLine
+"    au!
+"    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+"    au VimEnter,WinEnter,BufWinEnter * setlocal cursorcolumn
+"    au WinLeave * setlocal nocursorline
+"    au WinLeave * setlocal nocursorcolumn
+"augroup END
 
 " Mouse usage enabled in normal mode.
 set mouse=n
@@ -59,8 +51,7 @@ set mouse=n
 set ttymouse=xterm2
 
 " Control character highlighting.
-set list listchars=tab:⇥⇥,eol:↵
-
+" set list listchars=tab:⇥⇥,eol:↵
 
 " Tab settings.
 set expandtab
