@@ -11,14 +11,48 @@ Bundle 'gmarik/vundle'
 " My Bundles here:
 "
 " original repos on github
+
+" Sensible defaults as a base
+Bundle 'tpope/vim-sensible'
+
+" Git wrapper
 Bundle 'tpope/vim-fugitive'
+
+" Motion on steroids
 Bundle 'Lokaltog/vim-easymotion'
+
+" HTML helper
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+
+" Python awesomeness
+Bundle 'nvie/vim-flake8'
+
+" Solarized, make life easier on your eyes
+Bundle 'altercation/vim-colors-solarized'
+
+" Nerdtree
+Bundle 'scrooloose/nerdtree'
+
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'FuzzyFinder'
 
-Bundle 'file:///'.$HOME.'/.vim/bundle/vim-colors-solarized'
+
+Bundle 'Rykka/localbundle.vim'
+if isdirectory(expand('~/.vim/bundle/localbundle.vim'))
+        call localbundle#init()
+endif
+
+
+" SensibleVIM
+runtime! plugin/sensible.vim
+
+" Flake8
+autocmd BufWritePost *.py call Flake8()
+
+" Nerdtree
+" ctrl + n
+map <C-n> :NERDTreeToggle<CR>
 
 " Solarize
 syntax enable
@@ -70,7 +104,7 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 " Automatically leave insert mode after 'updatetime' (4s by default).
-au CursorHoldI * stopinsert
+" au CursorHoldI * stopinsert
 
 " file type detection and smart indent
 filetype plugin indent on

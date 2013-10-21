@@ -125,18 +125,7 @@ if [[ -x /usr/bin/vim ]]; then
         echo "Could not find vim vundle, downloading..."
         git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
     fi
-
-    # Solarize vim
-    if [ ! -d $SUPDIR/vim-colors-solarized ]; then
-        echo "Could not find vim-colors-solarized, downloading..."
-        git clone git://github.com/altercation/vim-colors-solarized.git $SUPDIR/vim-colors-solarized  &> /dev/null
-        rm -f ~/.vim/bundle/vim-colors-solarized
-        ln -s $SUPDIR/vim-colors-solarized ~/.vim/bundle/vim-colors-solarized
-    fi
-    # cd $SUPDIR/vim-colors-solarized; git pull  &> /dev/null
-
 fi
-
 
 # Download zsh-syntax-highlighting
 if [ ! -d $SUPDIR/zsh-syntax-highlighting ]; then
