@@ -33,10 +33,13 @@ Bundle 'altercation/vim-colors-solarized'
 " Nerdtree
 Bundle 'scrooloose/nerdtree'
 
+" vim-syntax-extra
+Bundle 'justinmk/vim-syntax-extra'
+
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'FuzzyFinder'
-
+Bundle 'python'
 
 Bundle 'Rykka/localbundle.vim'
 if isdirectory(expand('~/.vim/bundle/localbundle.vim'))
