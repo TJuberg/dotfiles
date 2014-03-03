@@ -54,6 +54,30 @@ if [ -f $HOME/.hosts ]; then
     zstyle ':completion:*:(ssh|rsync|scp):*' hosts "${(f)$(awk '{print $2}' <$HOME/.hosts)}"
 fi
 
+# ssh wrapper that rename current tmux window to the hostname of the
+# remote host.
+ssh() {
+    # Do nothing if we are not inside tmux or ssh is called without arguments
+    if [[ $# == 0 || -z $TMUX ]]; then
+        command ssh $@
+        return
+    fi
+    # The hostname is the last parameter (i.e. ${(P)#})
+    local remote=${${(P)#}%.*}
+    local old_name="$(tmux display-message -p '#W')"
+    local renamed=0
+    # Save the current name
+    if [[ $remote != -* ]]; then
+        renamed=1
+        tmux rename-window $remote
+    fi
+    command ssh $@
+    if [[ $renamed == 1 ]]; then
+        tmux rename-window "$old_name"
+    fi
+}
+
+
 # Enable cache for completions
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
@@ -176,4 +200,15 @@ if [ "$TMUX" = "" ]; then
 else
 	export TERM="screen-256color"
 fi
+
+SSHPID=`ps ax|grep -c "[s]sh-agent"`
+if (( $SSHPID == 0 ))
+then
+    ssh-agent > ~/.ssh-env
+    source ~/.ssh-env
+    ssh-add
+else
+    source ~/.ssh-env
+fi
+
 
