@@ -14,6 +14,9 @@ local menubar = require("menubar")
 -- shifty - dynamic tagging library
 local shifty = require("shifty")
 
+
+awful.util.spawn_with_shell("xcompmgr &")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
