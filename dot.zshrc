@@ -208,6 +208,8 @@ then
     source ~/.ssh-env
     ssh-add
 else
+    # Make sure we don't spew errors in the event the file does not exist
+    touch ~/.ssh-env
     source ~/.ssh-env
 fi
 
