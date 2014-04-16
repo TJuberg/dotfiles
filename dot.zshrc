@@ -206,7 +206,7 @@ SSH_ENV=$HOME/.ssh/environment
 
 
 
-if [[ -x /usr/bin/ssh-agent && -f $HOME/.ssh/id_rsa ]]; then
+if [[ -x /usr/bin/ssh-agent ]]; then
     # start the ssh-agent
     function start_agent {
         echo "Initializing new SSH agent..."
