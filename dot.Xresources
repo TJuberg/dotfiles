@@ -1,4 +1,4 @@
-! urxvt
+!! urxvt
 URxvt*buffered:         true
 URxvt*cursorBlink:      true
 URxvt*underlineColor:   yellow
@@ -10,8 +10,8 @@ URxvt*saveLines:        5000
 URxvt*termName:         rxvt-unicode-256color
 
 !! Font - Download at http://damieng.com/blog/2008/05/26/envy-code-r-preview-7-coding-font-released
-urxvt*font:             xft:envy code r:pixelsize=16:antialias=true:hinting=true
-urxvt*boldFont:         xft:envy code r:pixelsize=16:antialias=true:hinting=true
+urxvt*font:             xft:envy code r:pixelsize=14:antialias=true:hinting=true
+urxvt*boldFont:         xft:envy code r:pixelsize=14:antialias=true:hinting=true
 
 !! Make URLs clickable
 URxvt.perl-ext-common:  default,matcher
