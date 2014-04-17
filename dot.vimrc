@@ -57,6 +57,7 @@ autocmd BufWritePost *.py call Flake8()
 map <C-n> :NERDTreeToggle<CR>
 
 " Solarize
+let solarized_termtrans=1
 syntax enable
 set t_Co=256
 set background=dark
