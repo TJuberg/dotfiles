@@ -39,6 +39,7 @@ Bundle 'justinmk/vim-syntax-extra'
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'FuzzyFinder'
+Bundle 'saltstack/salt-vim'
 
 Bundle 'Rykka/localbundle.vim'
 if isdirectory(expand('~/.vim/bundle/localbundle.vim'))
