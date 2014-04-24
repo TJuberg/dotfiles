@@ -1,3 +1,12 @@
 [submodule "awesome"]
 	path = awesome
 	url = https://github.com/copycat-killer/awesome-copycats.git
+[submodule "vundle"]
+	path = vundle
+	url = https://github.com/gmarik/Vundle.vim.git
+[submodule "zsh-syntax-highlighting"]
+	path = zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "dircolors-solarized"]
+	path = dircolors-solarized
+	url = https://github.com/seebi/dircolors-solarized.git
