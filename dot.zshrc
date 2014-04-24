@@ -5,7 +5,7 @@ compinit
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
 SAVEHIST=1000
-HISTFILE=~/.zsh_history
+HISTFILE=$HOME/.zsh_history
 
 # Don't log my spaces!
 # Start a command with a space, it won't get logged!
@@ -111,9 +111,9 @@ else
 fi
 
 # Fix home, end and delete
-bindkey '^[[1~' beginning-of-line
-bindkey '^[[4~' end-of-line
-bindkey '^[[3~' delete-char
+#bindkey '^[[1~' beginning-of-line
+#bindkey '^[[4~' end-of-line
+#bindkey '^[[3~' delete-char
 
 # Allow comments interactive shell
 setopt interactivecomments
@@ -128,50 +128,47 @@ if [[ -s /etc/zsh_command_not_found ]]; then
     . /etc/zsh_command_not_found
 fi
 
-SUPDIR=~/.dotfiles-support
-
-if [ ! -d $SUPDIR ]; then
+if [ ! -s $HOME/dotfiles/initial-done ]; then
     echo "First time setup, this might spam a bit"
     echo "Beware that this script will fetch numerous resources from third party git repositories."
-    echo "To remove these resources and all my dotfiles, delete the SUPDIR and dotfiles folders."
+    echo "To remove these resources and all my dotfiles, delete the ~/dotfiles folder."
 fi
 
-mkdir -p $SUPDIR
+touch $HOME/dotfiles/initial-done
 
 # Set editor to vim
 if [[ -x /usr/bin/vim ]]; then
     export EDITOR='vim'
 
-    mkdir -p ~/.vim/autoload ~/.vim/bundle
+    mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle
 
     # Install vundle
-    if [ ! -d ~/.vim/bundle/vundle ]; then
-        echo "Could not find vim vundle, downloading..."
-        git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    if [ ! -d $HOME/.vim/bundle/vundle ]; then
+        echo "Could not find vim vundle, initializing..."
+        git init $HOME/dotfiles/vundle
+        git update $HOME/dotfiles/vundle
+        ln -s $HOME/dotfiles/vundle $HOME/.vim/bundle/vundle
     fi
 fi
 
 # Download zsh-syntax-highlighting
-if [ ! -d $SUPDIR/zsh-syntax-highlighting ]; then
-    echo "Could not find zsh-syntax-highlighting, downloading.."
-    git clone git://github.com/zsh-users/zsh-syntax-highlighting.git $SUPDIR/zsh-syntax-highlighting &> /dev/null
+if [ ! -s $HOME/dotfiles/zsh-syntax-highlighting/README.md ]; then
+    echo "Could not find zsh-syntax-highlighting, initializing.."
+    git init $HOME/dotfiles/zsh-syntax-highlighting
+    git update $HOME/dotfiles/zsh-syntax-highlighting
 fi
+source $HOME/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# cd $SUPDIR/zsh-syntax-highlighting; git pull &> /dev/null
-
-source $SUPDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Dircolors
-if [ ! -d $SUPDIR/dircolors-solarized ]; then
+if [ ! -s $HOME/dotfiles/dircolors-solarized/README.md ]; then
     echo "Downloading dircolors..."
-    git clone git://github.com/seebi/dircolors-solarized.git $SUPDIR/dircolors-solarized &> /dev/null
-    rm -f ~/.dir_colors
-    ln -s $SUPDIR/dircolors-solarized/dircolors.256dark ~/.dir_colors
+    git init $HOME/dotfiles/dircollors-solarized
+    git update $HOME/dotfiles/dircollors-solarized
+    rm -f $HOME/.dir_colors
+    ln -s $HOME/dotfiles/dircolors-solarized/dircolors.256dark $HOME/.dir_colors
 fi
-
-# cd $SUPDIR/dircolors-solarized; git pull &> /dev/null
-
-eval `dircolors  ~/.dir_colors`
+eval `dircolors  $HOME/.dir_colors`
 
 
 # Link rest of dotfiles
@@ -193,14 +190,6 @@ fi
 if [ -d $HOME/opt/bin ]; then
      PATH="$HOME/opt/bin:$PATH"
 fi
-
-# Set 256 colors
-#if [ "$TMUX" = "" ]; then
-#	export TERM="xterm-256color"
-#else
-#	export TERM="screen-256color"
-#fi
-
 
 SSH_ENV=$HOME/.ssh/environment
 
