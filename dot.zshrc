@@ -195,11 +195,11 @@ if [ -d $HOME/opt/bin ]; then
 fi
 
 # Set 256 colors
-if [ "$TMUX" = "" ]; then
-	export TERM="xterm-256color"
-else
-	export TERM="screen-256color"
-fi
+#if [ "$TMUX" = "" ]; then
+#	export TERM="xterm-256color"
+#else
+#	export TERM="screen-256color"
+#fi
 
 
 SSH_ENV=$HOME/.ssh/environment
