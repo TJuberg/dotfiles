@@ -117,7 +117,7 @@ install_dotfiles () {
 }
 
 
-init_update_submodules {
+init_update_submodules () {
   info 'Initializing and updating git submodules'
 
   if [[ -x /usr/bin/vim ]]; then
