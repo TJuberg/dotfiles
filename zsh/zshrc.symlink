@@ -1,3 +1,11 @@
+# shortcut to this dotfiles path is $DOT
+export DOT=$HOME/.dotfiles
+
+if [[ -a ~/.localrc ]]
+then
+  source ~/.localrc
+fi
+
 # Use modern completion system
 autoload -Uz compinit
 compinit
@@ -128,58 +136,22 @@ if [[ -s /etc/zsh_command_not_found ]]; then
     . /etc/zsh_command_not_found
 fi
 
-if [ ! -s $HOME/dotfiles/initial-done ]; then
-    echo "First time setup, this might spam a bit"
-    echo "Beware that this script will fetch numerous resources from third party git repositories."
-    echo "To remove these resources and all my dotfiles, delete the ~/dotfiles folder."
-fi
-
-touch $HOME/dotfiles/initial-done
-
-# Set editor to vim
 if [[ -x /usr/bin/vim ]]; then
+    # Set editor to vim
     export EDITOR='vim'
 
+    # We want these to exist
     mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle
-
-    # Install vundle
-    if [ ! -d $HOME/.vim/bundle/vundle ]; then
-        echo "Could not find vim vundle, initializing..."
-        git init $HOME/dotfiles/vundle
-        git update $HOME/dotfiles/vundle
-        ln -s $HOME/dotfiles/vundle $HOME/.vim/bundle/vundle
-    fi
 fi
 
-# Download zsh-syntax-highlighting
-if [ ! -s $HOME/dotfiles/zsh-syntax-highlighting/README.md ]; then
-    echo "Could not find zsh-syntax-highlighting, initializing.."
-    git init $HOME/dotfiles/zsh-syntax-highlighting
-    git update $HOME/dotfiles/zsh-syntax-highlighting
+# zsh-syntax-highlighting
+if [ -s $DOT/zsh-syntax-highlighting/README.md ]; then
+    source $HOME/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
-source $HOME/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 
 # Dircolors
-if [ ! -s $HOME/dotfiles/dircolors-solarized/README.md ]; then
-    echo "Downloading dircolors..."
-    git init $HOME/dotfiles/dircollors-solarized
-    git update $HOME/dotfiles/dircollors-solarized
-    rm -f $HOME/.dir_colors
-    ln -s $HOME/dotfiles/dircolors-solarized/dircolors.256dark $HOME/.dir_colors
-fi
-eval `dircolors  $HOME/.dir_colors`
-
-
-# Link rest of dotfiles
-if [ ! -L $HOME/.bash_aliases ]; then
-    ln -s $HOME/dotfiles/dot.bash_aliases $HOME/.bash_aliases
-fi
-if [ ! -L $HOME/.vimrc ]; then
-    ln -s $HOME/dotfiles/dot.vimrc $HOME/.vimrc
-fi
-if [ ! -L $HOME/.tmux.conf ]; then
-    ln -s $HOME/dotfiles/dot.tmux.conf $HOME/.tmux.conf
+if [ -s $DOT/dircolors-solarized/README.md ]; then
+    eval `dircolors  $HOME/.dir_colors`
 fi
 
 # Add toolkit dir to path, if it exists
@@ -192,8 +164,6 @@ if [ -d $HOME/opt/bin ]; then
 fi
 
 SSH_ENV=$HOME/.ssh/environment
-
-
 
 if [[ -x /usr/bin/ssh-agent ]]; then
     # start the ssh-agent
