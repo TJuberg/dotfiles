@@ -124,34 +124,8 @@ install_dotfiles () {
 init_update_submodules () {
   info 'Initializing and updating git submodules'
 
-  if [[ -x /usr/bin/vim ]]; then
-     # Install vundle
-     if [ ! -d $HOME/.vim/bundle/vundle ]; then
-         echo "Could not find vim vundle, initializing..."
-         git init $DOTFILES_ROOT/vundle
-         git update $DOTFILES_ROOT/vundle
-         ln -s $DOTFILES_ROOT/vundle $HOME/.vim/bundle/vundle
-     fi
-  fi
-
-
-  # Download zsh-syntax-highlighting
-  if [ ! -s $DOTFILES_ROOT/zsh-syntax-highlighting/README.md ]; then
-    echo "Could not find zsh-syntax-highlighting, initializing.."
-    git init $DOTFILES_ROOT/zsh-syntax-highlighting
-    git update $DOTFILES_ROOT/zsh-syntax-highlighting
-  fi
-
-
-  # Dircolors
-  if [ ! -s $DOTFILES_ROOT/dircolors-solarized/README.md ]; then
-    echo "Downloading dircolors..."
-    git init $DOTFILES_ROOT/dircollors-solarized
-    git update $DOTFILES_ROOT/dircollors-solarized
-    rm -f $HOME/.dir_colors
-    ln -s $DOTFILES_ROOT/dircolors-solarized/dircolors.256dark $HOME/.dir_colors
-  fi
- 
+  git submodule init
+  git submodule update
 }
 
 setup_gitconfig
