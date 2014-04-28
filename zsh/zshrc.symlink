@@ -151,7 +151,7 @@ fi
 
 # Dircolors
 if [ -s $DOT/dircolors-solarized/README.md ]; then
-    eval `dircolors  $HOME/.dir_colors`
+    eval `dircolors  $DOT/dircolors-solarized/dircolors.256dark`
 fi
 
 # Add toolkit dir to path, if it exists
