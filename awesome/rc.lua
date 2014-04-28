@@ -50,7 +50,7 @@ end
 
 run_once("urxvtd")
 run_once("unclutter")
-run_once("compton -b -G --paint-on-overlay --unredir-if-possible --backend glx --glx-no-stencil --glx-no-rebind-pixmap")
+run_once("compton -b -G --paint-on-overlay --unredir-if-possible --backend glx --glx-no-stencil")
 
 -- }}}
 
