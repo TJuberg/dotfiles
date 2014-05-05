@@ -33,7 +33,7 @@ URxvt.matcher.button:   1
 !! A perl module can be used to get copy/paste and URL handling capabilities.
 !! In order to use Perl modules in urxvt, the package must have been compiled with the "perl" USE flag.
 !! Additionally, you will need either x11-misc/xsel or x11-misc/xclip for copy/paste capabilities.
-!! One can grab the sources of a perl modules from muennich's github or an ebuild for example.
+!! One can grab the sources of a perl modules from muennich github or an ebuild for example.
 !! It is possible to get other perl modules elsewhere on the internet.
 URxvt.keysym.M-Escape:  perl:keyboard-select:activate
 URxvt.keysym.M-c:       perl:clipboard:copy
