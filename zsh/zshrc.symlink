@@ -6,7 +6,7 @@ then
   source ~/.localrc
 fi
 
-if [[ -a ~/.localrc_centos && -a /etc/redhat-release]]
+if [[ -a ~/.localrc_centos && -a /etc/redhat-release ]]
 then
   source ~/.localrc_centos
 fi
