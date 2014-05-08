@@ -38,10 +38,32 @@ setup_gitconfig () {
     user ' - What is your github author email?'
     read -e git_authoremail
 
-    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" git/gitconfig.symlink.example > git/gitconfig.symlink
+    gitversion=$(git --version | cut -c13-)i
+    #broken, and I cannot see why. Dies silently
+    #git=$(check_version "1.7.11" "$gitversion")
+    git=1
+    echo "$git"
+
+    if [[ $git -eq '0' ]]
+    then
+        git_push=simple
+    else
+        git_push=matching
+    fi
+
+    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" -e "s/GIT_PUSH/$git_push/g" git/gitconfig.symlink.example > git/gitconfig.symlink
 
     success 'gitconfig'
   fi
+}
+
+
+# return 0 if program version is equal or greater than check version
+check_version () {
+    local version=$1 check=$2
+    local winner=$(echo -e "$version\n$check" | sed '/^$/d' | sort -t. -k1,1nr -k2,2nr -k3,3nr | head -1)
+    [[ "$winner" = "$version" ]] && return 0
+    return 1
 }
 
 link_files () {

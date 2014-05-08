@@ -51,6 +51,7 @@ end
 run_once("urxvtd")
 run_once("unclutter")
 run_once("compton -b -G --paint-on-overlay --unredir-if-possible --backend glx --glx-no-stencil")
+run_once("xscreensaver -nosplash &")
 
 -- }}}
 
@@ -542,7 +543,10 @@ globalkeys = awful.util.table.join(
                   mypromptbox[mouse.screen].widget,
                   awful.util.eval, nil,
                   awful.util.getdir("cache") .. "/history_eval")
-              end)
+              end),
+
+        -- screensaver
+        awful.key({ altkey, "Control" }, "l", function () awful.util.spawn("xscreensaver-command -lock") end)
 )
 
 clientkeys = awful.util.table.join(

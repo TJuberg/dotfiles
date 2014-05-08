@@ -6,6 +6,17 @@ then
   source ~/.localrc
 fi
 
+if [[ -a ~/.localrc_centos && -a /etc/redhat-release]]
+then
+  source ~/.localrc_centos
+fi
+
+if [[ -a ~/.localrc_debian && -a /etc/debian_version ]]
+then
+  source ~/.localrc_debian
+fi
+
+
 # Use modern completion system
 autoload -Uz compinit
 compinit
@@ -157,19 +168,6 @@ fi
 # Add toolkit dir to path, if it exists
 if [ -d $HOME/toolkit ]; then
     PATH="$PATH:$HOME/toolkit"
-fi
-
-if [ -d $HOME/local/bin ]; then
-     PATH="$HOME/local/bin:$PATH"
-fi
-
-if [ -d $HOME/local/lib ]; then
-      LD_LIBRARY_PATH="$HOME/local/lib:$LD_LIBRARY_PATH"
-      LD_RUN_PATH="$HOME/local/lib:$LD_RUN_PATH"
-      CMAKE_SYSTEM_PREFIX_PATH="$HOME/local/lib:$HOME/local/include:$HOME/local/bin"
-      CMAKE_SYSTEM_MODULE_PATH="$HOME/local/lib:$CMAKE_MODULE_PATH"
-      CMAKE_SYSTEM_LIBRARY_PATH="$HOME/local/include:$CMAKE_LIBRARY_PATH"
-      PKG_CONFIG_PATH="$HOME/local/lib/pkgconfig/:/usr/local/lib/pkgconfig/"
 fi
 
 SSH_ENV=$HOME/.ssh/environment
