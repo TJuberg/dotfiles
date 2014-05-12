@@ -155,6 +155,13 @@ if [[ -x /usr/bin/vim ]]; then
     mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle
 fi
 
+    # Install vundle
+    if [ ! -d ~/.vim/bundle/vundle ]; then
+        echo "Could not find vim vundle, downloading..."
+        git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+        echo "To initialize the vim config, please run: vim +PluginInstall +qall"
+    fi
+
 # zsh-syntax-highlighting
 if [ -s $DOT/zsh-syntax-highlighting/README.md ]; then
     source $DOT/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
