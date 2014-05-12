@@ -6,16 +6,17 @@ then
   source ~/.localrc
 fi
 
-if [[ -a ~/.localrc_centos && -a /etc/redhat-release ]]
-then
+if [[ -a ~/.localrc_centos && -a /etc/redhat-release ]]; then
   source ~/.localrc_centos
 fi
 
-if [[ -a ~/.localrc_debian && -a /etc/debian_version ]]
-then
+if [[ -a ~/.localrc_debian && -a /etc/debian_version ]]; then
   source ~/.localrc_debian
 fi
 
+if [[ -a ~/.localrc_solaris && `uname` == 'SunOS' ]]; then
+  source ~/.localrc_solaris
+fi
 
 # Use modern completion system
 autoload -Uz compinit
