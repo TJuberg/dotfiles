@@ -181,6 +181,9 @@ fi
 SSH_ENV=$HOME/.ssh/environment
 
 if [[ -x /usr/bin/ssh-agent ]]; then
+    # Just make sure everything exists
+    mkdir -p $HOME/.ssh
+
     # start the ssh-agent
     function start_agent {
         echo "Initializing new SSH agent..."
