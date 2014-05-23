@@ -207,3 +207,9 @@ fi
 
 # Kill CAPS LOCK!!!
 setxkbmap -option ctrl:nocaps
+
+case $TERM in
+        xterm*|rxvt*)
+                    precmd () {print -Pn "\e]0;urxvt - n@%m: %~\a"}
+                            ;;
+                    esac
