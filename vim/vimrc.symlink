@@ -26,6 +26,23 @@ Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 " Python awesomeness
 Bundle 'nvie/vim-flake8'
+Bundle 'python.vim'
+Bundle 'python_match.vim'
+Bundle 'pythoncomplete'
+
+" Javascript awesomeness
+Bundle 'elzr/vim-json'
+Bundle 'groenewege/vim-less'
+Bundle 'pangloss/vim-javascript'
+Bundle 'briancollins/vim-jst'
+Bundle 'kchmck/vim-coffee-script'
+
+" php awesomeness
+Bundle 'spf13/PIV'
+Bundle 'arnaud-lb/vim-php-namespace'
+
+Bundle 'tpope/vim-markdown'
+Bundle 'Puppet-Syntax-Highlighting'
 
 " Solarized, make life easier on your eyes
 Bundle 'altercation/vim-colors-solarized'
@@ -36,15 +53,22 @@ Bundle 'scrooloose/nerdtree'
 " vim-syntax-extra
 Bundle 'justinmk/vim-syntax-extra'
 
+Bundle 'scrooloose/syntastic'
+Bundle 'mattn/gist-vim'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'godlygeek/tabular'
+
+
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'FuzzyFinder'
 Bundle 'saltstack/salt-vim'
 
-Bundle 'Rykka/localbundle.vim'
-if isdirectory(expand('~/.vim/bundle/localbundle.vim'))
-        call localbundle#init()
-endif
+" localbundle keeps causing issues
+" Bundle 'Rykka/localbundle.vim'
+" if isdirectory(expand('~/.vim/bundle/localbundle.vim'))
+"        call localbundle#init()
+" endif
 
 
 " SensibleVIM
