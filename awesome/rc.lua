@@ -81,12 +81,16 @@ musicplr   = terminal .. " -g 130x34-320+16 -e ncmpcpp "
 local layouts = {
     awful.layout.suit.tile,
     awful.layout.suit.floating,
-    awful.layout.suit.tile.bottom,
     awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
+    lain.layout.termfair,
+    lain.layout.centerfair,
+    lain.layout.cascade,
+    lain.layout.cascadetile,
+    lain.layout.centerwork,
 }
 -- }}}
 
+-- awful.layout.set(lain.layout.uselessfair, tags[1][7])
 -- {{{ Tags
 tags = {
    names = { "1", "2", "3", "4", "5", "6"},

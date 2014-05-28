@@ -81,4 +81,12 @@ theme.tasklist_floating             = ""
 theme.tasklist_maximized_horizontal = ""
 theme.tasklist_maximized_vertical   = ""
 
+theme.useless_gap_width = 10
+theme.lain_icons         = os.getenv("HOME") .. "/.config/awesome/lain/icons/layout/default/"
+theme.layout_termfair    = theme.lain_icons .. "termfairw.png"
+theme.layout_centerfair  = theme.lain_icons .. "centerfair.png"
+theme.layout_cascade     = theme.lain_icons .. "cascadew.png"
+theme.layout_cascadetile = theme.lain_icons .. "cascadetilew.png"
+theme.layout_centerwork  = theme.lain_icons .. "centerworkw.png"
+
 return theme
