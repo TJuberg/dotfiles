@@ -29,6 +29,7 @@ Bundle 'nvie/vim-flake8'
 Bundle 'python.vim'
 Bundle 'python_match.vim'
 Bundle 'pythoncomplete'
+Bundle 'klen/python-mode'
 
 " Javascript awesomeness
 Bundle 'elzr/vim-json'
@@ -62,7 +63,14 @@ Bundle 'godlygeek/tabular'
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'FuzzyFinder'
+
+
+" Saltstack and jinja
 Bundle 'saltstack/salt-vim'
+Bundle 'glench/vim-jinja2-syntax'
+
+" Misc
+Bundle 'vim-airline'
 
 " localbundle keeps causing issues
 " Bundle 'Rykka/localbundle.vim'
