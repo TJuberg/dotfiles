@@ -29,7 +29,7 @@ Bundle 'nvie/vim-flake8'
 Bundle 'python.vim'
 Bundle 'python_match.vim'
 Bundle 'pythoncomplete'
-Bundle 'klen/python-mode'
+" Bundle 'klen/python-mode'
 
 " Javascript awesomeness
 Bundle 'elzr/vim-json'
