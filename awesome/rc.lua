@@ -48,7 +48,7 @@ function run_once(cmd)
   awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
 end
 
-run_once("urxvtd")
+run_once("urxvt256cd")
 run_once("unclutter")
 run_once("compton -b -G --paint-on-overlay --unredir-if-possible --backend glx --glx-no-stencil")
 run_once("xscreensaver -nosplash &")
@@ -65,7 +65,7 @@ beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/powerarrow-darker/t
 -- common
 modkey     = "Mod4"
 altkey     = "Mod1"
-terminal   = "urxvtc"
+terminal   = "urxvt256c"
 editor     = os.getenv("EDITOR") or "nano" or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
