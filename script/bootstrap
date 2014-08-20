@@ -9,52 +9,52 @@ set -e
 echo ''
 
 info () {
-  printf "  [ \033[00;34m..\033[0m ] $1"
+    printf "  [ \033[00;34m..\033[0m ] $1"
 }
 
 user () {
-  printf "\r  [ \033[0;33m?\033[0m ] $1 "
+    printf "\r  [ \033[0;33m?\033[0m ] $1 "
 }
 
 success () {
-  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+    printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
 }
 
 fail () {
-  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
-  echo ''
-  exit
+    printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+    echo ''
+    exit
 }
 
 setup_gitconfig () {
-  if ! [ -f git/gitconfig.symlink ]
-  then
-    info 'setup gitconfig'
-
-    git_credential='cache'
-
-    user ' - What is your github author name?'
-    read -e git_authorname
-    user ' - What is your github author email?'
-    read -e git_authoremail
-
-    gitversion=$(git --version | cut -c13-)i
-    #broken, and I cannot see why. Dies silently
-    #git=$(check_version "1.7.11" "$gitversion")
-    git=1
-    echo "$git"
-
-    if [[ $git -eq '0' ]]
+    if ! [ -f git/gitconfig.symlink ]
     then
-        git_push=simple
-    else
-        git_push=matching
+        info 'setup gitconfig'
+
+        git_credential='cache'
+
+        user ' - What is your github author name?'
+        read -e git_authorname
+        user ' - What is your github author email?'
+        read -e git_authoremail
+
+        gitversion=$(git --version | cut -c13-)i
+        #broken, and I cannot see why. Dies silently
+        #git=$(check_version "1.7.11" "$gitversion")
+        git=1
+        echo "$git"
+
+        if [[ $git -eq '0' ]]
+        then
+            git_push=simple
+        else
+            git_push=matching
+        fi
+
+        sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" -e "s/GIT_PUSH/$git_push/g" git/gitconfig.symlink.example > git/gitconfig.symlink
+
+        success 'gitconfig'
     fi
-
-    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" -e "s/GIT_PUSH/$git_push/g" git/gitconfig.symlink.example > git/gitconfig.symlink
-
-    success 'gitconfig'
-  fi
 }
 
 
@@ -67,9 +67,54 @@ check_version () {
 }
 
 link_files () {
-  ln -s $1 $2
-  success "linked $1 to $2"
+    ln -s $1 $2
+    success "linked $1 to $2"
 }
+
+link_files_check () {
+    # Ugly duplication of code, but meh
+    overwrite_all=false
+    backup_all=false
+    skip_all=false
+
+    dest=$2
+    source=$1
+    if ( [ -f $dest ] || [ -d $dest ] || ( [ -L $dest ] && ! [ -f 'readlink $dest' ] ))
+    then
+        user "File already exists: 'basename $dest' ('basename $source') what do you want to do? [s]kip, [o]verwrite, [b]ackup?"
+        read -n 1 action
+
+        case "$action" in
+            o )
+                overwrite=true;;
+            b )
+                backup=true;;
+            s )
+                skip=true;;
+            * )
+                ;;
+        esac
+    fi
+    if [ "$overwrite" == "true" ] || [ "$overwrite_all" == "true" ]
+    then
+        rm -rf $dest
+        success "removed $dest"
+    fi
+
+    if [ "$backup" == "true" ] || [ "$backup_all" == "true" ]
+    then
+        mv $dest $dest\.backup
+        success "moved $dest to $dest.backup"
+    fi
+
+    if [ "$skip" == "false" ] && [ "$skip_all" == "false" ]
+    then
+        link_files $source $dest
+    else
+        success "skipped $source"
+    fi
+}
+
 
 install_dotfiles () {
   info 'installing dotfiles'
@@ -82,12 +127,8 @@ install_dotfiles () {
   do
     dest="$HOME/.`basename \"${source%.*}\"`"
 
-    info "Debug: '$dest'"
-
     if ( [ -f $dest ] || [ -d $dest ] || ( [ -L $dest ] && ! [ -f 'readlink $dest' ] ))
     then
-
-	info "Debug strike 2"
 
       overwrite=false
       backup=false
@@ -154,5 +195,9 @@ setup_gitconfig
 install_dotfiles
 init_update_submodules
 
+info 'Finishing up last symlinks'
+
+link_files_check $DOTFILES_ROOT/prezto $HOME/.zprezto
+link_files_check $DOTFILES_ROOT/zsh/prompt_frost_setup $HOME/.zprezto/modules/prompt/functions/prompt_frost_setup
 echo ''
 echo '  All installed!'
