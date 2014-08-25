@@ -33,3 +33,10 @@ if [[ -x /usr/bin/vim ]]; then
         echo "To initialize the vim config, please run: vim +PluginInstall +qall"
     fi
 fi
+
+# Custom zsh-syntax-highligting matches
+ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
+ZSH_HIGHLIGHT_PATTERNS+=('reboot *' 'fg=white,bold,bg=red')
+ZSH_HIGHLIGHT_PATTERNS+=('shutdown *' 'fg=white,bold,bg=red')
+ZSH_HIGHLIGHT_PATTERNS+=('halt *' 'fg=white,bold,bg=red')
+ZSH_HIGHLIGHT_PATTERNS+=('sudo *' 'fg=white,bold,bg=yellow')
