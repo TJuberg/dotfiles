@@ -187,8 +187,7 @@ install_dotfiles () {
 init_update_submodules () {
   info 'Initializing and updating git submodules'
 
-  git submodule init
-  git submodule update
+  git submodule update --init --recursive
 }
 
 setup_gitconfig
