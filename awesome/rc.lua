@@ -50,7 +50,7 @@ end
 
 run_once("urxvt256cd")
 run_once("unclutter")
-run_once("compton -b -G --paint-on-overlay --unredir-if-possible --backend glx --glx-no-stencil")
+-- run_once("compton -b -G --paint-on-overlay --unredir-if-possible --backend glx --glx-no-stencil")
 run_once("xscreensaver -nosplash &")
 
 -- }}}
@@ -79,6 +79,7 @@ iptraf     = terminal .. " -g 180x54-20+34 -e sudo iptraf-ng -i all "
 musicplr   = terminal .. " -g 130x34-320+16 -e ncmpcpp "
 
 local layouts = {
+    lain.layout.centerwork,
     awful.layout.suit.tile,
     awful.layout.suit.floating,
     awful.layout.suit.fair,
@@ -86,7 +87,6 @@ local layouts = {
     lain.layout.centerfair,
     lain.layout.cascade,
     lain.layout.cascadetile,
-    lain.layout.centerwork,
 }
 -- }}}
 
@@ -94,7 +94,7 @@ local layouts = {
 -- {{{ Tags
 tags = {
    names = { "1", "2", "3", "4", "5", "6"},
-   layout = { layouts[1], layouts[2], layouts[3], layouts[1], layouts[4], layouts[5] }
+   layout = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1] }
 }
 
 for s = 1, screen.count() do
