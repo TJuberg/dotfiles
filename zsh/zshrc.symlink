@@ -40,3 +40,18 @@ ZSH_HIGHLIGHT_PATTERNS+=('reboot*' 'fg=white,bold,bg=red')
 ZSH_HIGHLIGHT_PATTERNS+=('shutdown*' 'fg=white,bold,bg=red')
 ZSH_HIGHLIGHT_PATTERNS+=('halt*' 'fg=white,bold,bg=red')
 ZSH_HIGHLIGHT_PATTERNS+=('sudo *' 'fg=white,bold,bg=yellow')
+ZSH_HIGHLIGHT_PATTERNS+=('sudoedit *' 'fg=white,bold,bg=yellow')
+
+
+# Enable cache for completions
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+
+# Aliases
+alias dotup='git -C ~/.dotfiles submodule update --init --recursive'
+
+
+# Load aliases
+if [[ -s ~/.bash_aliases ]]; then
+    . ~/.bash_aliases
+fi
