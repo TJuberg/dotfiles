@@ -6,6 +6,19 @@ alias ll="ls -lh --color=auto"
 alias lla="ls -lah --color=auto"
 alias updateupgrade="sudo aptitude update && sudo aptitude safe-upgrade"
 
+## Colorize the grep command output for ease of use (good for log files)##
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+alias mkdir='mkdir -pv'
+alias mount='mount |column -t'
+alias ports='netstat -tulanp | ccze -A'
+
+
+# do not delete / or prompt if deleting more than 3 files at a time #
+alias rm='rm -I --preserve-root'
+
 
 # Find a host in $HOME/.hosts, eventually with SSH options $2 
 function getHostAtLine() {
