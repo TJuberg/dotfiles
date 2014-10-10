@@ -70,7 +70,8 @@ Bundle 'saltstack/salt-vim'
 Bundle 'glench/vim-jinja2-syntax'
 
 " Misc
-Bundle 'vim-airline'
+"Bundle 'vim-airline'
+Bundle 'lokaltog/powerline'
 
 " SensibleVIM
 runtime! plugin/sensible.vim

@@ -68,11 +68,12 @@ altkey     = "Mod1"
 terminal   = "urxvt256c"
 editor     = os.getenv("EDITOR") or "nano" or "vi"
 editor_cmd = terminal .. " -e " .. editor
+hostname = io.popen("hostname -s"):read()
 
 -- user defined
 browser    = "google-chrome"
 browser2   = "iron"
-gui_editor = "gvim"
+gui_editor = "vim"
 graphics   = "gimp"
 mail       = terminal .. " -e mutt "
 iptraf     = terminal .. " -g 180x54-20+34 -e sudo iptraf-ng -i all "
@@ -94,11 +95,33 @@ local layouts = {
 -- {{{ Tags
 tags = {
    names = { "1", "2", "3", "4", "5", "6"},
-   layout = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1] }
+-- Machine specific tags.
+-- Center
+   names1 = { "Primary", "DNS", "Deployment", "Backup", "VMWare", "6"},
+-- Left
+   names2 = { "IRC", "Win7", "3", "4", "5", "6"},
+-- Right
+   names3 = { "Web", "2", "3", "4", "5", "6"},
+   layout = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1] },
+   layout1 = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1] },
+   layout2 = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1] },
+   layout3 = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1] }
 }
 
 for s = 1, screen.count() do
-   tags[s] = awful.tag(tags.names, s, tags.layout)
+    if hostname == "trws-013" then
+        if s == 1 then 
+            tags[1] = awful.tag(tags.names1, 1, tags.layout1)
+        elseif s == 2 then
+            tags[3] = awful.tag(tags.names2, 2, tags.layout2)
+        elseif s == 3 then
+            tags[3] = awful.tag(tags.names3, 3, tags.layout3)
+        else
+            tags[s] = awful.tag(tags.names, s, tags.layout)
+        end
+    else
+        tags[s] = awful.tag(tags.names, s, tags.layout)
+    end
 end
 -- }}}
 

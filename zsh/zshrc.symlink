@@ -49,9 +49,17 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 
 # Aliases
 alias dotup='git -C ~/.dotfiles submodule update --init --recursive'
-
+alias smartgit='/net/users/tjuberg/smartgit/smartgithg-6_0_6/bin/smartgithg.sh'
 
 # Load aliases
 if [[ -s ~/.bash_aliases ]]; then
     . ~/.bash_aliases
 fi
+
+# Keep all history
+setopt inc_append_history
+
+# Lazy cd
+setopt auto_cd
+
+# Allow not storing sensitive commands in history
