@@ -17,8 +17,12 @@ URxvt*keysym.Home: \033[1~
 URxvt*keysym.End: \033[4~
 
 !! Font - Download at http:
-urxvt*font: xft:envy code r:pixelsize=14:antialias=true:hinting=true
-urxvt*boldFont: xft:envy code r:pixelsize=14:antialias=true:hinting=true
+URxvt.font: xft:envy code r:pixelsize=14:antialias=true:hinting=true, \
+            xft:Terminess Powerline:pixelsize=14:antialias=true:hinting=true
+URxvt.boldFont: xft:envy code r:pixelsize=14:antialias=true:hinting=true, \
+                xft:Terminess Powerline:pixelsize=14:antialias=true:hinting=true
+
+
 
 !! Transparency. Requires compositer like xcompmgr or similar.
 !! URxvt*depth: 32
