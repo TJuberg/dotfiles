@@ -71,7 +71,7 @@ Bundle 'glench/vim-jinja2-syntax'
 
 " Misc
 "Bundle 'vim-airline'
-Bundle 'lokaltog/powerline'
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " SensibleVIM
 runtime! plugin/sensible.vim
