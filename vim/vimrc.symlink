@@ -235,3 +235,5 @@ if &term =~ 'screen-256color'
   " See also http://snk.tuxfamily.org/log/vim-256color-bce.html
   set t_ut=
 endif
+
+let g:airline_powerline_fonts = 1
