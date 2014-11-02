@@ -48,10 +48,12 @@ function run_once(cmd)
   awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
 end
 
-run_once("urxvt256cd")
-run_once("unclutter")
+hostname = io.popen("hostname -s"):read()
+
+-- run_once("urxvt256cd")
+-- run_once("unclutter")
 -- run_once("compton -b -G --paint-on-overlay --unredir-if-possible --backend glx --glx-no-stencil")
-run_once("xscreensaver -nosplash &")
+-- run_once("xscreensaver -nosplash &")
 
 -- }}}
 
@@ -65,11 +67,14 @@ beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/powerarrow-darker/t
 -- common
 modkey     = "Mod4"
 altkey     = "Mod1"
+if awful.util.file_readable('/etc/arch-release') then
+terminal    = "/usr/bin/termite"
+else
 terminal    = "/net/users/tjuberg/local/bin/lilyterm"
+end
 -- terminal   = "urxvt256c"
 editor     = os.getenv("EDITOR") or "nano" or "vi"
 editor_cmd = terminal .. " -e " .. editor
-hostname = io.popen("hostname -s"):read()
 
 -- user defined
 browser    = "google-chrome"
@@ -149,8 +154,8 @@ mytextclock = awful.widget.textclock(" %a %d %b  %H:%M")
 lain.widgets.calendar:attach(mytextclock, { font_size = 10 })
 
 -- Mail IMAP check
-mailicon = wibox.widget.imagebox(beautiful.widget_mail)
-mailicon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn(mail) end)))
+-- mailicon = wibox.widget.imagebox(beautiful.widget_mail)
+-- mailicon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn(mail) end)))
 --[[ commented because it needs to be set before use
 mailwidget = wibox.widget.background(lain.widgets.imap({
     timeout  = 180,
@@ -170,7 +175,7 @@ mailwidget = wibox.widget.background(lain.widgets.imap({
 ]]
 
 -- MPD
-mpdicon = wibox.widget.imagebox(beautiful.widget_music)
+--[[ mpdicon = wibox.widget.imagebox(beautiful.widget_music)
 mpdicon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn_with_shell(musicplr) end)))
 mpdwidget = lain.widgets.mpd({
     settings = function()
@@ -191,6 +196,7 @@ mpdwidget = lain.widgets.mpd({
     end
 })
 mpdwidgetbg = wibox.widget.background(mpdwidget, "#313131")
+]]
 
 -- MEM
 memicon = wibox.widget.imagebox(beautiful.widget_mem)
@@ -365,15 +371,15 @@ for s = 1, screen.count() do
     right_layout:add(spr)
     right_layout:add(arrl)
     right_layout:add(arrl_ld)
-    right_layout:add(mpdicon)
-    right_layout:add(mpdwidgetbg)
-    right_layout:add(arrl_dl)
+    --right_layout:add(mpdicon)
+    --right_layout:add(mpdwidgetbg)
+    --right_layout:add(arrl_dl)
     right_layout:add(volicon)
     right_layout:add(volumewidget)
     right_layout:add(arrl_ld)
-    right_layout:add(mailicon)
+    --right_layout:add(mailicon)
     --right_layout:add(mailwidget)
-    right_layout:add(arrl_dl)
+    --right_layout:add(arrl_dl)
     right_layout:add(memicon)
     right_layout:add(memwidget)
     right_layout:add(arrl_ld)
