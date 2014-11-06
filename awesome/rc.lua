@@ -103,9 +103,9 @@ tags = {
    names = { "1", "2", "3", "4", "5", "6"},
 -- Machine specific tags.
 -- Center
-   names1 = { "Primary", "DNS", "Deployment", "Backup", "VMWare", "6"},
+   names2 = { "Primary", "DNS", "Deployment", "Backup", "VMWare", "6"},
 -- Left
-   names2 = { "IRC", "Win7", "3", "4", "5", "6"},
+   names1 = { "IRC", "Win7", "3", "4", "5", "6"},
 -- Right
    names3 = { "Web", "2", "3", "4", "5", "6"},
    layout = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1] },
