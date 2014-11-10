@@ -12,6 +12,11 @@ fi
 
 # Customize to your needs...
 
+
+if [[ -s "~/.dotfiles/zsh/tmuxinator.zsh" ]]; then
+    source "~/.dotfiles/zsh/tmuxinator.zsh"
+fi
+
 # Dircolors
 if [ -s ${ZDOTDIR:-$HOME}/.dotfiles/dircolors-solarized/README.md ]; then
     eval `dircolors  ${ZDOTDIR:-$HOME}/.dotfiles/dircolors-solarized/dircolors.256dark`
