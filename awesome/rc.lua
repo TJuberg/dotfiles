@@ -624,7 +624,7 @@ globalkeys = awful.util.table.join(
               end),
 
         -- screensaver
-        awful.key({ altkey, "Control" }, "l", function () awful.util.spawn("xscreensaver-command -lock") end)
+        awful.key({ altkey, "Control" }, "l", function () awful.util.spawn("xscreensaver-command -lock") end),
 
     -- Conky
     awful.key({}, "Pause", function() toggle_conky() end)
