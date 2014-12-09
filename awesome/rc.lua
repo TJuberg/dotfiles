@@ -50,6 +50,9 @@ end
 
 hostname = io.popen("hostname -s"):read()
 
+if hostname == "trws-013" then
+run_once("mate-screensaver &")
+end
 -- run_once("urxvt256cd")
 -- run_once("unclutter")
 -- run_once("compton -b -G --paint-on-overlay --unredir-if-possible --backend glx --glx-no-stencil")
@@ -624,8 +627,7 @@ globalkeys = awful.util.table.join(
               end),
 
         -- screensaver
-        awful.key({ altkey, "Control" }, "l", function () awful.util.spawn("xscreensaver-command -lock") end),
-
+        awful.key({ altkey, "Control" }, "l", function () awful.util.spawn("mate-screensaver-command --lock") end),
     -- Conky
     awful.key({}, "Pause", function() toggle_conky() end)
 )
