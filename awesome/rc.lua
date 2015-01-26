@@ -50,7 +50,7 @@ end
 
 hostname = io.popen("hostname -s"):read()
 
-if hostname == "trws-013" then
+if hostname == "trdit1001" then
 run_once("mate-screensaver &")
 end
 -- run_once("urxvt256cd")
@@ -162,7 +162,7 @@ tags = {
 }
 
 for s = 1, screen.count() do
-    if hostname == "trws-013" then
+    if hostname == "trdit1001" then
         if s == 1 then 
             tags[1] = awful.tag(tags.names1, 1, tags.layout1)
         elseif s == 2 then
