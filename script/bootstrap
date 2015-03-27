@@ -67,7 +67,7 @@ check_version () {
 }
 
 link_files () {
-    ln -s $1 $2
+    ln -fs $1 $2
     success "linked $1 to $2"
 }
 
@@ -192,6 +192,7 @@ init_update_submodules () {
 
 setup_gitconfig
 install_dotfiles
+init_update_submodules
 init_update_submodules
 
 info 'Finishing up last symlinks'
