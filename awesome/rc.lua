@@ -73,8 +73,8 @@ altkey     = "Mod1"
 -- terminal
 if awful.util.file_readable('/etc/arch-release') then
 terminal    = "/usr/bin/termite"
-elseif awful.util.file_readable('~/local/bin/lilyterm') then
-terminal    = "~/local/bin/lilyterm"
+elseif awful.util.file_readable('/home/tjuberg/local/bin/lilyterm') then
+terminal    = "/home/tjuberg/local/bin/lilyterm"
 else
 terminal    = "/usr/bin/urxvt"
 end
@@ -153,11 +153,11 @@ tags = {
    names = { "1", "2", "3", "4", "5", "6"},
 -- Machine specific tags.
 -- Center
-   names2 = { "Primary", "Mon", "Salt", "Backup", "DMZ", "Misc"},
+   names1 = { "Primary", "Mon", "Salt", "Backup", "DMZ", "Misc"},
 -- Left
-   names1 = { "Skynet", "Win", "Refs", "4", "5", "6"},
+   names3 = { "Skynet", "Win", "Refs", "4", "5", "6"},
 -- Right
-   names3 = { "Web", "Nagios", "Observium", "NOC", "5", "6"},
+   names2 = { "Web", "Nagios", "Observium", "NOC", "5", "6"},
    layout = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1] },
    layout1 = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1] },
    layout2 = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1] },
