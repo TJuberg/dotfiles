@@ -70,18 +70,21 @@ beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/powerarrow-darker/t
 -- common
 modkey     = "Mod4"
 altkey     = "Mod1"
+-- terminal
 if awful.util.file_readable('/etc/arch-release') then
 terminal    = "/usr/bin/termite"
+elseif awful.util.file_readable('~/local/bin/lilyterm') then
+terminal    = "~/local/bin/lilyterm"
 else
-terminal    = "/net/users/tjuberg/local/bin/lilyterm"
+terminal    = "/usr/bin/urxvt"
 end
--- terminal   = "urxvt256c"
-editor     = os.getenv("EDITOR") or "nano" or "vi"
+-- editor
+editor     = os.getenv("EDITOR") or "vim" or "nano" or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
 -- user defined
 browser    = "google-chrome"
-browser2   = "iron"
+browser2   = "vivaldi"
 gui_editor = "vim"
 graphics   = "gimp"
 mail       = terminal .. " -e mutt "
@@ -150,11 +153,11 @@ tags = {
    names = { "1", "2", "3", "4", "5", "6"},
 -- Machine specific tags.
 -- Center
-   names2 = { "Primary", "DNS", "Deployment", "Backup", "VMWare", "6"},
+   names2 = { "Primary", "Mon", "Salt", "Backup", "DMZ", "Misc"},
 -- Left
-   names1 = { "IRC", "Win7", "3", "4", "5", "6"},
+   names1 = { "Skynet", "Win", "Refs", "4", "5", "6"},
 -- Right
-   names3 = { "Web", "2", "3", "4", "5", "6"},
+   names3 = { "Web", "Nagios", "Observium", "NOC", "5", "6"},
    layout = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1] },
    layout1 = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1] },
    layout2 = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1] },
@@ -163,7 +166,7 @@ tags = {
 
 for s = 1, screen.count() do
     if hostname == "trdit1001" then
-        if s == 1 then 
+        if s == 1 then
             tags[1] = awful.tag(tags.names1, 1, tags.layout1)
         elseif s == 2 then
             tags[3] = awful.tag(tags.names2, 2, tags.layout2)
