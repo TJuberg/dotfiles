@@ -1,3 +1,4 @@
 git/gitconfig.symlink
 prezto
 awesome/themes/powerarrow-darker/Thumbs.db
+*.swp
