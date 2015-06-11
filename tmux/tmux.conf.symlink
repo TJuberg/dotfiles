@@ -5,7 +5,6 @@ set -g prefix C-a
 # Forward prefix for nested tmux (INCEPTION!)
 bind-key a send-prefix
 
-
 # Aggressive resize for multiple sessions from different screen resolutions.
 setw -g aggressive-resize on
 
@@ -20,8 +19,16 @@ set -g default-terminal "screen-256color"
 
 # UTF 8
 set-window-option -g utf8 on
+
+# Set terminal title
 set -g set-titles on
-set -g set-titles-string "#I) #W"
+set -g set-titles-string "#S:#I:#W #h"
+
+# Use current path for new windows in 1.9
+if-shell "[[ $(tmux -V) == *1.9* ]]" \
+    'bind c new-window -c "#{pane_current_path}"; \
+     bind "\"" split-window -c "#{pane_current_path}"; \
+     bind "\%" split-window -h -c "#{pane_current_path}"'
 
 # Act like vim
 setw -g mode-keys vi
@@ -34,6 +41,9 @@ bind p paste-buffer
 bind-key -t vi-copy 'v' begin-selection
 bind-key -t vi-copy 'y' copy-selection
 
+
+# Faster command sequences
+set -s escape-time 0
 
 #### COLOUR (Solarized 256)
 
