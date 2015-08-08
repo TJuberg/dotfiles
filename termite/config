@@ -12,6 +12,8 @@ clickable_url = true
 scrollback_lines = 10000
 search_wrap = true
 
+font = Input Mono Regular 10
+
 # transparency
 transparency = 0.0
 pseudo_transparency = false
