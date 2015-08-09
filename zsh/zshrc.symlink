@@ -17,10 +17,6 @@ if [[ -s "~/.dotfiles/zsh/tmuxinator.zsh" ]]; then
     source "~/.dotfiles/zsh/tmuxinator.zsh"
 fi
 
-# Dircolors
-if [ -s ${ZDOTDIR:-$HOME}/.dotfiles/dircolors-solarized/README.md ]; then
-    eval `dircolors  ${ZDOTDIR:-$HOME}/.dotfiles/dircolors-solarized/dircolors.256dark`
-fi
 
 # Suggest package for command not found
 if [[ -s /etc/zsh_command_not_found ]]; then
@@ -38,6 +34,48 @@ if [[ -x /usr/bin/vim ]]; then
         echo "To initialize the vim config, please run: vim +PluginInstall +qall"
     fi
 fi
+
+
+# Antigen for zsh plugins
+source ~/.dotfiles/antigen/antigen.zsh
+antigen bundle djui/alias-tips
+antigen bundle rimraf/k
+antigen bundle skx/sysadmin-util
+antigen bundle joel-porquet/zsh-dircolors-solarized.git
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle unixorn/autoupdate-antigen.zshplugin
+antigen bundle chrissicool/zsh-256color
+antigen bundle zsh-users/zsh-history-substring-search
+antigen apply
+
+
+setupsolarized dircolors.ansi-dark
+
+# zsh-history-substring-search
+#
+# bind UP and DOWN arrow keys
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# bind UP and DOWN arrow keys (compatibility fallback
+# for Ubuntu 12.04, Fedora 21, and MacOSX 10.9 users)
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+# bind P and N for EMACS mode
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+
+# bind k and j for VI mode
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
+# Ignore ALL duplicates in history
+setopt HIST_IGNORE_ALL_DUPS
+
+# end zsh_history-substring-search
+
 
 # Custom zsh-syntax-highligting matches
 ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')

@@ -1,12 +1,9 @@
-[submodule "dircolors-solarized"]
-	path = dircolors-solarized
-	url = https://github.com/seebi/dircolors-solarized.git
-[submodule "zsh-syntax-highlighting"]
-	path = zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "prezto"]
 	path = prezto
 	url = git://github.com/sorin-ionescu/prezto.git
 [submodule "awesome/lain"]
 	path = awesome/lain
 	url = git://github.com/copycat-killer/lain.git
+[submodule "antigen"]
+	path = antigen
+	url = https://github.com/zsh-users/antigen.git
