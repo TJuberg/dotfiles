@@ -23,18 +23,27 @@ if [[ -s /etc/zsh_command_not_found ]]; then
     . /etc/zsh_command_not_found
 fi
 
-if [[ -x /usr/bin/vim ]]; then
+if [[ -x /usr/bin/vim || -x /usr/local/bin/vim || -x /usr/bin/nvim || -x /usr/local/bin/nvim ]]; then
     # We want these to exist
     mkdir -p ${ZDOTDIR:-$HOME}/.vim/autoload ${ZDOTDIR:-$HOME}/.vim/bundle
+    mkdir -p ${ZDOTDIR:-$HOME}/.nvim/autoload ${ZDOTDIR:-$HOME}/.nvim/bundle
+    mkdir -p ${ZDOTDIR:-$HOME}/.vundle/plugins
 
     # Install vundle
-    if [ ! -d ~/.vim/bundle/vundle ]; then
-        echo "Could not find vim vundle, downloading..."
-        git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-        echo "To initialize the vim config, please run: vim +PluginInstall +qall"
+    if [ ! -d ~/.vundle/plugins/Vundle.vim ]; then
+        echo "Could not find vundle, downloading..."
+        git clone https://github.com/gmarik/vundle.git ~/.vundle/plugins/Vundle.vim
+        echo "To initialize the (n)vim config, please run: (n)vim +PluginInstall +qall"
     fi
 fi
 
+if [[ -x /usr/bin/nvim || -x /usr/local/bin/nvim ]]; then
+    mkdir -p ${ZDOTDIR:-$HOME}/.config/nvim
+    if [[ ! -h ${ZDOTDIR:-$HOME}/.config/nvim/init.vim ]]; then
+        ln -s ${ZDOTDIR:-$HOME}/.vimrc ${ZDOTDIR:-$HOME}/.config/nvim/init.vim
+    fi
+
+fi
 
 # Antigen for zsh plugins
 source ~/.dotfiles/antigen/antigen.zsh
@@ -118,7 +127,9 @@ zstyle ':filter-select' case-insensitive yes # enable case-insensitive search
 
 # Aliases
 alias dotup='git -C ~/.dotfiles submodule update --init --recursive'
-alias smartgit='/net/users/tjuberg/smartgit/smartgithg-6_0_6/bin/smartgithg.sh'
+if [[ -x /usr/bin/nvim || -x /usr/local/bin/nvim ]]; then
+  alias vim=nvim
+fi
 
 # Load aliases
 if [[ -s ~/.bash_aliases ]]; then

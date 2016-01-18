@@ -16,11 +16,20 @@ fi
 #
 # Editors
 #
+if [[ -x /usr/bin/nvim || -x /usr/local/bin/nvim ]]; then
+  myeditor=nvim
+elif [[ -x /usr/bin/vim || -x /usr/local/bin/vim ]]; then
+  myeditor=vim
+elif [[ -x /usr/bin/nano || -x /usr/local/bin/nano ]]; then
+  myeditor=nano
+else
+  myeditor=vi
+fi
 
-export EDITOR='vim'
-export VISUAL='vim'
-export SUDO_EDITOR='vim'
-export PAGER='less'
+export EDITOR=$myeditor
+export VISUAL=$myeditor
+export SUDO_EDITOR=$myeditor
+export PAGER=$myeditor
 
 
 
