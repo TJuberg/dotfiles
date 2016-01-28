@@ -29,7 +29,7 @@ fi
 export EDITOR=$myeditor
 export VISUAL=$myeditor
 export SUDO_EDITOR=$myeditor
-export PAGER=$myeditor
+export PAGER=less
 
 
 
