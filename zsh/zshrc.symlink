@@ -25,15 +25,20 @@ fi
 
 if [[ -x /usr/bin/vim || -x /usr/local/bin/vim || -x /usr/bin/nvim || -x /usr/local/bin/nvim ]]; then
     # We want these to exist
-    mkdir -p ${ZDOTDIR:-$HOME}/.vim/autoload ${ZDOTDIR:-$HOME}/.vim/bundle
-    mkdir -p ${ZDOTDIR:-$HOME}/.nvim/autoload ${ZDOTDIR:-$HOME}/.nvim/bundle
-    mkdir -p ${ZDOTDIR:-$HOME}/.vundle/plugins
+#    mkdir -p ${ZDOTDIR:-$HOME}/.vim/autoload ${ZDOTDIR:-$HOME}/.vim/bundle
+#    mkdir -p ${ZDOTDIR:-$HOME}/.nvim/autoload ${ZDOTDIR:-$HOME}/.nvim/bundle
+#    mkdir -p ${ZDOTDIR:-$HOME}/.vundle/plugins
 
     # Install vundle
-    if [ ! -d ~/.vundle/plugins/Vundle.vim ]; then
-        echo "Could not find vundle, downloading..."
-        git clone https://github.com/gmarik/vundle.git ~/.vundle/plugins/Vundle.vim
-        echo "To initialize the (n)vim config, please run: (n)vim +PluginInstall +qall"
+#    if [ ! -d ~/.vundle/plugins/Vundle.vim ]; then
+#        echo "Could not find vundle, downloading..."
+#        git clone https://github.com/gmarik/vundle.git ~/.vundle/plugins/Vundle.vim
+#        echo "To initialize the (n)vim config, please run: (n)vim +PluginInstall +qall"
+#    fi
+    mkdir -p ~/.dein/repos/github.com/Shougo/
+    if [ ! -d ~/.dein/repos/github.com/Shougo/dein.vim ]; then
+        echo "Could not find dein plugin manager, downloading..."
+        git clone https://github.com/Shougo/dein.vim.git ~/.dein/repos/github.com/Shougo/dein.vim
     fi
 fi
 

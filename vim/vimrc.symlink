@@ -7,81 +7,148 @@ else
   let s:editor_root=expand("~/.nvim")
 endif
 
-set rtp+=~/.vundle/plugins/Vundle.vim/
-call vundle#begin('~/.vundle/plugins')
+"set rtp+=~/.vundle/plugins/Vundle.vim/
+"call vundle#begin('~/.vundle/plugins')
+
+set runtimepath^=~/.dein/repos/github.com/Shougo/dein.vim
+call dein#begin(expand('~/.dein')) " plugins' root path
+
+" Let dein manage dein
+call dein#add('Shougo/dein.vim')
+
 
 " let Vundle manage Vundle
 " required!
-Plugin 'VundleVim/Vundle.vim'
+"Plugin 'VundleVim/Vundle.vim'
 
 " My Bundles here:
 "
 " original repos on github
 
 " Sensible defaults as a base
-Plugin 'tpope/vim-sensible'
+"Plugin 'tpope/vim-sensible'
+call dein#add('tpope/vim-sensible')
 
 " Git wrapper
-Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-fugitive'
+call dein#add('tpope/vim-fugitive')
 
 " Motion on steroids
-Plugin 'Lokaltog/vim-easymotion'
+"Plugin 'Lokaltog/vim-easymotion'
+call dein#add('Lokaltog/vim-easymotion')
 
 " HTML helper
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 " Python awesomeness
-Plugin 'nvie/vim-flake8'
-Plugin 'python.vim'
-Plugin 'python_match.vim'
-Plugin 'pythoncomplete'
-" Bundle 'klen/python-mode'
+"Plugin 'nvie/vim-flake8'
+"Plugin 'python.vim'
+"Plugin 'python_match.vim'
+"Plugin 'pythoncomplete'
+call dein#add('nvie/vim-flake8',
+	\{'on_ft': ['py']})
+call dein#add('python.vim',
+        \{'on_ft': ['py']})
+call dein#add('python_match.vim',
+        \{'on_ft': ['py']})
+call dein#add('pythoncomplete',
+        \{'on_ft': ['py']})
 
 " Javascript awesomeness
-Plugin 'elzr/vim-json'
-Plugin 'groenewege/vim-less'
-Plugin 'pangloss/vim-javascript'
-Plugin 'briancollins/vim-jst'
-Plugin 'kchmck/vim-coffee-script'
+"Plugin 'elzr/vim-json'
+"Plugin 'groenewege/vim-less'
+"Plugin 'pangloss/vim-javascript'
+"Plugin 'briancollins/vim-jst'
+"Plugin 'kchmck/vim-coffee-script'
+
+call dein#add('elzr/vim-json',
+        \{'on_ft': ['js']})
+call dein#add('groenewege/vim-less',
+        \{'on_ft': ['js']})
+call dein#add('pangloss/vim-javascript',
+        \{'on_ft': ['js']})
+call dein#add('briancollins/vim-jst',
+        \{'on_ft': ['js']})
+call dein#add('kchmck/vim-coffee-script',
+        \{'on_ft': ['js']})
 
 " php awesomeness
-Plugin 'spf13/PIV'
-Plugin 'arnaud-lb/vim-php-namespace'
+"Plugin 'spf13/PIV'
+"Plugin 'arnaud-lb/vim-php-namespace'
 
-Plugin 'tpope/vim-markdown'
-Plugin 'Puppet-Syntax-Highlighting'
+call dein#add('spf13/PIV',
+        \{'on_ft': ['php', 'php5']})
+call dein#add('arnaud-lb/vim-php-namespace',
+        \{'on_ft': ['php', 'php5']})
+
+"Plugin 'tpope/vim-markdown'
+"Plugin 'Puppet-Syntax-Highlighting'
+call dein#add('tpope/vim-markdown')
+
 
 " Solarized, make life easier on your eyes
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'altercation/vim-colors-solarized'
+call dein#add('altercation/vim-colors-solarized')
 
 " Nerdtree
-Plugin 'scrooloose/nerdtree'
+"Plugin 'scrooloose/nerdtree'
+call dein#add('scrooloose/nerdtree',
+      \{'on_cmd': 'NERDTreeToggle'})
 
 " vim-syntax-extra
-Plugin 'justinmk/vim-syntax-extra'
+"Plugin 'justinmk/vim-syntax-extra'
 
-Plugin 'scrooloose/syntastic'
-Plugin 'mattn/gist-vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'godlygeek/tabular'
+"Plugin 'scrooloose/syntastic'
+"Plugin 'mattn/gist-vim'
+"Plugin 'scrooloose/nerdcommenter'
+"Plugin 'godlygeek/tabular'
+"Plugin 'Shougo/neocomplete.vim'
 
-Plugin 'Shougo/neocomplete.vim'
+call dein#add('justinmk/vim-syntax-extra')
+call dein#add('scrooloose/syntastic')
+call dein#add('mattn/gist-vim')
+call dein#add('scrooloose/nerdcommenter')
+call dein#add('godlygeek/tabular')
 
+if !has('nvim')
+	call dein#add('Shougo/neocomplete.vim')
+else
+	call dein#add('Shougo/deoplete.nvim')
+	let g:deoplete#enable_at_startup = 1
+endif
 
 " vim-scripts repos
-Plugin 'L9'
-Plugin 'FuzzyFinder'
+"Plugin 'L9'
+"Plugin 'FuzzyFinder'
 
+call dein#add('L9')
+call dein#add('FuzzyFinder')
 
 " Saltstack and jinja
-Plugin 'saltstack/salt-vim'
-Plugin 'glench/vim-jinja2-syntax'
+"Plugin 'saltstack/salt-vim'
+"Plugin 'glench/vim-jinja2-syntax'
+
+call dein#add('saltstack/salt-vim')
+call dein#add('glench/vim-jinja2-syntax')
 
 " Misc
-Plugin 'bling/vim-airline'
+"Plugin 'bling/vim-airline'
+call dein#add('bling/vim-airline')
+call dein#add('vim-airline/vim-airline-themes')
 
 " All of your Plugins must be added before the following line
-call vundle#end()
+"call vundle#end()
+
+call dein#end()
+
+" file type detection and smart indent
+filetype plugin indent on
+
+
+" If you want to install not installed plugins on startup."
+if dein#check_install()"
+    call dein#install()"
+endif"
 
 
 " SensibleVIM
@@ -116,6 +183,7 @@ else
   endif
 endif
 
+if !has('nvim')
 " Neocomplete
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
@@ -200,7 +268,7 @@ endif
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-
+endif
 
 " UTF8 or die.
 set encoding=utf8
@@ -261,9 +329,6 @@ autocmd BufWinLeave * call clearmatches()
 
 " Automatically leave insert mode after 'updatetime' (4s by default).
 " au CursorHoldI * stopinsert
-
-" file type detection and smart indent
-filetype plugin indent on
 
 " always show the status line as the second last line
 set laststatus=2
@@ -352,3 +417,4 @@ if &term =~ 'screen-256color'
 endif
 
 let g:airline_powerline_fonts = 1
+let g:airline_theme='solarized'
