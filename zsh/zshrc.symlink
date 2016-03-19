@@ -42,26 +42,40 @@ if [[ -x /usr/bin/vim || -x /usr/local/bin/vim || -x /usr/bin/nvim || -x /usr/lo
     fi
 fi
 
+
 if [[ -x /usr/bin/nvim || -x /usr/local/bin/nvim ]]; then
     mkdir -p ${ZDOTDIR:-$HOME}/.config/nvim
     if [[ ! -h ${ZDOTDIR:-$HOME}/.config/nvim/init.vim ]]; then
         ln -s ${ZDOTDIR:-$HOME}/.vimrc ${ZDOTDIR:-$HOME}/.config/nvim/init.vim
     fi
 
+# True colors for NeoVim
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 fi
 
-# Antigen for zsh plugins
-source ~/.dotfiles/antigen/antigen.zsh
-antigen bundle djui/alias-tips
-antigen bundle rimraf/k
-antigen bundle skx/sysadmin-util
-antigen bundle joel-porquet/zsh-dircolors-solarized.git
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle chrissicool/zsh-256color
-antigen bundle zsh-users/zsh-history-substring-search
-antigen apply
+
+if [ ! -d ~/.zgen ]; then
+    echo "Could not find zgen plugin manager, downloading..."
+    git clone https://github.com/tarjoilija/zgen.git ~/.zgen
+fi
+
+# load zgen
+source "${HOME}/.zgen/zgen.zsh"
+
+if ! zgen saved; then
+    zgen loadall <<EOBUNDLES
+        djui/alias-tips
+        rimraf/k
+        skx/sysadmin-util
+        joel-porquet/zsh-dircolors-solarized.git
+        zsh-users/zsh-syntax-highlighting
+        chrissicool/zsh-256color
+        zsh-users/zsh-history-substring-search
+EOBUNDLES
+
+    zgen save
+fi
 
 
 setupsolarized dircolors.ansi-dark

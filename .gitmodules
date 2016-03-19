@@ -4,6 +4,3 @@
 [submodule "awesome/lain"]
 	path = awesome/lain
 	url = git://github.com/copycat-killer/lain.git
-[submodule "antigen"]
-	path = antigen
-	url = https://github.com/zsh-users/antigen.git
