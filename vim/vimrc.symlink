@@ -88,7 +88,9 @@ call dein#add('tpope/vim-markdown')
 
 " Solarized, make life easier on your eyes
 "Plugin 'altercation/vim-colors-solarized'
-call dein#add('altercation/vim-colors-solarized')
+"call dein#add('altercation/vim-colors-solarized')
+
+call dein#add('morhetz/gruvbox')
 
 " Nerdtree
 "Plugin 'scrooloose/nerdtree'
@@ -161,27 +163,21 @@ autocmd BufWritePost *.py call Flake8()
 " ctrl + n
 map <C-n> :NERDTreeToggle<CR>
 
-if !has('nvim')
-  if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
-    syntax enable
-    " let g:solarized_termcolors=256
-    let g:solarized_termtrans=1
-    let g:solarized_contrast="normal"
-    let g:solarized_visibility="normal"
-    set background=dark
-    color solarized
-  endif
-else
-  if filereadable(expand("~/.nvim/bundle/vim-colors-solarized/colors/solarized.vim"))
-    syntax enable
-    " let g:solarized_termcolors=256
-    let g:solarized_termtrans=1
-    let g:solarized_contrast="normal"
-    let g:solarized_visibility="normal"
-    set background=dark
-    color solarized
-  endif
-endif
+"if filereadable(expand("~/.dein/repos/github.com/altercation/vim-colors-solarized/colors/solarized.vim"))
+"  syntax enable
+"  " let g:solarized_termcolors=256
+"  let g:solarized_termtrans=1
+"  let g:solarized_contrast="normal"
+"  let g:solarized_visibility="normal"
+"  set background=dark
+"  color solarized
+"endif
+
+let g:gruvbox_italic=1
+colorscheme gruvbox
+set background=dark    " Setting dark mode
+
+
 
 if !has('nvim')
 " Neocomplete

@@ -48,6 +48,8 @@ if [[ -x /usr/bin/nvim || -x /usr/local/bin/nvim ]]; then
         ln -s ${ZDOTDIR:-$HOME}/.vimrc ${ZDOTDIR:-$HOME}/.config/nvim/init.vim
     fi
 
+export NVIM_TUI_ENABLE_TRUE_COLOR=1
+
 fi
 
 # Antigen for zsh plugins
