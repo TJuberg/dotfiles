@@ -55,27 +55,59 @@ export NVIM_TUI_ENABLE_TRUE_COLOR=1
 fi
 
 
-if [ ! -d ~/.zgen ]; then
-    echo "Could not find zgen plugin manager, downloading..."
-    git clone https://github.com/tarjoilija/zgen.git ~/.zgen
+#if [ ! -d ~/.zgen ]; then
+#    echo "Could not find zgen plugin manager, downloading..."
+#    git clone https://github.com/tarjoilija/zgen.git ~/.zgen
+#fi
+#
+## load zgen
+#source "${HOME}/.zgen/zgen.zsh"
+
+#if ! zgen saved; then
+#    zgen loadall <<EOBUNDLES
+#        djui/alias-tips
+#        rimraf/k
+#        skx/sysadmin-util
+#        joel-porquet/zsh-dircolors-solarized.git
+#        zsh-users/zsh-syntax-highlighting
+#        chrissicool/zsh-256color
+#        zsh-users/zsh-history-substring-search
+#EOBUNDLES
+#
+#    zgen save
+#fi
+
+
+if [ ! -d ~/.zplug ]; then
+    echo "Could not find zplug plugin manager, downloading..."
+    git clone https://github.com/b4b4r07/zplug ~/.zplug
 fi
 
-# load zgen
-source "${HOME}/.zgen/zgen.zsh"
 
-if ! zgen saved; then
-    zgen loadall <<EOBUNDLES
-        djui/alias-tips
-        rimraf/k
-        skx/sysadmin-util
-        joel-porquet/zsh-dircolors-solarized.git
-        zsh-users/zsh-syntax-highlighting
-        chrissicool/zsh-256color
-        zsh-users/zsh-history-substring-search
-EOBUNDLES
+source ~/.zplug/zplug
 
-    zgen save
+zplug "djui/alias-tips"
+zplug "rimraf/k"
+zplug "skx/sysadmin-util"
+zplug "joel-porquet/zsh-dircolors-solarized"
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "chrissicool/zsh-256color"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "srijanshetty/zsh-pip-completion"
+
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
 fi
+
+# Then, source plugins and add commands to $PATH
+zplug load
 
 
 setupsolarized dircolors.ansi-dark
