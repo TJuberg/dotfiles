@@ -195,6 +195,6 @@ setopt inc_append_history
 # Lazy cd
 setopt auto_cd
 
-TMOUT=10; TRAPALRM () { zle reset-prompt }
+#TMOUT=10; TRAPALRM () { zle reset-prompt }
 
 # Allow not storing sensitive commands in history

@@ -77,9 +77,6 @@ function prompt_frost_setup {
   # Set python-info parameters
   zstyle ':prezto:module:python:info:virtualenv' format '< ${_prompt_frost_colors[2]}%v${_prompt_frost_nocolor} >───────'
 
-  # Get the time
-  local time="%D{%H:%M:%S}"
-
   # Remote hosts change colors
   if [[ -n "$SSH_CLIENT"  ||  -n "$SSH2_CLIENT" ]]; then
     local host="${_prompt_frost_colors[8]}%m" #SSH
@@ -92,7 +89,7 @@ function prompt_frost_setup {
 
   # Define prompts.
   PROMPT="
-${_prompt_frost_colors[1]}╭─< ${user}${_prompt_frost_colors[1]}@${host} ${_prompt_frost_colors[1]}>───────< ${_prompt_frost_colors[2]}%~${_prompt_frost_colors[1]} >─────── "'${git_info[prompt]}'""'$python_info[virtualenv]'"< ${_prompt_frost_colors[2]}$time${_prompt_frost_colors[1]} >─◇
+${_prompt_frost_colors[1]}╭─< ${user}${_prompt_frost_colors[1]}@${host} ${_prompt_frost_colors[1]}>───────< ${_prompt_frost_colors[2]}%~${_prompt_frost_colors[1]} >─────── "'${git_info[prompt]}'""'$python_info[virtualenv]'"─◇
 ╰─${promptcolor}"'${editor_info[keymap]}'"${_prompt_frost_nocolor} "
   RPROMPT='${git_info[rprompt]}%(?..${_prompt_frost_colors[5]}%? ↵${_prompt_frost_nocolor})'
   SPROMPT='zsh: correct ${_prompt_frost_colors[6]}%R${_prompt_frost_nocolor} to ${_prompt_frost_colors[4]}%r${_prompt_frost_nocolor} [nyae]? '
