@@ -89,7 +89,7 @@ function prompt_frost_setup {
 
   # Define prompts.
   PROMPT="
-${_prompt_frost_colors[1]}╭─< ${user}${_prompt_frost_colors[1]}@${host} ${_prompt_frost_colors[1]}>───────< ${_prompt_frost_colors[2]}%~${_prompt_frost_colors[1]} >─────── "'${git_info[prompt]}'""'$python_info[virtualenv]'"─◇
+${_prompt_frost_colors[1]}╭─< ${user}${_prompt_frost_colors[1]}@${host} ${_prompt_frost_colors[1]}>───────< ${_prompt_frost_colors[2]}%~${_prompt_frost_colors[1]} >───────"'${git_info[prompt]}'""'$python_info[virtualenv]'"─◇
 ╰─${promptcolor}"'${editor_info[keymap]}'"${_prompt_frost_nocolor} "
   RPROMPT='${git_info[rprompt]}%(?..${_prompt_frost_colors[5]}%? ↵${_prompt_frost_nocolor})'
   SPROMPT='zsh: correct ${_prompt_frost_colors[6]}%R${_prompt_frost_nocolor} to ${_prompt_frost_colors[4]}%r${_prompt_frost_nocolor} [nyae]? '
