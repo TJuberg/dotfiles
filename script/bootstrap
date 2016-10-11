@@ -197,7 +197,8 @@ init_update_submodules
 
 info 'Finishing up last symlinks'
 
-link_files_check $DOTFILES_ROOT/prezto $HOME/.zprezto
-link_files_check $DOTFILES_ROOT/zsh/prompt_frost_setup $HOME/.zprezto/modules/prompt/functions/prompt_frost_setup
+#link_files_check $DOTFILES_ROOT/prezto $HOME/.zprezto
+#link_files_check $DOTFILES_ROOT/zsh/prompt_frost_setup $HOME/.zprezto/modules/prompt/functions/prompt_frost_setup
+link_files_check $DOTFILES_ROOT/zsh/prompt_frost_setup $HOME/.zplug/repos/sorin-ionescu/prezto/modules/prompt/functions
 echo ''
 echo '  All installed!'
