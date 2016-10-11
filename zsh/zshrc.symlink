@@ -120,6 +120,7 @@ zplug 'zsh-users/zsh-history-substring-search'
 zplug 'zsh-users/zsh-completions'
 zplug 'zsh-users/zsh-autosuggestions'
 zplug 'srijanshetty/zsh-pip-completion'
+zplug 'bbenne10/goenv'
 zplug 'zplug/zplug'
 
 
