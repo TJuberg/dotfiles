@@ -83,7 +83,7 @@ fi
 source ~/.zplug/init.zsh
 
 # Any  Prezto modules needs to be loaded first
-zplug 'modules/prompt', from:prezto
+#zplug 'modules/prompt', from:prezto
 zplug 'modules/helper', from:prezto
 zplug 'modules/git', from:prezto
 zplug 'modules/python', from:prezto
@@ -107,7 +107,7 @@ zstyle ':prezto:module:editor' key-bindings 'vi'
 zstyle ':prezto:module:editor' dot-expansion 'yes'
 zstyle ':prezto:module:ssh:load' identities 'id_ecdsa_fei' 'id_rsa_phabricator' 'id_rsa_git' 'id_rsa_tihlde' 'id_rsa' 'id_ecdsa'
 zstyle ':prezto:module:git:status:ignore' submodules 'all'
-zstyle ':prezto:module:pacman' frontend 'packer'
+zstyle ':prezto:module:pacman' frontend 'pacaur'
 #zstyle ':prezto:module:prompt' theme 'frost'
 
 zplug 'djui/alias-tips'
@@ -138,9 +138,9 @@ fi
 zplug load
 
 
-autoload -U promptinit; promptinit
+#autoload -U promptinit; promptinit
 FROST_SHOW_CLOCK=0
-prompt frost
+#prompt frost
 
 setupsolarized dircolors.ansi-dark
 
