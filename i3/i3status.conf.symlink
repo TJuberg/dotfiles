@@ -15,6 +15,7 @@ general {
 }
 
 order += "volume master"
+order += "battery 1"
 order += "load"
 order += "cpu_usage"
 #order += "cpu_temperature 0"
@@ -38,6 +39,11 @@ volume master {
     mixer_idx = 0
     # termsyn font
 #   format = "À %volume "
+}
+
+battery 1 {
+    format = "%status %percentage %remaining"
+    path = "/sys/class/power_supply/BAT1/uevent"
 }
 
 load {

@@ -112,12 +112,31 @@ call dein#add('mattn/gist-vim')
 call dein#add('scrooloose/nerdcommenter')
 call dein#add('godlygeek/tabular')
 
+" *complete
 if !has('nvim')
 	call dein#add('Shougo/neocomplete.vim')
 else
 	call dein#add('Shougo/deoplete.nvim')
 	let g:deoplete#enable_at_startup = 1
+    if !exists('g:deoplete#omni#input_patterns')
+        let g:deoplete#omni#input_patterns = {}
+    endif
+    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 endif
+
+augroup omnifuncs
+    autocmd!
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete<Paste>
+augroup end
+
+" deoplete tab-complete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+call dein#add('neomake/neomake')
+call dein#add('dojoteef/neomake-autolint')
+
+
+"
 
 " vim-scripts repos
 "Plugin 'L9'

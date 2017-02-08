@@ -250,3 +250,5 @@ exec --no-startup-id dunst &
 # Custom Keybindings
 
 bindsym Ctrl+Mod1+l exec "slock"
+
+assign [class="Conky" title="whatever"] workspace 3
