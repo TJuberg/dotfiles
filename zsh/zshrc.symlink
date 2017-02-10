@@ -13,31 +13,14 @@ if [[ -s "~/.dotfiles/zsh/tmuxinator.zsh" ]]; then
     source "~/.dotfiles/zsh/tmuxinator.zsh"
 fi
 
-
-# Suggest package for command not found
-if [[ -s /etc/zsh_command_not_found ]]; then
-    . /etc/zsh_command_not_found
-fi
-
 if [[ -x /usr/bin/vim || -x /usr/local/bin/vim || -x /usr/bin/nvim || -x /usr/local/bin/nvim ]]; then
-    # We want these to exist
-#    mkdir -p ${ZDOTDIR:-$HOME}/.vim/autoload ${ZDOTDIR:-$HOME}/.vim/bundle
-#    mkdir -p ${ZDOTDIR:-$HOME}/.nvim/autoload ${ZDOTDIR:-$HOME}/.nvim/bundle
-#    mkdir -p ${ZDOTDIR:-$HOME}/.vundle/plugins
 
-    # Install vundle
-#    if [ ! -d ~/.vundle/plugins/Vundle.vim ]; then
-#        echo "Could not find vundle, downloading..."
-#        git clone https://github.com/gmarik/vundle.git ~/.vundle/plugins/Vundle.vim
-#        echo "To initialize the (n)vim config, please run: (n)vim +PluginInstall +qall"
-#    fi
     mkdir -p ~/.dein/repos/github.com/Shougo/
     if [ ! -d ~/.dein/repos/github.com/Shougo/dein.vim ]; then
         echo "Could not find dein plugin manager, downloading..."
         git clone https://github.com/Shougo/dein.vim.git ~/.dein/repos/github.com/Shougo/dein.vim
     fi
 fi
-
 
 if [[ -x /usr/bin/nvim || -x /usr/local/bin/nvim ]]; then
     mkdir -p ${ZDOTDIR:-$HOME}/.config/nvim
@@ -49,29 +32,6 @@ if [[ -x /usr/bin/nvim || -x /usr/local/bin/nvim ]]; then
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 fi
-
-
-#if [ ! -d ~/.zgen ]; then
-#    echo "Could not find zgen plugin manager, downloading..."
-#    git clone https://github.com/tarjoilija/zgen.git ~/.zgen
-#fi
-#
-## load zgen
-#source "${HOME}/.zgen/zgen.zsh"
-
-#if ! zgen saved; then
-#    zgen loadall <<EOBUNDLES
-#        djui/alias-tips
-#        rimraf/k
-#        skx/sysadmin-util
-#        joel-porquet/zsh-dircolors-solarized.git
-#        zsh-users/zsh-syntax-highlighting
-#        chrissicool/zsh-256color
-#        zsh-users/zsh-history-substring-search
-#EOBUNDLES
-#
-#    zgen save
-#fi
 
 
 if [ ! -d ~/.zplug ]; then
@@ -86,17 +46,17 @@ source ~/.zplug/init.zsh
 zplug 'modules/helper', from:prezto
 zplug 'modules/git', from:prezto
 zplug 'modules/python', from:prezto
-zplug 'modulez/pacman', from:prezto
+zplug 'modulez/pacman', from:prezto, if:"(( $+commands[pacman] ))"
 zplug 'modules/command-not-found', from:prezto
-zplug 'modules/dpkg', from:prezto
-zplug 'modules/dnf', from:prezto
+zplug 'modules/dpkg', from:prezto, if:"(( $+commands[dpkg] ))"
+zplug 'modules/dnf', from:prezto, if:"(( $+commands[dnf] ))"
 zplug 'modules/gpg', from:prezto
 zplug 'modules/ssh', from:prezto
 zplug 'modules/utility', from:prezto
 zplug 'modules/editor', from:prezto
 zplug 'modules/terminal', from:prezto
-zplug 'modules/tmux', from:prezto
-zplug 'modules/yum', from:prezto
+zplug 'modules/tmux', from:prezto, if:"(( $+commands[tmux] ))"
+zplug 'modules/yum', from:prezto, if:"(( $+commands[yum] ))"
 zplug 'modules/spectrum', from:prezto
 zplug 'modules/history', from:prezto
 zplug 'modules/directory', from:prezto
@@ -139,9 +99,7 @@ fi
 zplug load
 
 
-#autoload -U promptinit; promptinit
 FROST_SHOW_CLOCK=0
-#prompt frost
 
 setupsolarized dircolors.ansi-dark
 
@@ -227,7 +185,3 @@ setopt inc_append_history
 
 # Lazy cd
 setopt auto_cd
-
-#TMOUT=10; TRAPALRM () { zle reset-prompt }
-
-# Allow not storing sensitive commands in history
