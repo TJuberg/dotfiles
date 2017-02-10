@@ -27,7 +27,9 @@ call dein#add('Shougo/dein.vim')
 
 " Sensible defaults as a base
 "Plugin 'tpope/vim-sensible'
-call dein#add('tpope/vim-sensible')
+if !has('nvim')
+    call dein#add('tpope/vim-sensible')
+endif
 
 " Git wrapper
 "Plugin 'tpope/vim-fugitive'
@@ -173,7 +175,9 @@ endif"
 
 
 " SensibleVIM
-runtime! plugin/sensible.vim
+if !has('nvim')
+    runtime! plugin/sensible.vim
+endif
 
 " Flake8
 autocmd BufWritePost *.py call Flake8()
