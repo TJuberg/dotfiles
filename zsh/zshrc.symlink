@@ -83,7 +83,6 @@ fi
 source ~/.zplug/init.zsh
 
 # Any  Prezto modules needs to be loaded first
-#zplug 'modules/prompt', from:prezto
 zplug 'modules/helper', from:prezto
 zplug 'modules/git', from:prezto
 zplug 'modules/python', from:prezto
@@ -108,21 +107,23 @@ zstyle ':prezto:module:editor' dot-expansion 'yes'
 zstyle ':prezto:module:ssh:load' identities 'id_ecdsa_fei' 'id_rsa_phabricator' 'id_rsa_git' 'id_rsa_tihlde' 'id_rsa' 'id_ecdsa'
 zstyle ':prezto:module:git:status:ignore' submodules 'all'
 zstyle ':prezto:module:pacman' frontend 'pacaur'
-#zstyle ':prezto:module:prompt' theme 'frost'
 
-zplug 'djui/alias-tips'
-zplug 'rimraf/k'
-zplug 'skx/sysadmin-util'
-zplug 'joel-porquet/zsh-dircolors-solarized'
-zplug 'chrissicool/zsh-256color'
-zplug 'zsh-users/zsh-completions'
-zplug 'zsh-users/zsh-autosuggestions'
-zplug 'srijanshetty/zsh-pip-completion'
-zplug 'bbenne10/goenv'
+zplug 'sparsick/ansible-zsh', from:github
+zplug 'arzzen/calc.plugin.zsh', from:github
+zplug 'zuxfoucault/colored-man-pages_mod', from:github
+zplug 'djui/alias-tips', from:github
+zplug 'rimraf/k', from:github
+zplug 'skx/sysadmin-util', from:github
+zplug 'joel-porquet/zsh-dircolors-solarized', from:github
+zplug 'chrissicool/zsh-256color', from:github
+zplug 'zsh-users/zsh-completions', from:github
+zplug 'zsh-users/zsh-autosuggestions', from:github
+zplug 'srijanshetty/zsh-pip-completion', from:github
+zplug 'bbenne10/goenv', from:github
 zplug 'mafredri/zsh-async', from:github
 zplug 'tomfrost/frost-zsh-prompt', use:frost.zsh, from:github, as:theme
-zplug 'zsh-users/zsh-syntax-highlighting'
-zplug 'zsh-users/zsh-history-substring-search'
+zplug 'zsh-users/zsh-syntax-highlighting', from:github
+zplug 'zsh-users/zsh-history-substring-search', from:github
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 
