@@ -70,7 +70,6 @@ zstyle ":prezto:module:pacman" frontend "pacaur"
 zplug "plugins/command-not-found",   from:oh-my-zsh, ignore:oh-my-zsh.sh
 zplug "plugins/virtualenv", from:oh-my-zsh, ignore:oh-my-zsh.sh
 zplug "plugins/virtualenvwrapper", from:oh-my-zsh, ignore:oh-my-zsh.sh
-zplug "plugins/autoenv", from:oh-my-zsh, ignore:oh-my-zsh.sh
 
 zplug "mrowa44/emojify", as:command
 
@@ -90,7 +89,7 @@ zplug "mafredri/zsh-async", from:github
 zplug "caarlos0/zsh-mkc", from:github
 zplug "b4b4r07/enhancd", from:github
 zplug "tomfrost/frost-zsh-prompt", use:frost.zsh, from:github, as:theme
-zplug "sharat87/autoenv", from:github
+zplug "Tarrasch/zsh-autoenv", from:github
 
 # zsh-syntax-highlighting must be loaded before substring-search
 zplug "zsh-users/zsh-syntax-highlighting", from:github
