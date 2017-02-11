@@ -70,6 +70,7 @@ zstyle ":prezto:module:pacman" frontend "pacaur"
 zplug "plugins/command-not-found",   from:oh-my-zsh, ignore:oh-my-zsh.sh
 zplug "plugins/virtualenv", from:oh-my-zsh, ignore:oh-my-zsh.sh
 zplug "plugins/virtualenvwrapper", from:oh-my-zsh, ignore:oh-my-zsh.sh
+zplug "plugins/autoenv", from:oh-my-zsh, ignore:oh-my-zsh.sh
 
 zplug "mrowa44/emojify", as:command
 
