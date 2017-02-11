@@ -43,48 +43,59 @@ fi
 source ~/.zplug/init.zsh
 
 # Any  Prezto modules needs to be loaded first
-zplug 'modules/helper', from:prezto
-zplug 'modules/git', from:prezto
-zplug 'modules/python', from:prezto
-zplug 'modulez/pacman', from:prezto, if:"(( $+commands[pacman] ))"
-zplug 'modules/command-not-found', from:prezto
-zplug 'modules/dpkg', from:prezto, if:"(( $+commands[dpkg] ))"
-zplug 'modules/dnf', from:prezto, if:"(( $+commands[dnf] ))"
-zplug 'modules/gpg', from:prezto
-zplug 'modules/ssh', from:prezto
-zplug 'modules/utility', from:prezto
-zplug 'modules/editor', from:prezto
-zplug 'modules/terminal', from:prezto
-zplug 'modules/tmux', from:prezto, if:"(( $+commands[tmux] ))"
-zplug 'modules/yum', from:prezto, if:"(( $+commands[yum] ))"
-zplug 'modules/spectrum', from:prezto
-zplug 'modules/history', from:prezto
-zplug 'modules/directory', from:prezto
+zplug "modules/helper", from:prezto
+zplug "modules/git", from:prezto
+zplug "modules/python", from:prezto
+zplug "modulez/pacman", from:prezto, if:"(( $+commands[pacman] ))"
+zplug "modules/dpkg", from:prezto, if:"(( $+commands[dpkg] ))"
+zplug "modules/dnf", from:prezto, if:"(( $+commands[dnf] ))"
+zplug "modules/gpg", from:prezto
+zplug "modules/ssh", from:prezto
+zplug "modules/utility", from:prezto
+zplug "modules/editor", from:prezto
+zplug "modules/terminal", from:prezto
+zplug "modules/tmux", from:prezto, if:"(( $+commands[tmux] ))"
+zplug "modules/yum", from:prezto, if:"(( $+commands[yum] ))"
+zplug "modules/spectrum", from:prezto
+zplug "modules/history", from:prezto
+zplug "modules/directory", from:prezto
 
 
-zstyle ':prezto:module:editor' key-bindings 'vi'
-zstyle ':prezto:module:editor' dot-expansion 'yes'
-zstyle ':prezto:module:ssh:load' identities 'id_ecdsa_fei' 'id_rsa_phabricator' 'id_rsa_git' 'id_rsa_tihlde' 'id_rsa' 'id_ecdsa'
-zstyle ':prezto:module:git:status:ignore' submodules 'all'
-zstyle ':prezto:module:pacman' frontend 'pacaur'
+zstyle ":prezto:module:editor" key-bindings "vi"
+zstyle ":prezto:module:editor" dot-expansion "yes"
+zstyle ":prezto:module:ssh:load" identities "id_ecdsa_fei" "id_rsa_git" "id_rsa_tihlde" "id_rsa" "id_ecdsa"
+zstyle ":prezto:module:git:status:ignore" submodules "all"
+zstyle ":prezto:module:pacman" frontend "pacaur"
 
-zplug 'sparsick/ansible-zsh', from:github
-zplug 'arzzen/calc.plugin.zsh', from:github
-zplug 'zuxfoucault/colored-man-pages_mod', from:github
-zplug 'djui/alias-tips', from:github
-zplug 'rimraf/k', from:github
-zplug 'skx/sysadmin-util', from:github
-zplug 'joel-porquet/zsh-dircolors-solarized', from:github
-zplug 'chrissicool/zsh-256color', from:github
-zplug 'zsh-users/zsh-completions', from:github
-zplug 'zsh-users/zsh-autosuggestions', from:github
-zplug 'srijanshetty/zsh-pip-completion', from:github
-zplug 'bbenne10/goenv', from:github
-zplug 'mafredri/zsh-async', from:github
-zplug 'tomfrost/frost-zsh-prompt', use:frost.zsh, from:github, as:theme
-zplug 'zsh-users/zsh-syntax-highlighting', from:github
-zplug 'zsh-users/zsh-history-substring-search', from:github
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+zplug "plugins/command-not-found",   from:oh-my-zsh, ignore:oh-my-zsh.sh
+zplug "plugins/virtualenv", from:oh-my-zsh, ignore:oh-my-zsh.sh
+zplug "plugins/virtualenvwrapper", from:oh-my-zsh, ignore:oh-my-zsh.sh
+
+zplug "mrowa44/emojify", as:command
+
+zplug "sparsick/ansible-zsh", from:github
+zplug "arzzen/calc.plugin.zsh", from:github
+zplug "djui/alias-tips", from:github
+zplug "rimraf/k", from:github
+zplug "skx/sysadmin-util", from:github
+zplug "zlsun/solarized-man", from:github
+zplug "joel-porquet/zsh-dircolors-solarized", from:github
+zplug "chrissicool/zsh-256color", from:github
+zplug "zsh-users/zsh-completions", from:github
+zplug "zsh-users/zsh-autosuggestions", from:github
+zplug "srijanshetty/zsh-pip-completion", from:github
+zplug "bbenne10/goenv", from:github
+zplug "mafredri/zsh-async", from:github
+zplug "caarlos0/zsh-mkc", from:github
+zplug "b4b4r07/enhancd", from:github
+zplug "tomfrost/frost-zsh-prompt", use:frost.zsh, from:github, as:theme
+zplug "sharat87/autoenv", from:github
+
+# zsh-syntax-highlighting must be loaded before substring-search
+zplug "zsh-users/zsh-syntax-highlighting", from:github
+zplug "zsh-users/zsh-history-substring-search", from:github
+
+zplug "zplug/zplug", hook-build:"zplug --self-manage"
 
 
 # Install plugins if there are plugins that have not been installed
