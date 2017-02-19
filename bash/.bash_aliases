@@ -13,11 +13,15 @@ alias fgrep='fgrep --color=auto'
 
 alias mkdir='mkdir -pv'
 alias mount='mount |column -t'
-alias ports='netstat -tulanp | ccze -A'
+alias ports='netstat -tulanp | ccze -A -o nolookups'
 
 
 # do not delete / or prompt if deleting more than 3 files at a time #
 alias rm='rm -I --preserve-root'
+
+if [[ -x /usr/bin/nvim || -x /usr/local/bin/nvim ]]; then
+    alias vim=nvim
+fi
 
 
 # Find a host in $HOME/.hosts, eventually with SSH options $2 

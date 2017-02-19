@@ -1,20 +1,5 @@
-#
-# Executes commands at the start of an interactive session.
-
-# Source Prezto.
-#if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-#  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-#fi
-
-# Customize to your needs...
-
-
-if [[ -s "~/.dotfiles/zsh/tmuxinator.zsh" ]]; then
-    source "~/.dotfiles/zsh/tmuxinator.zsh"
-fi
-
-if [[ -x /usr/bin/vim || -x /usr/local/bin/vim || -x /usr/bin/nvim || -x /usr/local/bin/nvim ]]; then
-
+#if [[ -x /usr/bin/vim || -x /usr/local/bin/vim || -x /usr/bin/nvim || -x /usr/local/bin/nvim ]]; then
+if (( $+commands[nvim] )) || (( $+commands[vim] )); then
     mkdir -p ~/.dein/repos/github.com/Shougo/
     if [ ! -d ~/.dein/repos/github.com/Shougo/dein.vim ]; then
         echo "Could not find dein plugin manager, downloading..."
@@ -22,23 +7,11 @@ if [[ -x /usr/bin/vim || -x /usr/local/bin/vim || -x /usr/bin/nvim || -x /usr/lo
     fi
 fi
 
-if [[ -x /usr/bin/nvim || -x /usr/local/bin/nvim ]]; then
-    mkdir -p ${ZDOTDIR:-$HOME}/.config/nvim
-    if [[ ! -h ${ZDOTDIR:-$HOME}/.config/nvim/init.vim ]]; then
-        ln -s ${ZDOTDIR:-$HOME}/.vimrc ${ZDOTDIR:-$HOME}/.config/nvim/init.vim
-    fi
-
-# True colors for NeoVim
-export NVIM_TUI_ENABLE_TRUE_COLOR=1
-
-fi
-
 
 if [ ! -d ~/.zplug ]; then
     echo "Could not find zplug plugin manager, downloading..."
     git clone https://github.com/b4b4r07/zplug ~/.zplug
 fi
-
 
 source ~/.zplug/init.zsh
 
@@ -99,7 +72,7 @@ zplug "zplug/zplug", hook-build:"zplug --self-manage"
 
 
 # Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
+if ! zplug check; then
     printf "Install? [y/N]: "
     if read -q; then
         echo; zplug install
@@ -109,8 +82,6 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load
 
-
-FROST_SHOW_CLOCK=0
 
 setupsolarized dircolors.ansi-dark
 
@@ -179,12 +150,6 @@ zstyle ':filter-select' max-lines 10
 zstyle ':filter-select' rotate-list yes
 zstyle ':filter-select' case-insensitive yes # enable case-insensitive search
 
-
-# Aliases
-alias dotup='git -C ~/.dotfiles submodule update --init --recursive'
-if [[ -x /usr/bin/nvim || -x /usr/local/bin/nvim ]]; then
-  alias vim=nvim
-fi
 
 # Load aliases
 if [[ -s ~/.bash_aliases ]]; then
