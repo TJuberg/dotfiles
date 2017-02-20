@@ -114,6 +114,10 @@ call dein#add('mattn/gist-vim')
 call dein#add('scrooloose/nerdcommenter')
 call dein#add('godlygeek/tabular')
 
+" Ansible
+call dein#add('pearofducks/ansible-vim')
+
+
 " *complete
 if !has('nvim')
 	call dein#add('Shougo/neocomplete.vim')
