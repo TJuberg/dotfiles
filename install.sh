@@ -40,6 +40,7 @@ setup_gitconfig () {
 
         git_push=simple
 
+        mkdir -p git
         sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" -e "s/GIT_PUSH/$git_push/g" templates/gitconfig.template > git/.gitconfig
 
         success 'gitconfig'
