@@ -43,3 +43,14 @@ function getHostAtLine() {
     echo "ssh -p $port $2 $user@$host"
 }
 
+# Ansible aliases
+alias a='ansible'
+alias ap='ansible-playbook'
+alias al='ansible-pull'
+alias avc='ansible-vault create'
+alias ave='ansible-vault edit'
+alias avr='ansible-vault rekey'
+alias avenc='ansible-vault encrypt'
+alias avdec='ansible-vault decrypt'
+alias avv='ansible-vault view'
+

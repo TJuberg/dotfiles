@@ -7,7 +7,9 @@ if [[ -s ~/.zshrc_plugins ]]; then
     source ~/.zshrc_plugins
 fi
 
-
+if [[ -s ~/.zshrc_options ]]; then                                                                                                     
+    source ~/.zshrc_options
+fi
 
 setupsolarized dircolors.ansi-dark
 
@@ -30,9 +32,6 @@ bindkey -M emacs '^N' history-substring-search-down
 # bind k and j for VI mode
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
-
-# Ignore ALL duplicates in history
-setopt HIST_IGNORE_ALL_DUPS
 
 # end zsh_history-substring-search
 
@@ -69,8 +68,3 @@ zstyle ':filter-select' case-insensitive yes # enable case-insensitive search
 
 
 
-# Keep all history
-setopt inc_append_history
-
-# Lazy cd
-setopt auto_cd

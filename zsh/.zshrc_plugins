@@ -16,39 +16,39 @@ fi
 source ~/.zplug/init.zsh
 
 # Any  Prezto modules needs to be loaded first
-zplug "modules/helper", from:prezto
+#plug "modules/helper", from:prezto
+
+# https://github.com/sorin-ionescu/prezto/tree/master/modules/git
 zplug "modules/git", from:prezto
+
+# https://github.com/sorin-ionescu/prezto/tree/master/modules/python
 zplug "modules/python", from:prezto
+
+# https://github.com/sorin-ionescu/prezto/tree/master/modules/pacman
 zplug "modulez/pacman", from:prezto, if:"(( $+commands[pacman] ))"
+
+# https://github.com/sorin-ionescu/prezto/tree/master/modules/dpkg
 zplug "modules/dpkg", from:prezto, if:"(( $+commands[dpkg] ))"
+
+# https://github.com/sorin-ionescu/prezto/tree/master/modules/dnf
 zplug "modules/dnf", from:prezto, if:"(( $+commands[dnf] ))"
+
+# https://github.com/sorin-ionescu/prezto/blob/master/modules/gpg
 zplug "modules/gpg", from:prezto
+
+# https://github.com/sorin-ionescu/prezto/tree/master/modules/ssh
 zplug "modules/ssh", from:prezto
+
+# https://github.com/sorin-ionescu/prezto/tree/master/modules/utility
 zplug "modules/utility", from:prezto
-zplug "modules/editor", from:prezto
-zplug "modules/terminal", from:prezto
 zplug "modules/tmux", from:prezto, if:"(( $+commands[tmux] ))"
 zplug "modules/yum", from:prezto, if:"(( $+commands[yum] ))"
-zplug "modules/spectrum", from:prezto
-zplug "modules/history", from:prezto
-zplug "modules/directory", from:prezto
 
-
-zstyle ":prezto:module:editor" key-bindings "vi"
-zstyle ":prezto:module:editor" dot-expansion "yes"
 zstyle ":prezto:module:ssh:load" identities "id_ecdsa_fei" "id_rsa_git" "id_rsa_tihlde" "id_rsa" "id_ecdsa"
 zstyle ":prezto:module:git:status:ignore" submodules "all"
 zstyle ":prezto:module:pacman" frontend "pacaur"
 
-
 zplug "plugins/command-not-found",   from:oh-my-zsh, ignore:oh-my-zsh.sh
-zplug "plugins/virtualenv", from:oh-my-zsh, ignore:oh-my-zsh.sh
-zplug "plugins/virtualenvwrapper", from:oh-my-zsh, ignore:oh-my-zsh.sh
-
-zplug "mrowa44/emojify", as:command
-
-zplug "sparsick/ansible-zsh", from:github
-zplug "arzzen/calc.plugin.zsh", from:github
 zplug "djui/alias-tips", from:github
 zplug "rimraf/k", from:github
 zplug "skx/sysadmin-util", from:github
@@ -66,13 +66,14 @@ zplug "b4b4r07/enhancd", from:github
 zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 zplug "Tarrasch/zsh-autoenv", from:github
 
+# Let zplug manage itself
+zplug "zplug/zplug", hook-build:"zplug --self-manage"
+
+
 # zsh-syntax-highlighting must be loaded before substring-search
 # And these two really should be at the end of the loading list
 zplug "zsh-users/zsh-syntax-highlighting", from:github
 zplug "zsh-users/zsh-history-substring-search", from:github
-
-# Let zplug manage itself
-zplug "zplug/zplug", hook-build:"zplug --self-manage"
 
 
 # Install plugins if there are plugins that have not been installed
