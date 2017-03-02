@@ -3,6 +3,10 @@ if [[ -s ~/.bash_aliases ]]; then
     source ~/.bash_aliases                                                                                                                                                                                         
 fi    
 
+if [[ -s ~/.zshrc_local ]]; then                                                                             
+    source ~/.zshrc_local                                                                                    
+fi         
+
 if [[ -s ~/.zshrc_plugins ]]; then
     source ~/.zshrc_plugins
 fi
