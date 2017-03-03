@@ -16,14 +16,14 @@ fi
 #
 # Editors
 #
-if [[ -x /usr/bin/nvim || -x /usr/local/bin/nvim ]]; then
-  myeditor=nvim
-elif [[ -x /usr/bin/vim || -x /usr/local/bin/vim ]]; then
-  myeditor=vim
-elif [[ -x /usr/bin/nano || -x /usr/local/bin/nano ]]; then
-  myeditor=nano
+if (( $+commands[nvim] )); then
+  myeditor='/usr/bin/env nvim'
+elif (( $+commands[vim] )); then
+  myeditor='/usr/bin/env vim'
+elif (( $+commands[nano] )); then
+  myeditor='/usr/bin/env nano'
 else
-  myeditor=vi
+  myeditor='/usr/bin/env vi'
 fi
 
 export EDITOR=$myeditor
