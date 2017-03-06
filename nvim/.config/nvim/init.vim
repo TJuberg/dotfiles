@@ -184,7 +184,9 @@ let g:gruvbox_italic=1
 colorscheme gruvbox
 set background=dark    " Setting dark mode
 
-set termguicolors
+if has('nvim')
+    set termguicolors
+endif
 
 if !has('nvim')
     " Neocomplete
