@@ -39,8 +39,8 @@ font-3 = Siji:size=10;0
 font-4 = Monospace:size=10;0
 
 modules-center = i3
-modules-left = disk-root cpu memory
-modules-right = wireless-network
+modules-left = cpu memory
+modules-right = volume wired-network wireless-network date powermenu
 
 [module/cpu]
 type = internal/cpu
@@ -72,32 +72,23 @@ bar-load-empty-foreground = #444444
 
 [module/date]
 type = internal/date
-date =    %%{F#999}%a %e %b%%{F-}  %%{F#fff}%H:%M%%{F-}
+date = %%{F#999}%a %e %b%%{F-}  %%{F#fff}%H:%M%%{F-}
 
 [module/i3]
 type = internal/i3
 
 pin-workspaces = true
 
-ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
+ws-icon-0 = 1;
+ws-icon-1 = 2;2
+ws-icon-2 = 3;
+ws-icon-3 = 4;4
+ws-icon-4 = 5;5
 ws-icon-5 = 6;6
 ws-icon-6 = 7;7
 ws-icon-7 = 8;8
 ws-icon-8 = 9;9
 ws-icon-9 = 10;0
-ws-icon-10 = 11;
-ws-icon-11 = 12;
-ws-icon-12 = 13;
-ws-icon-13 = 14;O
-ws-icon-14 = 15;P
-ws-icon-15 = 16;J
-ws-icon-16 = 17;K
-ws-icon-17 = 18;
-ws-icon-18 = 19;
 ws-icon-default = ♟
 
 label-focused = %icon%
@@ -153,37 +144,6 @@ bar-used-fill = ▐
 bar-used-empty = ▐
 bar-used-empty-foreground = #444444
 
-[module/mpd]
-type = internal/mpd
-clickable_progress = true
-format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time>  <label-song>
-
-; label-song = %artist% - %album% - %title%
-label-song = %artist% - %title%
-
-icon-play = 
-icon-pause = 
-icon-stop = 
-icon-prev = 
-icon-next = 
-icon-random = 
-icon-repeat = 
-
-toggle_on-foreground =
-toggle_off-foreground = #55
-
-bar-progress-width = 10
-bar-progress-format = %{A4:mpdseek+2: A5:mpdseek-2:}%fill%%indicator%%empty%%{A A}
-bar-progress-indicator = |
-bar-progress-indicator-foreground = #ff
-bar-progress-indicator-font = 3
-bar-progress-fill = ─
-bar-progress-fill-foreground = #bb
-bar-progress-fill-font = 3
-bar-progress-empty = ─
-bar-progress-empty-font = 3
-bar-progress-empty-foreground = #44
-
 [module/powermenu]
 type = custom/menu
 
@@ -215,14 +175,6 @@ menu-2-0-exec = sudo poweroff
 menu-2-1 = Cancel
 menu-2-1-foreground = #fba922
 menu-2-1-exec = menu_open-0
-
-[module/tetrane-login]
-type = custom/text
-
-content = 
-
-click-left = bash ~/.i3/i3blocks/tetrane login
-click-right = bash ~/.i3/i3blocks/tetrane logout
 
 [module/volume]
 type = internal/volume
@@ -265,7 +217,7 @@ ping_interval = 10
 
 format-connected = <ramp-signal> <label-connected>
 label-connected = %essid%
-label-disconnected =    not connected
+label-disconnected = WL not connected
 label-disconnected-foreground = #66
 
 ramp-signal-0 = 
@@ -277,7 +229,7 @@ ramp-signal-4 = 
 animation-packetloss-0 = 
 animation-packetloss-0-foreground = #ffa64c
 animation-packetloss-1 = 
-animation-packetloss-1-foreground = ${bar/top.foreground}
+animation-packetloss-1-foreground = ${bar/bar1.foreground}
 animation-packetloss-framerate_ms = 500
 
 ; vim:ft=dosini
