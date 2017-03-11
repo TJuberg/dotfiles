@@ -114,6 +114,10 @@ call dein#add('mattn/gist-vim')
 call dein#add('scrooloose/nerdcommenter')
 call dein#add('godlygeek/tabular')
 
+" i3
+call dein#add('PotatoesMaster/i3-vim-syntax',
+            \{'on_ft': ['i3']})
+
 " Ansible
 call dein#add('pearofducks/ansible-vim')
 

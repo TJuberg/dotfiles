@@ -15,6 +15,10 @@ if [[ -s ~/.zshrc_options ]]; then
     source ~/.zshrc_options
 fi
 
+if [[ -s ~/.travis/travis.sh ]]; then
+    source ~/.travis/travis.sh
+fi
+
 setupsolarized dircolors.ansi-dark
 
 # zsh-history-substring-search
@@ -72,3 +76,6 @@ zstyle ':filter-select' case-insensitive yes # enable case-insensitive search
 
 
 
+
+# added by travis gem
+[ -f /home/tjuberg/.travis/travis.sh ] && source /home/tjuberg/.travis/travis.sh
