@@ -5,9 +5,6 @@
 [bar/bar1]
 monitor = ${env:MONITOR}
 monitor-fallback =
-
-
-
 override-redirect = true
 wm-restack = i3
 
@@ -19,13 +16,9 @@ tray-background = #cc131313
 background = #cc131313
 foreground = #ccD0D0D0
 linecolor = ${bar/bar1.background}
-
 locale = nb_NO.UTF-8
-
 tray-position = right
-
 spacing = 4
-;spacing = 2
 lineheight = 2
 padding-left = 2
 padding-right = 5
@@ -36,8 +29,34 @@ font-0 = "Input Mono:size=8;0"
 font-1 = "FontAwesome:size=10;0"
 
 modules-center = i3
+modules-left = 
+modules-right = volume date powermenu
+
+[bar/bottom]
+monitor = ${env:MONITOR}                                                                                                                                                                                                        
+monitor-fallback =                                                                                                                                                                                                              
+override-redirect = true                                                                                                                                                                                                        
+wm-restack = i3   
+
+background = #cc131313                                                                                                                                                                                                              
+foreground = #ccD0D0D0                                                                                                                                                                                                              
+linecolor = ${bar/bottom.background}   
+
+bottom = true
+
+spacing = 4
+lineheight = 2
+padding-left = 2
+padding-right = 5
+module-margin-left = 3
+module-margin-right = 3
+
+font-0 = "Input Mono:size=8;0"
+font-1 = "FontAwesome:size=10;0"
+
+modules-center = 
 modules-left = cpu memory
-modules-right = volume wired-network wireless-network date powermenu
+modules-right = wired-network wireless-network
 
 [module/cpu]
 type = internal/cpu

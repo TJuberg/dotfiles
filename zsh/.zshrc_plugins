@@ -63,7 +63,7 @@ zplug "mafredri/zsh-async", from:github
 zplug "caarlos0/zsh-mkc", from:github
 zplug "b4b4r07/enhancd", from:github
 #zplug "tomfrost/frost-zsh-prompt", use:frost.zsh, from:github, as:theme
-zplug "bhilburn/powerlevel9k", at:next, use:powerlevel9k.zsh-theme
+zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 zplug "Tarrasch/zsh-autoenv", from:github
 
 # Let zplug manage itself
