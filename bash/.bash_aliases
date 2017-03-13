@@ -1,9 +1,9 @@
 #! /bin/bash
 
 # General aliases
-alias l="ls --color=auto"
-alias ll="ls -lh --color=auto"
-alias lla="ls -lah --color=auto"
+alias l="ls --color=always"
+alias ll="ls -lh --color=always"
+alias lla="ls -lah --color=always"
 
 alias k="k --no-vcs -h"
 alias kk="k -ha --no-vcs"
@@ -13,9 +13,9 @@ alias kg="k -ha"
 alias updateupgrade="sudo aptitude update && sudo aptitude safe-upgrade"
 
 ## Colorize the grep command output for ease of use (good for log files)##
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
+alias grep='grep --color=always'
+alias egrep='egrep --color=always'
+alias fgrep='fgrep --color=always'
 
 alias mkdir='mkdir -pv'
 alias mount='mount |column -t'

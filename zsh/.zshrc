@@ -19,7 +19,7 @@ if [[ -s ~/.travis/travis.sh ]]; then
     source ~/.travis/travis.sh
 fi
 
-setupsolarized dircolors.ansi-dark
+setupsolarized dircolors.256dark
 
 # zsh-history-substring-search
 #

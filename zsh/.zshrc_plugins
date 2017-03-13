@@ -19,10 +19,10 @@ source ~/.zplug/init.zsh
 #plug "modules/helper", from:prezto
 
 # https://github.com/sorin-ionescu/prezto/tree/master/modules/git
-zplug "modules/git", from:prezto
+zplug "modules/git", from:prezto, if:"(( $+commands[git] ))"
 
 # https://github.com/sorin-ionescu/prezto/tree/master/modules/python
-zplug "modules/python", from:prezto
+zplug "modules/python", from:prezto, if:"(( $+commands[python] ))"
 
 # https://github.com/sorin-ionescu/prezto/tree/master/modules/pacman
 zplug "modulez/pacman", from:prezto, if:"(( $+commands[pacman] ))"
@@ -34,10 +34,10 @@ zplug "modules/dpkg", from:prezto, if:"(( $+commands[dpkg] ))"
 zplug "modules/dnf", from:prezto, if:"(( $+commands[dnf] ))"
 
 # https://github.com/sorin-ionescu/prezto/blob/master/modules/gpg
-zplug "modules/gpg", from:prezto
+zplug "modules/gpg", from:prezto, if:"(( $+commands[gpg-agent] ))"
 
 # https://github.com/sorin-ionescu/prezto/tree/master/modules/ssh
-zplug "modules/ssh", from:prezto
+zplug "modules/ssh", from:prezto, if:"(( $+commands[ssh] ))"
 
 # https://github.com/sorin-ionescu/prezto/tree/master/modules/utility
 zplug "modules/utility", from:prezto
