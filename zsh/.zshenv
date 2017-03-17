@@ -37,8 +37,8 @@ POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="╭──"
 POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="╰─➤ "
 POWERLEVEL9K_MODE='awesome-fontconfig'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context root_indicator dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv time load ram battery)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context vi_mode ssh root_indicator dir_writeable dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv pyenv time battery os_icon)
 POWERLEVEL9K_TIME_FORMAT="%D{%H:%M \UE12E}"
 POWERLEVEL9K_DIR_HOME_FOREGROUND="231"
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="231"
@@ -56,6 +56,7 @@ ZSH_HIGHLIGHT_PATTERNS+=('shutdown*' 'fg=white,bold,bg=red')
 ZSH_HIGHLIGHT_PATTERNS+=('halt*' 'fg=white,bold,bg=red')
 ZSH_HIGHLIGHT_PATTERNS+=('sudo *' 'fg=white,bold,bg=yellow')
 ZSH_HIGHLIGHT_PATTERNS+=('sudoedit *' 'fg=white,bold,bg=yellow')
+
 
 #
 # Browser
