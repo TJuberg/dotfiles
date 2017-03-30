@@ -7,6 +7,11 @@ if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "$HOME/.zprofile" ]]; then
   source "$HOME/.zprofile"
 fi
 
+# Ensure we have the ssh controlmasters folder
+if [ ! -d ~/.ssh/controlmasters ]; then
+    mkdir -p ~/.ssh/controlmasters
+fi
+
 ###############################################################################
 # Virtualenv
 ###############################################################################
