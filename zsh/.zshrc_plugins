@@ -1,3 +1,5 @@
+# vim:ft=zplug
+
 # If we have Vim or Neovim, we want to install dein for plugin management
 if (( $+commands[nvim] )) || (( $+commands[vim] )); then
     mkdir -p ~/.dein/repos/github.com/Shougo/
@@ -66,7 +68,7 @@ zplug "mafredri/zsh-async", from:github
 zplug "caarlos0/zsh-mkc", from:github
 zplug "b4b4r07/enhancd", from:github
 #zplug "tomfrost/frost-zsh-prompt", use:frost.zsh, from:github, as:theme
-zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme, from:github, at:next
 zplug "Tarrasch/zsh-autoenv", from:github
 
 # Let zplug manage itself

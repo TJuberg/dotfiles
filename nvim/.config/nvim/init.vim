@@ -157,6 +157,8 @@ call dein#add('glench/vim-jinja2-syntax')
 " Misc
 call dein#add('bling/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
+call dein#add('zplug/vim-zplug',
+                \{'on_ft': ['zplug']})
 
 " All of your Plugins must be added before the following line
 call dein#end()
