@@ -22,6 +22,9 @@ alias mount='mount |column -t'
 alias ports='netstat -tulanp | ccze -A -o nolookups'
 
 
+# Stay sane and prevent ccze from causing slowdown or logspam in the case of sssd debugging
+alias ccze='ccze -A -o nolookups'
+
 # do not delete / or prompt if deleting more than 3 files at a time #
 alias rm='rm -I --preserve-root'
 

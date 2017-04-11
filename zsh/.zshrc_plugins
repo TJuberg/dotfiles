@@ -43,7 +43,7 @@ zplug "modules/ssh", from:prezto, if:"(( $+commands[ssh] ))"
 
 # https://github.com/sorin-ionescu/prezto/tree/master/modules/utility
 zplug "modules/utility", from:prezto
-zplug "modules/editor", from:prezto
+#zplug "modules/editor", from:prezto
 zplug "modules/tmux", from:prezto, if:"(( $+commands[tmux] ))"
 zplug "modules/yum", from:prezto, if:"(( $+commands[yum] ))"
 
