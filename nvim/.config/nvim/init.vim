@@ -121,6 +121,14 @@ call dein#add('PotatoesMaster/i3-vim-syntax',
 " Ansible
 call dein#add('pearofducks/ansible-vim')
 
+" Surround
+call dein#add('tpope/vim-surround')
+
+" Commentary
+call dein#add('tpope/vim-commentary')
+
+" Move
+call dein#add('matze/vim-move')
 
 " *complete
 if !has('nvim')

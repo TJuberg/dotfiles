@@ -48,7 +48,7 @@ zplug "modules/tmux", from:prezto, if:"(( $+commands[tmux] ))"
 zplug "modules/yum", from:prezto, if:"(( $+commands[yum] ))"
 
 # Prezto settings
-zstyle ":prezto:module:ssh:load" identities "id_ecdsa_fei" "id_rsa_git" "id_rsa_tihlde" "id_rsa" "id_ecdsa"
+zstyle ":prezto:module:ssh:load" identities "id_ed25519" "id_ed25519_git"
 zstyle ":prezto:module:git:status:ignore" submodules "all"
 zstyle ":prezto:module:pacman" frontend "pacaur"
 zstyle ":prezto:module:editor" key-bindings "vi"
