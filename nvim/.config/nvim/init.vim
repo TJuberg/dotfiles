@@ -49,11 +49,11 @@ call dein#add('Lokaltog/vim-easymotion')
 "Plugin 'pythoncomplete'
 call dein#add('andviro/flake8-vim',
             \{'on_ft': ['py']})
-call dein#add('python.vim',
+call dein#add('vim-scripts/python.vim',
             \{'on_ft': ['py']})
-call dein#add('python_match.vim',
+call dein#add('vim-scripts/python_match.vim',
             \{'on_ft': ['py']})
-call dein#add('pythoncomplete',
+call dein#add('vim-scripts/pythoncomplete',
             \{'on_ft': ['py']})
 
 " Javascript awesomeness
@@ -155,8 +155,8 @@ call dein#add('dojoteef/neomake-autolint')
 
 
 " vim-scripts repos
-call dein#add('L9')
-call dein#add('FuzzyFinder')
+call dein#add('vim-scripts/L9')
+call dein#add('vim-scripts/FuzzyFinder')
 
 " Saltstack and jinja
 call dein#add('saltstack/salt-vim')
@@ -301,7 +301,6 @@ set so=14
 
 " For when you forget to sudo.. Really Write the file.
 cmap w!! w !sudo tee % >/dev/null
-
 
 " strip whitespace {
 function! StripTrailingWhitespace()
