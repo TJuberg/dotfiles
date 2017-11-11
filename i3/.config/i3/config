@@ -237,7 +237,7 @@ mode "$mode_gaps_outer" {
     bindsym Escape mode "default"
 }
 
-
+for_window [class="^.*"] border pixel 1
 
 # autostart
 exec_always --no-startup-id nitrogen --restore
