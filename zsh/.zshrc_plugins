@@ -22,12 +22,15 @@ source ~/.zplug/init.zsh
 
 # https://github.com/sorin-ionescu/prezto/tree/master/modules/git
 zplug "modules/git", from:prezto, if:"(( $+commands[git] ))"
+zstyle ":prezto:module:git:status:ignore" submodules "all"
 
 # https://github.com/sorin-ionescu/prezto/tree/master/modules/python
 zplug "modules/python", from:prezto, if:"(( $+commands[python] ))"
+zstyle ':prezto:module:python:virtualenv' auto-switch 'yes'
 
 # https://github.com/sorin-ionescu/prezto/tree/master/modules/pacman
 zplug "modulez/pacman", from:prezto, if:"(( $+commands[pacman] ))"
+zstyle ':prezto:module:pacman' frontend 'pacaur'
 
 # https://github.com/sorin-ionescu/prezto/tree/master/modules/dpkg
 zplug "modules/dpkg", from:prezto, if:"(( $+commands[dpkg] ))"
@@ -40,27 +43,43 @@ zplug "modules/gpg", from:prezto, if:"(( $+commands[gpg-agent] ))"
 
 # https://github.com/sorin-ionescu/prezto/tree/master/modules/ssh
 zplug "modules/ssh", from:prezto, if:"(( $+commands[ssh] ))"
+zstyle ":prezto:module:ssh:load" identities "id_ed25519" "id_ed25519_git"
 
 # https://github.com/sorin-ionescu/prezto/tree/master/modules/utility
 zplug "modules/utility", from:prezto
+
 #zplug "modules/editor", from:prezto
+zstyle ":prezto:module:editor" key-bindings "vi" 
+
+# https://github.com/sorin-ionescu/prezto/tree/master/modules/tmux
 zplug "modules/tmux", from:prezto, if:"(( $+commands[tmux] ))"
+
+# https://github.com/sorin-ionescu/prezto/tree/master/modules/yum
 zplug "modules/yum", from:prezto, if:"(( $+commands[yum] ))"
 
-# Prezto settings
-zstyle ":prezto:module:ssh:load" identities "id_ed25519" "id_ed25519_git"
-zstyle ":prezto:module:git:status:ignore" submodules "all"
-zstyle ":prezto:module:pacman" frontend "pacaur"
-zstyle ":prezto:module:editor" key-bindings "vi"
-
+# https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/command-not-found/command-not-found.plugin.zsh
 zplug "plugins/command-not-found",   from:oh-my-zsh, ignore:oh-my-zsh.sh
+
+# https://github.com/djui/alias-tips
 zplug "djui/alias-tips", from:github
+
+# https://github.com/supercrabtree/k
 zplug "rimraf/k", from:github
+
+# https://github.com/skx/sysadmin-util
 zplug "skx/sysadmin-util", from:github
-zplug "zlsun/solarized-man", from:github
-zplug "joel-porquet/zsh-dircolors-solarized", from:github
+
+#zplug "zlsun/solarized-man", from:github
+
+#zplug "joel-porquet/zsh-dircolors-solarized", from:github
+
+# https://github.com/chrissicool/zsh-256color
 zplug "chrissicool/zsh-256color", from:github
+
+# https://github.com/zsh-users/zsh-completions
 zplug "zsh-users/zsh-completions", from:github
+
+# 
 zplug "zsh-users/zsh-autosuggestions", from:github
 zplug "srijanshetty/zsh-pip-completion", from:github
 zplug "bbenne10/goenv", from:github
@@ -77,7 +96,11 @@ zplug "zplug/zplug", hook-build:"zplug --self-manage"
 
 # zsh-syntax-highlighting must be loaded before substring-search
 # And these two really should be at the end of the loading list
+
+# https://github.com/zsh-users/zsh-syntax-highlighting
 zplug "zsh-users/zsh-syntax-highlighting", from:github
+
+# https://github.com/zsh-users/zsh-history-substring-search
 zplug "zsh-users/zsh-history-substring-search", from:github
 
 
