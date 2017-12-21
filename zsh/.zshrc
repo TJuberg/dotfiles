@@ -23,7 +23,7 @@ if [[ -s ~/.local/ansible/hacking/env-setup ]]; then
     source ~/.local/ansible/hacking/env-setup -q
 fi
 
-setupsolarized dircolors.256dark
+#setupsolarized dircolors.256dark
 
 # zsh-history-substring-search
 #
