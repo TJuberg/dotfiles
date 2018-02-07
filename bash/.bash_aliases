@@ -5,10 +5,8 @@ alias l="ls --color=always"
 alias ll="ls -lh --color=always"
 alias lla="ls -lah --color=always"
 
-alias k="k --no-vcs -h"
-alias kk="k -ha --no-vcs"
-alias kh="k -h --no-vcs"
-alias kg="k -ha"
+alias k="exa"
+alias kk="exa -1 -a k -ha"
 
 alias updateupgrade="sudo aptitude update && sudo aptitude safe-upgrade"
 

@@ -63,9 +63,6 @@ zplug "plugins/command-not-found",   from:oh-my-zsh, ignore:oh-my-zsh.sh
 # https://github.com/djui/alias-tips
 zplug "djui/alias-tips", from:github
 
-# https://github.com/supercrabtree/k
-zplug "rimraf/k", from:github
-
 # https://github.com/skx/sysadmin-util
 zplug "skx/sysadmin-util", from:github
 
