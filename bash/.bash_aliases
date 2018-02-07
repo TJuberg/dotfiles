@@ -6,7 +6,9 @@ alias ll="ls -lh --color=always"
 alias lla="ls -lah --color=always"
 
 alias k="exa"
-alias kk="exa -1 -a k -ha"
+alias kk="exa -a"
+alias kl="exa -l"
+alias kkl="exa -la"
 
 alias updateupgrade="sudo aptitude update && sudo aptitude safe-upgrade"
 
