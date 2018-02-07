@@ -108,8 +108,6 @@ call dein#add('scrooloose/nerdtree',
 "Plugin 'godlygeek/tabular'
 "Plugin 'Shougo/neocomplete.vim'
 
-call dein#add('justinmk/vim-syntax-extra')
-call dein#add('scrooloose/syntastic')
 call dein#add('mattn/gist-vim')
 call dein#add('scrooloose/nerdcommenter')
 call dein#add('godlygeek/tabular')
@@ -150,9 +148,12 @@ augroup end
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-call dein#add('neomake/neomake')
-call dein#add('dojoteef/neomake-autolint')
+call dein#add('w0rp/ale')
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
 
+" puppet
+call dein#add('rodjek/vim-puppet')
 
 " vim-scripts repos
 call dein#add('vim-scripts/L9')

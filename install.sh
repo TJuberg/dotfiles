@@ -50,7 +50,7 @@ setup_gitconfig () {
 install_dotfiles () {
   info 'installing dotfiles'
 
-  stow -R -S polybar pip bash git i3 nvim termite tmux vim x zsh terminfo
+  stow -R -S bash i3 nvim pip polybar terminfo termite tmux vim x zsh
 }
 
 setup_gitconfig
