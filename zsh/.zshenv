@@ -7,9 +7,9 @@ if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "$HOME/.zprofile" ]]; then
   source "$HOME/.zprofile"
 fi
 
-# Ensure we have the ssh controlmasters folder
-if [ ! -d ~/.ssh/controlmasters ]; then
-    mkdir -p ~/.ssh/controlmasters
+# Ensure we have the ssh sessions (controlmasters) folder
+if [ ! -d ~/.ssh/sessions ]; then
+    mkdir -p ~/.ssh/sessions
 fi
 
 ###############################################################################
