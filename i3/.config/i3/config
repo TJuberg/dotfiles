@@ -255,6 +255,7 @@ exec --no-startup-id dropbox
 
 # Custom Keybindings
 
-bindsym Ctrl+Mod1+l exec "slock"
+bindsym Ctrl+Mod1+l exec "~/.local/bin/lock"
+bindsym Mod1+g exec "~/.local/bin/browser"
 
 assign [class="Conky" title="whatever"] workspace 3

@@ -42,8 +42,7 @@ zplug "modules/dnf", from:prezto, if:"(( $+commands[dnf] ))"
 zplug "modules/gpg", from:prezto, if:"(( $+commands[gpg-agent] ))"
 
 # https://github.com/sorin-ionescu/prezto/tree/master/modules/ssh
-zplug "modules/ssh", from:prezto, if:"(( $+commands[ssh] ))"
-zstyle ":prezto:module:ssh:load" identities "id_ed25519" "id_ed25519_git"
+#zplug "modules/ssh", from:prezto, if:"(( $+commands[ssh] ))"
 
 # https://github.com/sorin-ionescu/prezto/tree/master/modules/utility
 zplug "modules/utility", from:prezto
@@ -84,7 +83,7 @@ zplug "mafredri/zsh-async", from:github
 zplug "caarlos0/zsh-mkc", from:github
 zplug "b4b4r07/enhancd", from:github
 #zplug "tomfrost/frost-zsh-prompt", use:frost.zsh, from:github, as:theme
-zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme, from:github, at:next
+zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme, from:github
 zplug "Tarrasch/zsh-autoenv", from:github
 
 # Let zplug manage itself

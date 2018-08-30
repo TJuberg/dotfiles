@@ -41,8 +41,8 @@ POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="╭──"
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="╰─➤ "
-POWERLEVEL9K_MODE='awesome-fontconfig'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context vi_mode ssh root_indicator dir vcs)
+POWERLEVEL9K_MODE='nerdfont-complete'
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context vi_mode ssh dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv pyenv time battery os_icon)
 POWERLEVEL9K_TIME_FORMAT="%D{%H:%M \UE12E}"
 POWERLEVEL9K_DIR_HOME_FOREGROUND="231"
@@ -99,19 +99,22 @@ export PAGER=less
 (( $+commands[locale] )) && function {
   local language
   local languageVars
+  local time
+  local timeVars
   local locale
   local localeVars
-  languages=('en_GB.utf8' 'en_US.utf8' 'nb_NO.utf8' 
+  language=('en_GB.utf8' 'en_US.utf8' 'nb_NO.utf8' 
 'C.UTF-8' 'C')
   languageVars=('LANG' 'LANGUAGE' 'LC_MESSAGES')
-  locales=('nb_NO.utf8' 'en_GB.utf8' 'en_US.utf8' 'C.UTF-8 
-C')
-  localeVars=('LC_CTYPE' 'LC_NUMERIC' 'LC_TIME' 
+  locale=('nb_NO.utf8' 'en_GB.utf8' 'en_US.utf8' 'C.UTF-8' 'C')
+  localeVars=('LC_CTYPE' 'LC_NUMERIC' 
 'LC_COLLATE' 'LC_MONETARY' 'LC_PAPER' 'LC_NAME' 
 'LC_ADDRESS' 'LC_TELEPHONE' 'LC_MEASUREMENT' 
 'LC_IDENTIFICATION')
+  timeVars=('LC_TIME')
+  time=('en_DK.utf8' 'nb_NO.utf8' 'en_GB.utf8' 'en_US.utf8' 'C.UTF-8' 'C')
 
-  for l in $languages; do
+  for l in $language; do
     if locale -a | grep -qx $l; then
       for v in $languageVars; do
         export $v=$l
@@ -120,7 +123,7 @@ C')
     fi  
   done
 
-  for l in $locales; do
+  for l in $locale; do
     if locale -a | grep -qx $l; then
       for v in $localeVars; do
         export $v=$l
@@ -128,6 +131,16 @@ C')
       break
     fi  
   done
+
+  for l in $time; do
+    if locale -a | grep -qx $l; then
+      for v in $timeVars; do
+        export $v=$l
+      done
+      break
+    fi
+  done
+
 }
 
 
