@@ -39,7 +39,7 @@ zplug "modules/dpkg", from:prezto, if:"(( $+commands[dpkg] ))"
 zplug "modules/dnf", from:prezto, if:"(( $+commands[dnf] ))"
 
 # https://github.com/sorin-ionescu/prezto/blob/master/modules/gpg
-zplug "modules/gpg", from:prezto, if:"(( $+commands[gpg-agent] ))"
+#zplug "modules/gpg", from:prezto, if:"(( $+commands[gpg-agent] ))"
 
 # https://github.com/sorin-ionescu/prezto/tree/master/modules/ssh
 #zplug "modules/ssh", from:prezto, if:"(( $+commands[ssh] ))"
@@ -58,6 +58,9 @@ zplug "modules/yum", from:prezto, if:"(( $+commands[yum] ))"
 
 # https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/command-not-found/command-not-found.plugin.zsh
 zplug "plugins/command-not-found",   from:oh-my-zsh, ignore:oh-my-zsh.sh
+
+zplug "plugins/ssh-agent", from:oh-my-zsh
+zplug "plugins/gpg-agent", from:oh-my-zsh
 
 # https://github.com/djui/alias-tips
 zplug "djui/alias-tips", from:github

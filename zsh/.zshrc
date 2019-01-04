@@ -7,12 +7,12 @@ if [[ -s ~/.zshrc_local ]]; then
     source ~/.zshrc_local                                                                                    
 fi         
 
-if [[ -s ~/.zshrc_plugins ]]; then
-    source ~/.zshrc_plugins
-fi
-
 if [[ -s ~/.zshrc_options ]]; then                                                                                                     
     source ~/.zshrc_options
+fi
+
+if [[ -s ~/.zshrc_plugins ]]; then
+    source ~/.zshrc_plugins
 fi
 
 if [[ -s ~/.travis/travis.sh ]]; then

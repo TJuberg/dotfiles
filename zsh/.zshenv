@@ -12,6 +12,11 @@ if [ ! -d ~/.ssh/sessions ]; then
     mkdir -p ~/.ssh/sessions
 fi
 
+# GNUPG
+#export SSH_AUTH_SOCK="/run/user/$(id -u)/gnupg/S.gpg-agent.ssh"
+#export SSH_ASKPASS="~/.local/bin/pinentry.bash"
+
+
 ###############################################################################
 # Virtualenv
 ###############################################################################
@@ -23,18 +28,8 @@ if (( $+commands[virtualenvwrapper.sh] )) ; then
 fi
 
 ###############################################################################
-# Neovim
-###############################################################################
-#
-# True colors for Neovim
-export NVIM_TUI_ENABLE_TRUE_COLOR=1
-
-###############################################################################
 # Prompt settings
-###############################################################################
-
-# Frost prompt settings
-export FROST_SHOW_CLOCK=0
+################################################################################
 
 #
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
@@ -159,6 +154,8 @@ typeset -gU cdpath fpath mailpath path
 
 # Set the list of directories that Zsh searches for programs.
 path=(
+  ~/.local/bin/
+  ~/go/bin/
   /usr/local/{bin,sbin}
   $path
 )
