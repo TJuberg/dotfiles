@@ -128,6 +128,15 @@ call dein#add('tpope/vim-commentary')
 " Move
 call dein#add('matze/vim-move')
 
+" Goyo https://github.com/junegunn/goyo.vim
+call dein#add('junegunn/goyo.vim')
+
+" Limelight https://github.com/junegunn/limelight.vim
+call dein#add('junegunn/limelight.vim')
+
+" Linting
+call dein#add('w0rp/ale')
+
 " *complete
 if !has('nvim')
     call dein#add('Shougo/neocomplete.vim')
@@ -138,6 +147,11 @@ else
         let g:deoplete#omni#input_patterns = {}
     endif
     autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+    call dein#add('w0rp/ale')
+    call deoplete#custom#option('sources', {
+    \ '_': ['ale'],
+    \})
 endif
 
 augroup omnifuncs
@@ -162,6 +176,9 @@ call dein#add('vim-scripts/FuzzyFinder')
 " Saltstack and jinja
 call dein#add('saltstack/salt-vim')
 call dein#add('glench/vim-jinja2-syntax')
+
+" vim taskwarrior
+call dein#add('blindFS/vim-taskwarrior')
 
 " Misc
 call dein#add('bling/vim-airline')
@@ -227,7 +244,7 @@ if !has('nvim')
     if !exists('g:neocomplete#keyword_patterns')
         let g:neocomplete#keyword_patterns = {}
     endif
-    
+
     let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
     " Plugin key-mappings.
@@ -435,3 +452,36 @@ endif
 
 let g:airline_powerline_fonts = 1
 let g:airline_theme='gruvbox'
+
+
+" Taskwarrior
+let g:task_rc_override = 'rc.defaultwidth=0'
+let g:task_rc_override = 'rc.defaultheight=0'
+" default task report type
+let g:task_report_name     = 'next'
+" custom reports have to be listed explicitly to make them available
+"let g:task_report_command  = []
+" whether the field under the cursor is highlighted
+let g:task_highlight_field = 1
+" can not make change to task data when set to 1
+let g:task_readonly        = 0
+" vim built-in term for task undo in gvim
+let g:task_gui_term        = 1
+" allows user to override task configurations. Seperated by space. Defaults to ''
+let g:task_rc_override     = 'rc.defaultwidth=999'
+" default fields to ask when adding a new task
+let g:task_default_prompt  = ['due', 'description']
+" whether the info window is splited vertically
+let g:task_info_vsplit     = 1
+" info window size
+let g:task_info_size       = 15
+" info window position
+let g:task_info_position   = 'belowright'
+" directory to store log files defaults to taskwarrior data.location
+let g:task_log_directory   = '~/.task'
+" max number of historical entries
+let g:task_log_max         = '20'
+" forward arrow shown on statusline
+let g:task_left_arrow      = ' <<'
+" backward arrow ...
+let g:task_left_arrow      = '>> '

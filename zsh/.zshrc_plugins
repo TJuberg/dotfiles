@@ -78,7 +78,7 @@ zplug "chrissicool/zsh-256color", from:github
 # https://github.com/zsh-users/zsh-completions
 zplug "zsh-users/zsh-completions", from:github
 
-# 
+#
 zplug "zsh-users/zsh-autosuggestions", from:github
 zplug "srijanshetty/zsh-pip-completion", from:github
 zplug "bbenne10/goenv", from:github
@@ -86,7 +86,8 @@ zplug "mafredri/zsh-async", from:github
 zplug "caarlos0/zsh-mkc", from:github
 zplug "b4b4r07/enhancd", from:github
 #zplug "tomfrost/frost-zsh-prompt", use:frost.zsh, from:github, as:theme
-zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme, from:github
+#zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme, from:github
+zplug romkatv/powerlevel10k, use:powerlevel10k.zsh-theme, from:github
 zplug "Tarrasch/zsh-autoenv", from:github
 
 # Let zplug manage itself

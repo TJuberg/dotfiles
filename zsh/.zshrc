@@ -1,13 +1,13 @@
-# Load aliases                                                                                                                                                                                                
-if [[ -s ~/.bash_aliases ]]; then                                                                                                                                                                             
-    source ~/.bash_aliases                                                                                                                                                                                         
-fi    
+# Load aliases
+if [[ -s ~/.bash_aliases ]]; then
+    source ~/.bash_aliases
+fi
 
-if [[ -s ~/.zshrc_local ]]; then                                                                             
-    source ~/.zshrc_local                                                                                    
-fi         
+if [[ -s ~/.zshrc_local ]]; then
+    source ~/.zshrc_local
+fi
 
-if [[ -s ~/.zshrc_options ]]; then                                                                                                     
+if [[ -s ~/.zshrc_options ]]; then
     source ~/.zshrc_options
 fi
 
