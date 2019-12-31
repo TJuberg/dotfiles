@@ -59,3 +59,7 @@ alias avenc='ansible-vault encrypt'
 alias avdec='ansible-vault decrypt'
 alias avv='ansible-vault view'
 
+alias digs='dig +short'
+alias digx='dig -x'
+alias digsx='dig +short -x'
+alias digxs='dig +short -x'
