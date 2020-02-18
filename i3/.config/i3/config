@@ -250,7 +250,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #exec --no-startup-id dbus-send --session --print-reply=literal --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:i3" "string:$DESKTOP_AUTOSTART_ID"
 #exec --no-startup-id compton -fcCG --backend glx --vsync opengl-swc --xrender-sync-fence
 exec --no-startup-id dunst
-exec --no-startup-id compton -fcCG
+exec --no-startup-id picom -fcCG
 exec --no-startup-id nm-applet &
 exec --no-startup-id dropbox
 exec --no-startup-id "sleep 2 & redshift -x & redshift -O 2500k"
