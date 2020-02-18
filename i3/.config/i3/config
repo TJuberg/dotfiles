@@ -238,6 +238,8 @@ mode "$mode_gaps_outer" {
     bindsym Escape mode "default"
 }
 
+# Microsoft teams banner... urgh
+for_window [title="Microsoft Teams Notification"] floating enable
 
 # autostart
 exec_always --no-startup-id nitrogen --restore
