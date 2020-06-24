@@ -2,6 +2,9 @@
 # i3 config file (v4)
 set $mod Mod4
 
+# No mouse focus
+focus_follows_mouse no
+
 
 # custom colors
 set $termbg     #1e1e20
@@ -241,6 +244,9 @@ mode "$mode_gaps_outer" {
 # Microsoft teams banner... urgh
 for_window [title="Microsoft Teams Notification"] floating enable
 no_focus [title="Microsoft Teams Notification"]
+no_focus [class="Microsoft Teams - Preview" title="Microsoft Teams Notification"]
+
+
 
 # Don’t treat Plasma pop-ups as full-sized windows
 for_window [class="plasmashell"] floating enable
@@ -260,7 +266,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #exec --no-startup-id echo "$0: DESKTOP_AUTOSTART_ID $DESKTOP_AUTOSTART_ID, registering with org.gnome.SessionManager"
 #exec --no-startup-id dbus-send --session --print-reply=literal --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:i3" "string:$DESKTOP_AUTOSTART_ID"
 #exec --no-startup-id compton -fcCG --backend glx --vsync opengl-swc --xrender-sync-fence
-exec --no-startup-id dunst
+#exec --no-startup-id dunst
 exec --no-startup-id picom -fcCG
 exec --no-startup-id nm-applet &
 exec --no-startup-id dropbox
@@ -273,8 +279,8 @@ exec --no-startup-id "sleep 2 & redshift -x & redshift -O 2500k"
 
 # Custom Keybindings
 
-bindsym Ctrl+Mod1+l exec "~/.local/bin/lock"
-bindsym Ctrl+Shift+l exec "~/.local/bin/lock"
+#bindsym Ctrl+Mod1+l exec "~/.local/bin/lock"
+#bindsym Ctrl+Shift+l exec "~/.local/bin/lock"
 bindsym Mod1+g exec "~/.local/bin/browser"
 bindsym $mod+g exec "~/.local/bin/browser"
 bindsym Ctrl+Shift+g exec "~/.local/bin/browser"

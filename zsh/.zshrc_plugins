@@ -29,11 +29,11 @@ zplug "modules/python", from:prezto, if:"(( $+commands[python] ))"
 zstyle ':prezto:module:python:virtualenv' auto-switch 'yes'
 
 # https://github.com/sorin-ionescu/prezto/tree/master/modules/pacman
-zplug "modulez/pacman", from:prezto, if:"(( $+commands[pacman] ))"
-zstyle ':prezto:module:pacman' frontend 'pacaur'
+#zplug "modulez/pacman", from:prezto, if:"(( $+commands[pacman] ))"
+#zstyle ':prezto:module:pacman' frontend 'pacaur'
 
 # https://github.com/sorin-ionescu/prezto/tree/master/modules/dpkg
-zplug "modules/dpkg", from:prezto, if:"(( $+commands[dpkg] ))"
+#zplug "modules/dpkg", from:prezto, if:"(( $+commands[dpkg] ))"
 
 # https://github.com/sorin-ionescu/prezto/tree/master/modules/dnf
 zplug "modules/dnf", from:prezto, if:"(( $+commands[dnf] ))"
@@ -48,13 +48,13 @@ zplug "modules/dnf", from:prezto, if:"(( $+commands[dnf] ))"
 zplug "modules/utility", from:prezto
 
 #zplug "modules/editor", from:prezto
-zstyle ":prezto:module:editor" key-bindings "vi" 
+zstyle ":prezto:module:editor" key-bindings "vi"
 
 # https://github.com/sorin-ionescu/prezto/tree/master/modules/tmux
 zplug "modules/tmux", from:prezto, if:"(( $+commands[tmux] ))"
 
 # https://github.com/sorin-ionescu/prezto/tree/master/modules/yum
-zplug "modules/yum", from:prezto, if:"(( $+commands[yum] ))"
+#zplug "modules/yum", from:prezto, if:"(( $+commands[yum] ))"
 
 # https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/command-not-found/command-not-found.plugin.zsh
 zplug "plugins/command-not-found",   from:oh-my-zsh, ignore:oh-my-zsh.sh
