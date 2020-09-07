@@ -17,6 +17,8 @@ fi
 
 source ~/.zplug/init.zsh
 
+zplug "mafredri/zsh-async", from:"github", use:"async.zsh"
+
 # Any  Prezto modules needs to be loaded first
 #plug "modules/helper", from:prezto
 
@@ -82,7 +84,6 @@ zplug "zsh-users/zsh-completions", from:github
 zplug "zsh-users/zsh-autosuggestions", from:github
 zplug "srijanshetty/zsh-pip-completion", from:github
 zplug "bbenne10/goenv", from:github
-zplug "mafredri/zsh-async", from:github
 zplug "caarlos0/zsh-mkc", from:github
 zplug "b4b4r07/enhancd", from:github
 #zplug "tomfrost/frost-zsh-prompt", use:frost.zsh, from:github, as:theme
