@@ -24,7 +24,7 @@ font pango:Input Mono 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -247,14 +247,17 @@ no_focus [title="Microsoft Teams Notification"]
 no_focus [class="Microsoft Teams - Preview" title="Microsoft Teams Notification"]
 
 
-
-# Don’t treat Plasma pop-ups as full-sized windows
-for_window [class="plasmashell"] floating enable
-
-# Don’t spawn an empty window for the Plasma Desktop
-for_window [title="Desktop — Plasma"] kill, floating enable, border none
-
-# Don’t let notifications and non-interactive pop-up windows steal focus
+for_window [title="Desktop — Plasma"] kill; floating enable; border none
+for_window [class="plasmashell"] floating enable;
+for_window [class="Plasma"] floating enable; border none
+for_window [title="plasma-desktop"] floating enable; border none
+for_window [title="win7"] floating enable; border none
+for_window [class="krunner"] floating enable; border none
+for_window [class="Kmix"] floating enable; border none
+for_window [class="Klipper"] floating enable; border none
+for_window [class="Plasmoidviewer"] floating enable; border none
+for_window [class="(?i)*nextcloud*"] floating disable
+for_window [class="plasmashell" window_type="notification"] floating enable, border none, move right 700px, move down 450px
 no_focus [class="plasmashell" window_type="notification"]
 no_focus [class="plasmashell" window_type="on_screen_display"]
 
@@ -268,8 +271,8 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #exec --no-startup-id compton -fcCG --backend glx --vsync opengl-swc --xrender-sync-fence
 #exec --no-startup-id dunst
 exec --no-startup-id picom -fcCG
-exec --no-startup-id nm-applet &
-exec --no-startup-id dropbox
+#exec --no-startup-id nm-applet &
+#exec --no-startup-id dropbox
 exec --no-startup-id "sleep 2 & redshift -x & redshift -O 2500k"
 
 #exec --no-startup-id xautolock -time 10 -locker '~/.local/bin/lock' &

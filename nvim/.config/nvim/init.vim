@@ -138,21 +138,20 @@ call dein#add('junegunn/limelight.vim')
 call dein#add('w0rp/ale')
 
 " *complete
+call dein#add('Shougo/deoplete.nvim')
 if !has('nvim')
-    call dein#add('Shougo/neocomplete.vim')
-else
-    call dein#add('Shougo/deoplete.nvim')
-    let g:deoplete#enable_at_startup = 1
-    if !exists('g:deoplete#omni#input_patterns')
-        let g:deoplete#omni#input_patterns = {}
-    endif
-    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
-    call dein#add('w0rp/ale')
-    call deoplete#custom#option('sources', {
-    \ '_': ['ale'],
-    \})
+  call dein#add('roxma/nvim-yarp')
+  call dein#add('roxma/vim-hug-neovim-rpc')
 endif
+let g:deoplete#enable_at_startup = 1
+
+
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+call dein#add('w0rp/ale')
+call deoplete#custom#option('sources', {
+\ '_': ['ale'],
+\})
 
 augroup omnifuncs
     autocmd!

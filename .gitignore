@@ -1,2 +1,4 @@
 git/*
 *.swp
+gnupg/.gnupg/pubring.kbx
+gnupg/.gnupg/trustdb.gpg
