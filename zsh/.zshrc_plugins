@@ -19,50 +19,11 @@ source ~/.zplug/init.zsh
 
 zplug "mafredri/zsh-async", from:"github", use:"async.zsh"
 
-# Any  Prezto modules needs to be loaded first
-#plug "modules/helper", from:prezto
-
-# https://github.com/sorin-ionescu/prezto/tree/master/modules/git
-zplug "modules/git", from:prezto, if:"(( $+commands[git] ))"
-zstyle ":prezto:module:git:status:ignore" submodules "all"
-
-# https://github.com/sorin-ionescu/prezto/tree/master/modules/python
-zplug "modules/python", from:prezto, if:"(( $+commands[python] ))"
-zstyle ':prezto:module:python:virtualenv' auto-switch 'yes'
-
-# https://github.com/sorin-ionescu/prezto/tree/master/modules/pacman
-#zplug "modulez/pacman", from:prezto, if:"(( $+commands[pacman] ))"
-#zstyle ':prezto:module:pacman' frontend 'pacaur'
-
-# https://github.com/sorin-ionescu/prezto/tree/master/modules/dpkg
-#zplug "modules/dpkg", from:prezto, if:"(( $+commands[dpkg] ))"
-
-# https://github.com/sorin-ionescu/prezto/tree/master/modules/dnf
-zplug "modules/dnf", from:prezto, if:"(( $+commands[dnf] ))"
-
-# https://github.com/sorin-ionescu/prezto/blob/master/modules/gpg
-#zplug "modules/gpg", from:prezto, if:"(( $+commands[gpg-agent] ))"
-
-# https://github.com/sorin-ionescu/prezto/tree/master/modules/ssh
-#zplug "modules/ssh", from:prezto, if:"(( $+commands[ssh] ))"
-
-# https://github.com/sorin-ionescu/prezto/tree/master/modules/utility
-zplug "modules/utility", from:prezto
-
-#zplug "modules/editor", from:prezto
-zstyle ":prezto:module:editor" key-bindings "vi"
-
-# https://github.com/sorin-ionescu/prezto/tree/master/modules/tmux
-zplug "modules/tmux", from:prezto, if:"(( $+commands[tmux] ))"
-
-# https://github.com/sorin-ionescu/prezto/tree/master/modules/yum
-#zplug "modules/yum", from:prezto, if:"(( $+commands[yum] ))"
-
 # https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/command-not-found/command-not-found.plugin.zsh
 zplug "plugins/command-not-found",   from:oh-my-zsh, ignore:oh-my-zsh.sh
 
 zplug "plugins/ssh-agent", from:oh-my-zsh
-zplug "plugins/gpg-agent", from:oh-my-zsh
+#zplug "plugins/gpg-agent", from:oh-my-zsh
 
 # https://github.com/djui/alias-tips
 zplug "djui/alias-tips", from:github
