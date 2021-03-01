@@ -22,7 +22,7 @@ alias fgrep='fgrep --color=always'
 
 alias mkdir='mkdir -pv'
 alias mount='mount |column -t'
-alias ports='netstat -tulanp | ccze -A -o nolookups'
+alias ports='netstat -tulanpv --wide | ccze -A -o nolookups'
 
 
 # Stay sane and prevent ccze from causing slowdown or logspam in the case of sssd debugging
