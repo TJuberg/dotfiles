@@ -134,9 +134,6 @@ call dein#add('junegunn/goyo.vim')
 " Limelight https://github.com/junegunn/limelight.vim
 call dein#add('junegunn/limelight.vim')
 
-" Linting
-call dein#add('w0rp/ale')
-
 " *complete
 call dein#add('Shougo/deoplete.nvim')
 if !has('nvim')
@@ -148,6 +145,7 @@ let g:deoplete#enable_at_startup = 1
 
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
+" Linting
 call dein#add('w0rp/ale')
 call deoplete#custom#option('sources', {
 \ '_': ['ale'],
@@ -161,7 +159,6 @@ augroup end
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-call dein#add('w0rp/ale')
 " Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled = 1
 
