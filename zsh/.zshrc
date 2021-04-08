@@ -82,7 +82,7 @@ zstyle ':filter-select' case-insensitive yes # enable case-insensitive search
 
 
 # added by travis gem
-[ -f /home/tjuberg/.travis/travis.sh ] && source /home/tjuberg/.travis/travis.sh
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
-# To customize prompt, run `p10k configure` or edit /home/nhn/thomasj/.p10k.zsh.
-[[ -f /home/nhn/thomasj/.p10k.zsh ]] && source /home/nhn/thomasj/.p10k.zsh
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ -f  $HOME/.p10k.zsh ]] && source  $HOME/.p10k.zsh
