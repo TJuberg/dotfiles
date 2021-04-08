@@ -9,71 +9,92 @@ if (( $+commands[nvim] )) || (( $+commands[vim] )); then
     fi
 fi
 
-# For ZSH we want zplug to manage plugins
-if [ ! -d ~/.zplug ]; then
-    echo "Could not find zplug plugin manager, downloading..."
-    git clone https://github.com/b4b4r07/zplug ~/.zplug
+if [ ! -d ~/.zinit ]; then
+    mkdir ~/.zinit
+    git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
 fi
 
-source ~/.zplug/init.zsh
+source ~/.zinit/bin/zinit.zsh
 
-zplug "mafredri/zsh-async", from:"github", use:"async.zsh"
+zinit load mafredri/zsh-async
+#zplug "mafredri/zsh-async", from:"github", use:"async.zsh"
 
 # https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/command-not-found/command-not-found.plugin.zsh
-zplug "plugins/command-not-found",   from:oh-my-zsh, ignore:oh-my-zsh.sh
+zinit snippet OMZP::command-not-found
+#zplug "plugins/command-not-found",   from:oh-my-zsh, ignore:oh-my-zsh.sh
 
-zplug "plugins/ssh-agent", from:oh-my-zsh
+zinit snippet OMZP::ssh-agent
+#zplug "plugins/ssh-agent", from:oh-my-zsh
 #zplug "plugins/gpg-agent", from:oh-my-zsh
 
+zinit load djui/alias-tips
 # https://github.com/djui/alias-tips
-zplug "djui/alias-tips", from:github
+#zplug "djui/alias-tips", from:github
 
 # https://github.com/skx/sysadmin-util
-zplug "skx/sysadmin-util", from:github
+zinit load skx/sysadmin-util
+#zplug "skx/sysadmin-util", from:github
 
 #zplug "zlsun/solarized-man", from:github
 
 #zplug "joel-porquet/zsh-dircolors-solarized", from:github
 
 # https://github.com/chrissicool/zsh-256color
-zplug "chrissicool/zsh-256color", from:github
+zinit load chrissicool/zsh-256color
+#zplug "chrissicool/zsh-256color", from:github
 
 # https://github.com/zsh-users/zsh-completions
-zplug "zsh-users/zsh-completions", from:github
+zinit load zsh-users/zsh-completions
+#zplug "zsh-users/zsh-completions", from:github
 
 #
-zplug "zsh-users/zsh-autosuggestions", from:github
-zplug "srijanshetty/zsh-pip-completion", from:github
-zplug "bbenne10/goenv", from:github
-zplug "caarlos0/zsh-mkc", from:github
-zplug "b4b4r07/enhancd", from:github
+zinit load zsh-users/zsh-autosuggestions
+zinit load srijanshetty/zsh-pip-completion
+zinit load bbenne10/goenv
+zinit load caarlos0/zsh-mkc
+zinit load b4b4r07/enhancd
+
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+
+zinit load Tarrasch/zsh-autoenv
+
+#zplug "zsh-users/zsh-autosuggestions", from:github
+#zplug "srijanshetty/zsh-pip-completion", from:github
+#zplug "bbenne10/goenv", from:github
+#zplug "caarlos0/zsh-mkc", from:github
+#zplug "b4b4r07/enhancd", from:github
 #zplug "tomfrost/frost-zsh-prompt", use:frost.zsh, from:github, as:theme
 #zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme, from:github
-zplug romkatv/powerlevel10k, use:powerlevel10k.zsh-theme, from:github
-zplug "Tarrasch/zsh-autoenv", from:github
+#zplug romkatv/powerlevel10k, use:powerlevel10k.zsh-theme, from:github
+#zplug "Tarrasch/zsh-autoenv", from:github
 
 # Let zplug manage itself
-zplug "zplug/zplug", hook-build:"zplug --self-manage"
+#zplug "zplug/zplug", hook-build:"zplug --self-manage"
 
 
 # zsh-syntax-highlighting must be loaded before substring-search
 # And these two really should be at the end of the loading list
 
 # https://github.com/zsh-users/zsh-syntax-highlighting
-zplug "zsh-users/zsh-syntax-highlighting", from:github
+zinit load zsh-users/zsh-syntax-highlighting
+#zplug "zsh-users/zsh-syntax-highlighting", from:github
 
 # https://github.com/zsh-users/zsh-history-substring-search
-zplug "zsh-users/zsh-history-substring-search", from:github
+zinit load zsh-users/zsh-history-substring-search
+#zplug "zsh-users/zsh-history-substring-search", from:github
 
+# Bit git client
+zinit ice lucid wait"0" as"program" from"gh-r" pick"bit"
+zinit light "chriswalz/bit"
 
 # Install plugins if there are plugins that have not been installed
-if ! zplug check; then
-    printf "Install missing ZSH plugins? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
+#if ! zplug check; then
+#    printf "Install missing ZSH plugins? [y/N]: "
+#    if read -q; then
+#        echo; zplug install
+#    fi
+#fi
 
 # Then, source plugins and add commands to $PATH
-zplug load
+#zplug load
 
