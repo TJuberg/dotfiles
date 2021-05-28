@@ -174,7 +174,9 @@ call dein#add('saltstack/salt-vim')
 call dein#add('glench/vim-jinja2-syntax')
 
 " vim taskwarrior
-call dein#add('blindFS/vim-taskwarrior')
+if executable('task')
+  call dein#add('blindFS/vim-taskwarrior')
+endif
 
 " Misc
 call dein#add('bling/vim-airline')
