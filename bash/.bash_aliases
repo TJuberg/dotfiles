@@ -70,6 +70,9 @@ alias digxs='dig +short -x'
 ### Git
 alias g='git'
 
+# Recursive pull
+alias git-pull-recursive='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && pwd && git pull" \;'
+
 # Branch (b)
 alias gb='git branch'
 alias gba='git branch --all --verbose'
