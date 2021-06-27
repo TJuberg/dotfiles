@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Load aliases
 if [[ -s ~/.bash_aliases ]]; then
     source ~/.bash_aliases
@@ -16,6 +9,26 @@ fi
 
 if [[ -s ~/.zshrc_options ]]; then
     source ~/.zshrc_options
+fi
+
+# Stuff we need before instant prompt
+if [ ! -d ~/.zinit ]; then
+    mkdir ~/.zinit
+    git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
+fi
+
+# Load zinit
+source ~/.zinit/bin/zinit.zsh
+
+# Prompts for keys if not cached
+zinit snippet OMZP::ssh-agent
+#zinit snippet OMZP::gpg-agent
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 if [[ -s ~/.zshrc_plugins ]]; then
