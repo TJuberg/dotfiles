@@ -204,8 +204,8 @@ bindsym $mod+o mode "move_workspace"
 for_window [class="^.*"] border pixel $bordersize
 
 # # Set inner/outer gaps
-gaps inner 30
-gaps outer 15
+gaps inner 20
+gaps outer 10
 
 # Additionally, you can issue commands with the following syntax. This is
 # useful to bind keys to changing the gap size.

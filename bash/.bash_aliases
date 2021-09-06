@@ -1,4 +1,5 @@
 #! /bin/bash
+# shellcheck disable=SC2154
 
 # General aliases
 alias l="ls --color=always"
@@ -14,6 +15,8 @@ alias _='sudo'
 alias b='${(z)BROWSER}'
 
 alias tmuxl='tmux list-sessions'
+
+alias colormap='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\''\n'\''}; done'
 
 ## Colorize the grep command output for ease of use (good for log files)##
 alias grep='grep --color=always'
@@ -37,19 +40,19 @@ fi
 
 
 ### Find a host in $HOME/.hosts, eventually with SSH options $2
-function getHostAtLine() {
-    user=$(sed -n "$1p" $HOME/.hosts | awk '{print $1}')
-    if [[ $user == "" ]]; then
-        # Line does not exist, return 1
-        return 1
-    fi
-    host=$(sed -n "$1p" $HOME/.hosts | awk '{print $2}')
-    port=$(sed -n "$1p" $HOME/.hosts | awk '{print $3}')
-    if [[ $port == "" ]]; then
-        port="22"
-    fi
-    echo "ssh -p $port $2 $user@$host"
-}
+# function getHostAtLine() {
+#     user=$(sed -n "$1p" $HOME/.hosts | awk '{print $1}')
+#     if [[ $user == "" ]]; then
+#         # Line does not exist, return 1
+#         return 1
+#     fi
+#     host=$(sed -n "$1p" $HOME/.hosts | awk '{print $2}')
+#     port=$(sed -n "$1p" $HOME/.hosts | awk '{print $3}')
+#     if [[ $port == "" ]]; then
+#         port="22"
+#     fi
+#     echo "ssh -p $port $2 $user@$host"
+# }
 
 ### Ansible aliases
 alias a='ansible'
