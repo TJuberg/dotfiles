@@ -204,8 +204,12 @@ bindsym $mod+o mode "move_workspace"
 for_window [class="^.*"] border pixel $bordersize
 
 # # Set inner/outer gaps
-gaps inner 20
-gaps outer 10
+gaps top 30
+gaps bottom 5
+gaps horizontal 15
+gaps inner 15
+
+
 
 # Additionally, you can issue commands with the following syntax. This is
 # useful to bind keys to changing the gap size.
@@ -293,7 +297,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #exec --no-startup-id dbus-send --session --print-reply=literal --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:i3" "string:$DESKTOP_AUTOSTART_ID"
 #exec --no-startup-id compton -fcCG --backend glx --vsync opengl-swc --xrender-sync-fence
 #exec --no-startup-id dunst
-exec_always --no-startup-id picom -fcCG
+exec_always --no-startup-id picom -fcCGb
 #exec --no-startup-id nm-applet &
 #exec --no-startup-id dropbox
 exec --no-startup-id "sleep 2 & redshift -x & redshift -O 2500k"

@@ -94,10 +94,18 @@ call dein#add('tpope/vim-markdown')
 
 call dein#add('morhetz/gruvbox')
 
-" Nerdtree
-"Plugin 'scrooloose/nerdtree'
-call dein#add('scrooloose/nerdtree',
-            \{'on_cmd': 'NERDTreeToggle'})
+
+
+" Nerdtree / Neo Tree
+if !has('nvim')
+    call dein#add('scrooloose/nerdtree',
+                \{'on_cmd': 'NERDTreeToggle'})
+else
+    call dein#add('nvim-lua/plenary.nvim')
+    call dein#add('kyazdani42/nvim-web-devicons')
+    call dein#add('MunifTanjim/nui.nvim')
+    call dein#add('nvim-neo-tree/neo-tree.nvim')
+endif
 
 " vim-syntax-extra
 "Plugin 'justinmk/vim-syntax-extra'
@@ -205,9 +213,13 @@ endif
 " Flake8
 let g:PyFlakeOnWrite = 1
 
-" Nerdtree
+" Nerdtree / NeoTree
 " ctrl + n
-map <C-n> :NERDTreeToggle<CR>
+if !has('nvim')
+    map <C-n> :NERDTreeToggle<CR>
+else
+    map <C-n> :NeoTreeShowToggle<CR>
+endif
 
 " gruvbox
 let g:gruvbox_italic=1

@@ -21,7 +21,7 @@ fi
 source ~/.zinit/bin/zinit.zsh
 
 # Prompts for keys if not cached
-zinit snippet OMZP::ssh-agent
+#zinit snippet OMZP::ssh-agent
 #zinit snippet OMZP::gpg-agent
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.

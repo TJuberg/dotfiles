@@ -2,6 +2,21 @@
 ; throttle_ms = 50
 ; throttle_limit = 3
 
+[global/wm]
+; {{{
+margin-top = 5
+margin-bottom = 5
+
+; }}}
+
+
+[bar/dummy]
+background = #00000000
+width = 100%
+height = 40
+modules-center = blank
+font-0 = SFNS Display Regular:size=11;0
+
 [bar/bar1]
 monitor = ${env:MONITOR}
 monitor-fallback =
