@@ -24,7 +24,7 @@ font pango:Input Mono 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec alacritty msg create-window || alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -115,7 +115,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+t exec "kquitapp5 plasmashell; kstart5 plasmashell"
+#bindsym $mod+Shift+t exec "kquitapp5 plasmashell; kstart5 plasmashell"
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -176,7 +176,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 # Home layout
 workspace 1 output DisplayPort-1
 workspace 2 output DisplayPort-2
-workspace 3 output DisplayPort-1
+workspace 3 output DisplayPort-2
 workspace 4 output DisplayPort-1
 workspace 5 output DisplayPort-1
 workspace 6 output DisplayPort-1
@@ -205,9 +205,9 @@ for_window [class="^.*"] border pixel $bordersize
 
 # # Set inner/outer gaps
 gaps top 30
-gaps bottom 5
-gaps horizontal 15
-gaps inner 15
+gaps bottom 30
+gaps horizontal 20
+gaps inner 20
 
 
 
@@ -289,31 +289,33 @@ no_focus [class="plasmashell" window_type="notification"]
 no_focus [class="plasmashell" window_type="on_screen_display"]
 
 # autostart
+exec --no-startup-id $HOME/.screenlayout/default.sh
 exec_always --no-startup-id nitrogen --restore
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
-#exec --no-startup-id gnome-keyring-daemon --start --components=pkcs11,gpg,secrets
-#exec --no-startup-id echo "$0: DESKTOP_AUTOSTART_ID $DESKTOP_AUTOSTART_ID, registering with org.gnome.SessionManager"
-#exec --no-startup-id dbus-send --session --print-reply=literal --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:i3" "string:$DESKTOP_AUTOSTART_ID"
-#exec --no-startup-id compton -fcCG --backend glx --vsync opengl-swc --xrender-sync-fence
-#exec --no-startup-id dunst
-exec_always --no-startup-id picom -fcCGb
-#exec --no-startup-id nm-applet &
-#exec --no-startup-id dropbox
-exec --no-startup-id "sleep 2 & redshift -x & redshift -O 2500k"
+exec --no-startup-id dunst
+exec_always --no-startup-id picom -fcCGb --vsync
+exec --no-startup-id "sleep 5 & redshift -x & redshift -O 2500k"
 
 #exec --no-startup-id xautolock -time 10 -locker '~/.local/bin/lock' &
 
-#exec --no-startup-id dunst &
+exec --no-startup-id nextcloud --background
+exec --no-startup-id /opt/Synergy/synergy-service -d
+exec --no-startup-id flatpak run --branch=stable --arch=x86_64 --command=signal-desktop --file-forwarding org.signal.Signal @@u %U @@ --start-in-tray
+exec --no-startup-id /opt/microsoft/msedge/msedge --profile-directory=Default --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo --app-url=https://teams.microsoft.com/?clientType=pwa
+exec --no-startup-id /opt/microsoft/msedge/msedge --profile-directory=Default --app-id=ibmkapndkomlelpebnjghclpjgpninma --app-url=https://zabbix.oss.pub.kvdc.no/zabbix//zabbix.php?action=dashboard.view
+exec_always --no-startup-id "sleep 1 && $HOME/.config/polybar/launch.sh DisplayPort-1"
+exec_always --no-startup-id "sleep 2 && $HOME/.config/polybar/launch.sh DisplayPort-2"
 
 
 # Custom Keybindings
 
-#bindsym Ctrl+Mod1+l exec "~/.local/bin/lock"
+bindsym Ctrl+Shift+l exec "~/.local/bin/lock"
+#bindsym Ctrl+Mod1+l exec i3lock -c 000000
 #bindsym Ctrl+Shift+l exec "~/.local/bin/lock"
 bindsym Mod1+g exec "~/.local/bin/browser"
 bindsym $mod+g exec "~/.local/bin/browser"
 bindsym Ctrl+Shift+g exec "~/.local/bin/browser"
 bindsym Ctrl+Shift+s exec "sleep 0.2; shutter -s -e"
+
+bindsym $mod+p exec "kill -9 $(xdotool getwindowfocus getwindowpid)"
 
 assign [class="Conky" title="whatever"] workspace 3

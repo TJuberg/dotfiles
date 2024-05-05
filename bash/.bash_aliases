@@ -6,10 +6,10 @@ alias l="ls --color=always"
 alias ll="ls -lh --color=always"
 alias lla="ls -lah --color=always"
 
-alias k="exa"
-alias kk="exa -a"
-alias kl="exa -l"
-alias kkl="exa -la"
+alias k="eza --color=always"
+alias kk="eza -a --color=always"
+alias kl="eza -l --color=always"
+alias kkl="eza -la --color=always"
 
 alias _='sudo'
 alias b='${(z)BROWSER}'
@@ -328,13 +328,16 @@ alias py3='python3'
 
 
 ### dnf
-alias dnfc='sudo dnf clean all'    # Cleans the cache.
-alias dnfh='dnf history'           # Displays history.
-alias dnfi='sudo dnf install'      # Installs package(s).
-alias dnfl='dnf list'              # Lists packages.
-alias dnfL='dnf list installed'    # Lists installed packages.
-alias dnfq='dnf info'              # Displays package information.
-alias dnfr='sudo dnf remove'       # Removes package(s).
-alias dnfs='dnf search'            # Searches for a package.
-alias dnfu='sudo dnf update'       # Updates packages.
-alias dnfU='sudo dnf upgrade'      # Upgrades packages.
+alias dnfc='sudo dnf5 clean all'    # Cleans the cache.
+alias dnfh='dnf5 history'           # Displays history.
+alias dnfi='sudo dnf5 install'      # Installs package(s).
+alias dnfl='sudo dnf5 -C list'              # Lists packages.
+alias dnfL='dnf5 list installed'    # Lists installed packages.
+alias dnfq='sudo dnf5 -C info'              # Displays package information.
+alias dnfr='sudo dnf5 remove'       # Removes package(s).
+alias dnfs='sudo dnf5 -C search'            # Searches for a package.
+alias dnfu='sudo dnf5 update'       # Updates packages.
+alias dnfU='sudo dnf5 upgrade'      # Upgrades packages.
+
+### history
+alias history='history -i'

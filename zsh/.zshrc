@@ -11,14 +11,38 @@ if [[ -s ~/.zshrc_options ]]; then
     source ~/.zshrc_options
 fi
 
-# Stuff we need before instant prompt
-if [ ! -d ~/.zinit ]; then
-    mkdir ~/.zinit
-    git clone https://github.com/zdharma-continuum/zinit.git ~/.zinit/bin
+if [ ! -d ~/.zfunc ]; then
+    mkdir ~/.zfunc
 fi
 
+if [[ -s ~/.zfunc ]]; then
+    fpath+=~/.zfunc
+fi
+
+# Add optional bin directories to PATH if they are present.
+if [[ -s ~/bin ]]; then
+    path=("$HOME/bin" $path)
+    export PATH
+fi
+
+if [[ -s ~/.local/bin ]]; then
+   path=("$HOME/.local/bin" $path)
+   export PATH
+fi
+
+# Stuff we need before instant prompt
+#if [ ! -d ~/.zinit ]; then
+#    mkdir ~/.zinit
+#    git clone https://github.com/zdharma-continuum/zinit.git ~/.zinit/bin
+#fi
+
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
+
 # Load zinit
-source ~/.zinit/bin/zinit.zsh
+#source ~/.zinit/bin/zinit.zsh
 
 # Prompts for keys if not cached
 #zinit snippet OMZP::ssh-agent

@@ -98,13 +98,13 @@ export PAGER=less
   local timeVars
   local locale
   local localeVars
-  language=('en_GB.utf8' 'en_US.utf8' 'nb_NO.utf8' 
+  language=('en_GB.utf8' 'en_US.utf8' 'nb_NO.utf8'
 'C.UTF-8' 'C')
   languageVars=('LANG' 'LANGUAGE' 'LC_MESSAGES')
   locale=('nb_NO.utf8' 'en_GB.utf8' 'en_US.utf8' 'C.UTF-8' 'C')
-  localeVars=('LC_CTYPE' 'LC_NUMERIC' 
-'LC_COLLATE' 'LC_MONETARY' 'LC_PAPER' 'LC_NAME' 
-'LC_ADDRESS' 'LC_TELEPHONE' 'LC_MEASUREMENT' 
+  localeVars=('LC_CTYPE' 'LC_NUMERIC'
+'LC_COLLATE' 'LC_MONETARY' 'LC_PAPER' 'LC_NAME'
+'LC_ADDRESS' 'LC_TELEPHONE' 'LC_MEASUREMENT'
 'LC_IDENTIFICATION')
   timeVars=('LC_TIME')
   time=('en_DK.utf8' 'nb_NO.utf8' 'en_GB.utf8' 'en_US.utf8' 'C.UTF-8' 'C')
@@ -115,7 +115,7 @@ export PAGER=less
         export $v=$l
       done
       break
-    fi  
+    fi
   done
 
   for l in $locale; do
@@ -124,7 +124,7 @@ export PAGER=less
         export $v=$l
       done
       break
-    fi  
+    fi
   done
 
   for l in $time; do
