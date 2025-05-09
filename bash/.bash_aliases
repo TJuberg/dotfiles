@@ -18,6 +18,9 @@ alias tmuxl='tmux list-sessions'
 
 alias colormap='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\''\n'\''}; done'
 
+alias sctl='systemctl'
+alias sctlu='systemctl --user'
+
 ## Colorize the grep command output for ease of use (good for log files)##
 alias grep='grep --color=always'
 alias egrep='egrep --color=always'
@@ -75,6 +78,12 @@ alias g='git'
 
 # Recursive pull
 alias git-pull-recursive='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && pwd && git pull" \;'
+# Be careful with this on SSH.
+# Do if not multiplexing, you probably should not use this if you have any sort of manual authentication in between
+# If you do have multiplexing, avoid going over 10 counting your active SSH connections + -P N value
+# SSHD default value for concurrent simultanious active connections in a muxed session is 10.
+alias git-pull-recursive-mt='find . -type d -name .git -print0 | xargs -0 -P 4 -I {} sh -c "cd \"{}\"/../ && pwd && git pull"'
+
 
 # Branch (b)
 alias gb='git branch'
@@ -329,11 +338,14 @@ alias py3='python3'
 
 ### dnf
 alias dnfc='sudo dnf5 clean all'    # Cleans the cache.
-alias dnfh='dnf5 history'           # Displays history.
+alias dnfh='sudo dnf5 history'           # Displays history.
 alias dnfi='sudo dnf5 install'      # Installs package(s).
 alias dnfl='sudo dnf5 -C list'              # Lists packages.
 alias dnfL='dnf5 list installed'    # Lists installed packages.
 alias dnfq='sudo dnf5 -C info'              # Displays package information.
+alias dnfQ='sudo dnf5 -C repoquery'
+alias dnfQr='sudo dnf5 -C repoquery --requires'
+alias dnfQp='sudo dnf5 -C repoquery --provides'
 alias dnfr='sudo dnf5 remove'       # Removes package(s).
 alias dnfs='sudo dnf5 -C search'            # Searches for a package.
 alias dnfu='sudo dnf5 update'       # Updates packages.

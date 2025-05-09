@@ -12,12 +12,32 @@ if [ ! -d ~/.ssh/sessions ]; then
     mkdir -p ~/.ssh/sessions
 fi
 
+if [[ -z "$SSH_AUTH_SOCK" ]]; then
+    SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+    export SSH_AUTH_SOCK
+fi
+
+if systemctl --user is-active --quiet ssh_agent; then
+    export SSH_AGENT_PID=$(systemctl --user show -p MainPID --value ssh_agent)
+elif pgrep ssh-agent > /dev/null; then
+    export SSH_AGENT_PID=$(pgrep -o ssh-agent)
+else
+    export SSH_AGENT_PID=""
+fi
+
+if [[ -z "$DOCKER_HOST" ]]; then
+    DOCKER_HOST="unix:///run/user/$UID/podman/podman.sock"
+    export DOCKER_HOST
+fi
+
 # GNUPG
 #export SSH_AUTH_SOCK="/run/user/$(id -u)/gnupg/S.gpg-agent.ssh"
 #export SSH_ASKPASS="~/.local/bin/pinentry.bash"
+#export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+#export SSH_AGENT_PID=$(systemctl --user show --property MainPID --value ssh-agent)
+#systemctl --user show --property MainPID --value ssh-agent
 
-
-###############################################################################
+##############################################################################
 # Virtualenv
 ###############################################################################
 export WORKON_HOME=$HOME/.virtualenvs
@@ -99,15 +119,15 @@ export PAGER=less
   local locale
   local localeVars
   language=('en_GB.utf8' 'en_US.utf8' 'nb_NO.utf8'
-'C.UTF-8' 'C')
+'C.utf8')
   languageVars=('LANG' 'LANGUAGE' 'LC_MESSAGES')
-  locale=('nb_NO.utf8' 'en_GB.utf8' 'en_US.utf8' 'C.UTF-8' 'C')
+  locale=('nb_NO.utf8' 'en_GB.utf8' 'en_US.utf8' 'C.utf8')
   localeVars=('LC_CTYPE' 'LC_NUMERIC'
 'LC_COLLATE' 'LC_MONETARY' 'LC_PAPER' 'LC_NAME'
 'LC_ADDRESS' 'LC_TELEPHONE' 'LC_MEASUREMENT'
 'LC_IDENTIFICATION')
   timeVars=('LC_TIME')
-  time=('en_DK.utf8' 'nb_NO.utf8' 'en_GB.utf8' 'en_US.utf8' 'C.UTF-8' 'C')
+  time=('en_DK.utf8' 'nb_NO.utf8' 'en_GB.utf8' 'en_US.utf8' 'C.utf8')
 
   for l in $language; do
     if locale -a | grep -qx $l; then

@@ -34,7 +34,8 @@ zinit load chrissicool/zsh-256color
 #zplug "chrissicool/zsh-256color", from:github
 
 # https://github.com/zsh-users/zsh-completions
-zinit load zsh-users/zsh-completions
+#zinit load zsh-users/zsh-completions
+zinit light zsh-users/zsh-completions
 #zplug "zsh-users/zsh-completions", from:github
 
 #
@@ -42,7 +43,7 @@ zinit load zsh-users/zsh-autosuggestions
 zinit load srijanshetty/zsh-pip-completion
 zinit load bbenne10/goenv
 zinit load caarlos0/zsh-mkc
-zinit load b4b4r07/enhancd
+zinit load babarot/enhancd
 
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
